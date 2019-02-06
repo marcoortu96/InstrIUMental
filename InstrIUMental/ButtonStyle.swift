@@ -24,7 +24,7 @@ class ButtonStyle: UIButton {
         //add background color
         //layer.backgroundColor = tintColor.cgColor
         
-        contentEdgeInsets = UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 13)
+        contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
         //adapt font if user change font size on settings
         titleLabel?.adjustsFontForContentSizeCategory = true
