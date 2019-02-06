@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		670DEE61220ADA82000C05F6 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DEE60220ADA82000C05F6 /* Ad.swift */; };
+		6764883C220B129900C8C682 /* AdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764883B220B129900C8C682 /* AdFactory.swift */; };
 		7D92E6AE220ADE6400435F01 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92E6AD220ADE6400435F01 /* User.swift */; };
 		7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B562209D84D006A2D80 /* AppDelegate.swift */; };
 		7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B582209D84D006A2D80 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		670DEE60220ADA82000C05F6 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
+		6764883B220B129900C8C682 /* AdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdFactory.swift; sourceTree = "<group>"; };
 		7D92E6AD220ADE6400435F01 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7DB11B532209D84D006A2D80 /* InstrIUMental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstrIUMental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB11B562209D84D006A2D80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */,
 				7DB11B622209D84E006A2D80 /* Info.plist */,
 				7D92E6AD220ADE6400435F01 /* User.swift */,
+				6764883B220B129900C8C682 /* AdFactory.swift */,
 			);
 			path = InstrIUMental;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6764883C220B129900C8C682 /* AdFactory.swift in Sources */,
 				7D92E6AE220ADE6400435F01 /* User.swift in Sources */,
 				670DEE61220ADA82000C05F6 /* Ad.swift in Sources */,
 				7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */,
