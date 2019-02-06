@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		670DEE61220ADA82000C05F6 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DEE60220ADA82000C05F6 /* Ad.swift */; };
+		7D192505220B19A9001E45B9 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D192504220B19A9001E45B9 /* ButtonStyle.swift */; };
+		7D192507220B3D6C001E45B9 /* logoInstrIUMental.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D192506220B3D6C001E45B9 /* logoInstrIUMental.jpg */; };
 		7D92E6AE220ADE6400435F01 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92E6AD220ADE6400435F01 /* User.swift */; };
 		7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B562209D84D006A2D80 /* AppDelegate.swift */; };
 		7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B582209D84D006A2D80 /* ViewController.swift */; };
 		7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5A2209D84D006A2D80 /* Main.storyboard */; };
-		7DB11B5E2209D84E006A2D80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5D2209D84E006A2D80 /* Assets.xcassets */; };
 		7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		670DEE60220ADA82000C05F6 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
+		7D192504220B19A9001E45B9 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		7D192506220B3D6C001E45B9 /* logoInstrIUMental.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoInstrIUMental.jpg; sourceTree = "<group>"; };
 		7D92E6AD220ADE6400435F01 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7DB11B532209D84D006A2D80 /* InstrIUMental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstrIUMental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB11B562209D84D006A2D80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DB11B582209D84D006A2D80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7DB11B5B2209D84D006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7DB11B5D2209D84E006A2D80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DB11B602209D84E006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB11B622209D84E006A2D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,13 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				670DEE60220ADA82000C05F6 /* Ad.swift */,
+				7D92E6AD220ADE6400435F01 /* User.swift */,
 				7DB11B562209D84D006A2D80 /* AppDelegate.swift */,
 				7DB11B582209D84D006A2D80 /* ViewController.swift */,
 				7DB11B5A2209D84D006A2D80 /* Main.storyboard */,
-				7DB11B5D2209D84E006A2D80 /* Assets.xcassets */,
+				7D192504220B19A9001E45B9 /* ButtonStyle.swift */,
+				7D192506220B3D6C001E45B9 /* logoInstrIUMental.jpg */,
 				7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */,
 				7DB11B622209D84E006A2D80 /* Info.plist */,
-				7D92E6AD220ADE6400435F01 /* User.swift */,
 			);
 			path = InstrIUMental;
 			sourceTree = "<group>";
@@ -128,8 +131,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D192507220B3D6C001E45B9 /* logoInstrIUMental.jpg in Resources */,
 				7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */,
-				7DB11B5E2209D84E006A2D80 /* Assets.xcassets in Resources */,
 				7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +147,7 @@
 				7D92E6AE220ADE6400435F01 /* User.swift in Sources */,
 				670DEE61220ADA82000C05F6 /* Ad.swift in Sources */,
 				7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */,
+				7D192505220B19A9001E45B9 /* ButtonStyle.swift in Sources */,
 				7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
