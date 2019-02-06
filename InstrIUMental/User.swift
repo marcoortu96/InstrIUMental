@@ -7,7 +7,81 @@
 //
 
 import Foundation
+import UIKit
 
-class User {
+public class User {
+    private var name : String
+    private var surname : String
+    private var username : String
+    private var email : String
+    private var password : String
+    private var URLimage : String?
+    private var ads : [Ad]?
     
+    init (name : String, surname : String, username : String, email : String, password : String) {
+        self.name = name
+        self.surname = surname
+        self.username = username
+        self.email = email
+        self.password = password
+        
+        self.URLimage = nil
+        self.ads = nil
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func setName(name : String) {
+        self.name = name
+    }
+    
+    func getSurname() -> String {
+        return surname
+    }
+    
+    func setSurname(surname : String) {
+        self.surname = surname
+    }
+    
+    func getUsername() -> String {
+        return username
+    }
+    
+    func setUsername(username : String) {
+        self.username = username
+    }
+    
+    func getEmail() -> String {
+        return email
+    }
+    
+    func setEmail(email : String) {
+        self.email = email
+    }
+    
+    func getPassword() -> String {
+        return password
+    }
+    
+    func setPassword(password : String) {
+        self.password = password
+    }
+    
+    func getURLimage() -> String {
+        return URLimage!
+    }
+    
+    func setURLimage(URLimage : String) {
+        self.URLimage = URLimage
+    }
+    
+    func getAds() -> [Ad] {
+        return ads!
+    }
+    
+    func setAds(ads : [Ad]) {
+        self.ads = ads
+    }
 }
