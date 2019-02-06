@@ -10,17 +10,30 @@ import Foundation
 import UIKit
 
 
-class Ad {
+public class Ad {
     
     // Attributes
     
-    var id : Int!
-    var title : String!
-    var text : String!
-    var price : Float!
-    var category : String!
-    var author : User!
-    var img : UIImage!
+    private var id : Int!
+    private var title : String!
+    private var text : String!
+    private var price : Float!
+    private var category : String!
+    private var author : String!
+    private var img: [String]!
+    private var date: String!
+    
+    //init function
+    
+    init(id : Int, title : String, text : String, price : Float, category : String, author : String, img : [String], date: String){
+        self.id = id
+        self.text = text
+        self.price = price
+        self.category = category
+        self.author = author
+        self.img = img
+        self.date = date
+    }
     
     // get functions
     
@@ -44,12 +57,16 @@ class Ad {
         return self.category
     }
     
-    func getAuthor() -> User {
+    func getAuthor() -> String {
         return self.author
     }
     
-    func getImg() -> UIImage {
+    func getImg() -> [String]{
         return self.img
+    }
+    
+    func getDate() -> String{
+        return self.date
     }
     
     // set functions
@@ -74,12 +91,16 @@ class Ad {
         self.category = category
     }
     
-    func setAuthor(author : User) -> Void {
+    func setAuthor(author : String) -> Void {
         self.author = author
     }
     
-    func setImg(img : UIImage) -> Void {
+    func setImg(img : [String]) -> Void {
         self.img = img
+    }
+    
+    func setDate(date : String) -> Void {
+        self.date = date
     }
 }
 
