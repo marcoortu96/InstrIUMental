@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
     
-    
+    // press camera button
     @IBAction func photoBtnClicked(_ sender: Any) {
         let image = UIImagePickerController()
         image.delegate = self
@@ -33,6 +33,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
     
+    //take photo from photo gallery
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let theInfo : NSDictionary = info as NSDictionary
         let img: UIImage = theInfo.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
