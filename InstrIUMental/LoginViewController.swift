@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround() //func for hide keyboard
         
 
         // Do any additional setup after loading the view.

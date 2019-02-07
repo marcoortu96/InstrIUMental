@@ -18,3 +18,25 @@ class ViewController: UIViewController {
 
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+extension UIImageView {
+    
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.width / 2)
+        self.layer.masksToBounds = true
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.white.cgColor
+    }
+}
+

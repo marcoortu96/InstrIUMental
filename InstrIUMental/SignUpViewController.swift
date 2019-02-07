@@ -8,20 +8,39 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var imageProfile: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() //func for hide keyboard
+        imageProfile.setRounded() //rounded image
         
-        //rounded image
-        imageProfile.setRounded()
+        
         
     }
     
-
-
+    
+    @IBAction func photoBtnClicked(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary;
+        image.allowsEditing = false
+        
+        self.present(image, animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let theInfo : NSDictionary = info as NSDictionary
+        let img: UIImage = theInfo.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
+        imageProfile.image = img
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -34,12 +53,5 @@ class SignUpViewController: UIViewController {
 
 }
 
-extension UIImageView {
-    
-    func setRounded() {
-        self.layer.cornerRadius = (self.frame.width / 2) 
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.white.cgColor
-    }
-}
+
+
