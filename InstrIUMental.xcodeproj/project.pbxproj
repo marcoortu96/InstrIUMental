@@ -72,7 +72,6 @@
 		7DB11B552209D84D006A2D80 /* InstrIUMental */ = {
 			isa = PBXGroup;
 			children = (
-				670DEE60220ADA82000C05F6 /* Ad.swift */,
 				7DB11B562209D84D006A2D80 /* AppDelegate.swift */,
 				7DB11B582209D84D006A2D80 /* ViewController.swift */,
 				7DB11B5A2209D84D006A2D80 /* Main.storyboard */,
@@ -84,6 +83,7 @@
 				7D451612220B7D1D00F2CA68 /* Assets.xcassets */,
 				7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */,
 				7DB11B622209D84E006A2D80 /* Info.plist */,
+				670DEE60220ADA82000C05F6 /* Ad.swift */,
 				7D92E6AD220ADE6400435F01 /* User.swift */,
 				6764883B220B129900C8C682 /* AdFactory.swift */,
 				7D92E6AF220B1BE900435F01 /* UserFactory.swift */,
