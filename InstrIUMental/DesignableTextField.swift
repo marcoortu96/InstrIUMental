@@ -39,7 +39,7 @@ class DesignableTextField: UITextField {
         if let image = leftImage {
             leftViewMode = .always
             
-            let imageView = UIImageView (frame: CGRect(x: 5, y: 15, width: 20, height: 20))
+            let imageView = UIImageView (frame: CGRect(x: 5, y: 12, width: 20, height: 20))
             imageView.image = image
             imageView.tintColor = tintColor
             

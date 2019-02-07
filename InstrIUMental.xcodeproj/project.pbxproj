@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		670DEE61220ADA82000C05F6 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DEE60220ADA82000C05F6 /* Ad.swift */; };
 		6764883C220B129900C8C682 /* AdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764883B220B129900C8C682 /* AdFactory.swift */; };
-		7D192507220B3D6C001E45B9 /* logoInstrIUMental.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D192506220B3D6C001E45B9 /* logoInstrIUMental.jpg */; };
 		7D45160C220B60DB00F2CA68 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */; };
 		7D451613220B7D1D00F2CA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D451612220B7D1D00F2CA68 /* Assets.xcassets */; };
 		7D451615220B864300F2CA68 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D451614220B864300F2CA68 /* DesignableButton.swift */; };
+		7D57775B220C296000C1228B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D57775A220C296000C1228B /* LoginViewController.swift */; };
 		7D92E6AE220ADE6400435F01 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92E6AD220ADE6400435F01 /* User.swift */; };
 		7D92E6B0220B1BE900435F01 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92E6AF220B1BE900435F01 /* UserFactory.swift */; };
 		7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B562209D84D006A2D80 /* AppDelegate.swift */; };
@@ -24,10 +24,10 @@
 /* Begin PBXFileReference section */
 		670DEE60220ADA82000C05F6 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		6764883B220B129900C8C682 /* AdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdFactory.swift; sourceTree = "<group>"; };
-		7D192506220B3D6C001E45B9 /* logoInstrIUMental.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoInstrIUMental.jpg; sourceTree = "<group>"; };
 		7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		7D451612220B7D1D00F2CA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D451614220B864300F2CA68 /* DesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
+		7D57775A220C296000C1228B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7D92E6AD220ADE6400435F01 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7D92E6AF220B1BE900435F01 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		7DB11B532209D84D006A2D80 /* InstrIUMental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstrIUMental.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +72,9 @@
 				7DB11B562209D84D006A2D80 /* AppDelegate.swift */,
 				7DB11B582209D84D006A2D80 /* ViewController.swift */,
 				7DB11B5A2209D84D006A2D80 /* Main.storyboard */,
+				7D57775A220C296000C1228B /* LoginViewController.swift */,
 				7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */,
 				7D451614220B864300F2CA68 /* DesignableButton.swift */,
-				7D192506220B3D6C001E45B9 /* logoInstrIUMental.jpg */,
 				7D451612220B7D1D00F2CA68 /* Assets.xcassets */,
 				7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */,
 				7DB11B622209D84E006A2D80 /* Info.plist */,
@@ -143,7 +143,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D192507220B3D6C001E45B9 /* logoInstrIUMental.jpg in Resources */,
 				7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */,
 				7D451613220B7D1D00F2CA68 /* Assets.xcassets in Resources */,
 				7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */,
@@ -157,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D57775B220C296000C1228B /* LoginViewController.swift in Sources */,
 				6764883C220B129900C8C682 /* AdFactory.swift in Sources */,
 				7D92E6B0220B1BE900435F01 /* UserFactory.swift in Sources */,
 				7D92E6AE220ADE6400435F01 /* User.swift in Sources */,
