@@ -101,8 +101,76 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
         
-        if UserFactory.isUserValid(usr: newUser) {
+        if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
+        }
+        else {
+            if newUser.getName().count < 2 {
+                nameText.textColor = UIColor.red
+                nameText.layer.borderWidth = 1
+                nameText.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                nameText.textColor = UIColor.white
+                nameText.layer.borderWidth = 0
+            }
+            
+            if newUser.getSurname().count < 2 {
+                surnameText.textColor = UIColor.red
+                surnameText.layer.borderWidth = 1
+                surnameText.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                surnameText.textColor = UIColor.white
+                surnameText.layer.borderWidth = 0
+            }
+            
+            if newUser.getUsername().count < 2 {
+                usernameText.textColor = UIColor.red
+                usernameText.layer.borderWidth = 1
+                usernameText.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                usernameText.textColor = UIColor.white
+                usernameText.layer.borderWidth = 0
+            }
+            
+            if newUser.getEmail().count < 2 {
+                emailText.textColor = UIColor.red
+                emailText.layer.borderWidth = 1
+                emailText.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                emailText.textColor = UIColor.white
+                emailText.layer.borderWidth = 1
+            }
+            
+            if newUser.getPassword().count < 6 {
+                passwordText.textColor = UIColor.red
+                passwordText.layer.borderWidth = 1
+                passwordText.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                passwordText.textColor = UIColor.white
+                passwordText.layer.borderWidth = 0
+            }
+            
+            if !newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
+                passwordText.textColor = UIColor.red
+                passwordText.layer.borderWidth = 1
+                passwordText.layer.borderColor = UIColor.red.cgColor
+                
+                confirmPassTxt.textColor = UIColor.red
+                confirmPassTxt.layer.borderWidth = 1
+                confirmPassTxt.layer.borderColor = UIColor.red.cgColor
+            }
+            else {
+                passwordText.textColor = UIColor.white
+                passwordText.layer.borderWidth = 0
+                
+                confirmPassTxt.textColor = UIColor.white
+                confirmPassTxt.layer.borderWidth = 0
+            }
         }
         
         UserFactory.printUsers(usrs: usrs.getUsers())
