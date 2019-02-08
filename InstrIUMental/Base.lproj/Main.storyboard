@@ -165,8 +165,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="0v1-if-3Tn"/>
                     <connections>
+                        <outlet property="passwordLabel" destination="1AC-ef-FHa" id="MhB-RS-7lz"/>
                         <outlet property="passwordText" destination="nf0-0V-sVf" id="vA0-WO-EEh"/>
                         <outlet property="txtBC" destination="bs5-ry-K57" id="8EC-NR-3cs"/>
+                        <outlet property="usernameLabel" destination="Grs-sN-OrK" id="FsC-pT-tAA"/>
                         <outlet property="usernameText" destination="aTt-Ct-iX4" id="YNJ-0v-TVC"/>
                     </connections>
                 </viewController>
@@ -611,6 +613,7 @@
         <image name="user1" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ps4-fd-X9y"/>
         <segue reference="d8g-Sx-nSB"/>
     </inferredMetricsTieBreakers>
 </document>

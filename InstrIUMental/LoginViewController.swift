@@ -9,7 +9,9 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usernameText: DesignableTextField!
+    @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordText: DesignableTextField!
     
     //var for bottom constraint of password text field
@@ -73,10 +75,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if UserFactory.isUsernamePresent(username: usernameText.text!, usrs: usrs.getUsers()) {
                 print("Password error")
                 displayAlertMessage(userMessage: "Password errata")
+                passwordLabel.textColor = UIColor.red
+                passwordText.layer.borderWidth = 1
+                passwordText.layer.borderColor = UIColor.red.cgColor
             }
             else {
                 print("Username error")
                 displayAlertMessage(userMessage: "Username o Password errati")
+                usernameLabel.textColor = UIColor.red
+                usernameText.layer.borderWidth = 1
+                usernameText.layer.borderColor = UIColor.red.cgColor
             }
         }
         else {
