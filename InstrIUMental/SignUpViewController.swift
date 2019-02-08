@@ -93,8 +93,16 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @IBAction func signupBtnClicked (_ sender : Any) {
-        var newUser : User = User()
-        //newUser.setName(name: <#T##String#>)
+        let usrs : UserFactory = UserFactory.getInstance()
+        
+        let newUser : User = User()
+        newUser.setName(name: nameText.text!)
+        newUser.setSurname(surname: surnameText.text!)
+        newUser.setUsername(username: usernameText.text!)
+        newUser.setEmail(email: emailText.text!)
+        newUser.setPassword(password: passwordText.text!)
+        
+        
     }
     
     /*

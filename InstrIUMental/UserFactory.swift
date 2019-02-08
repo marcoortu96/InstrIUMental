@@ -31,6 +31,10 @@ public class UserFactory {
         return users
     }
     
+    public func setUsers(usrs : [User]) {
+        self.users = usrs
+    }
+    
     public static func getUser(username : String, password : String, usrs : [User]) -> User! {
         if UserFactory.instance != nil {
             for user in usrs {
@@ -46,7 +50,7 @@ public class UserFactory {
         return nil
     }
     
-    public static func isUsernamePresent(username : String, usrs: [User]) -> Bool {
+    public static func isUsernamePresent(username : String, usrs : [User]) -> Bool {
         if UserFactory.instance != nil {
             for user in usrs {
                 if user.getUsername().elementsEqual(username) {
@@ -59,6 +63,17 @@ public class UserFactory {
         }
         
         return false
+    }
+    
+    public static func addUser(newUser : User, usrs : [User]) {
+        var listOfUsers : [User] = usrs
+        
+        if UserFactory.instance != nil {
+            if UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs) {
+                listOfUsers.append(newUser)
+                instance?.setUsers(usrs: listOfUsers)
+            }
+        }
     }
     
 }
