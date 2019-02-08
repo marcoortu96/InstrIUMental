@@ -12,7 +12,7 @@ import Foundation
 public class AdFactory {
     
     private static var instance : AdFactory?
-    private var  ads : [Ad]!
+    private var  ads : [Ad]! = []
     
     
     init() {
@@ -24,7 +24,7 @@ public class AdFactory {
     }
     
     
-    public func getInstance() -> AdFactory {
+    public static func getInstance() -> AdFactory {
         if (AdFactory.instance == nil) {
             AdFactory.instance = AdFactory()
         }
