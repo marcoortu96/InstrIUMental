@@ -106,6 +106,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         }
         else {
             if newUser.getName().count < 2 {
+                displayAlertMessage(userMessage: "Il nome deve avere almeno 2 caratteri")
                 nameText.textColor = UIColor.red
                 nameText.layer.borderWidth = 1
                 nameText.layer.borderColor = UIColor.red.cgColor
@@ -116,6 +117,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             
             if newUser.getSurname().count < 2 {
+                displayAlertMessage(userMessage: "Il cognome deve avere almeno 2 caratteri")
                 surnameText.textColor = UIColor.red
                 surnameText.layer.borderWidth = 1
                 surnameText.layer.borderColor = UIColor.red.cgColor
@@ -126,6 +128,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             
             if newUser.getUsername().count < 2 {
+                displayAlertMessage(userMessage: "Lo username deve avere almeno 2 caratteri")
                 usernameText.textColor = UIColor.red
                 usernameText.layer.borderWidth = 1
                 usernameText.layer.borderColor = UIColor.red.cgColor
@@ -135,7 +138,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 usernameText.layer.borderWidth = 0
             }
             
-            if newUser.getEmail().count < 2 {
+            if newUser.getEmail().count < 7 {
+                displayAlertMessage(userMessage: "La email inserita non è valida")
                 emailText.textColor = UIColor.red
                 emailText.layer.borderWidth = 1
                 emailText.layer.borderColor = UIColor.red.cgColor
@@ -146,6 +150,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             
             if newUser.getPassword().count < 6 {
+                displayAlertMessage(userMessage: "La password deve avere almeno 6 caratteri")
                 passwordText.textColor = UIColor.red
                 passwordText.layer.borderWidth = 1
                 passwordText.layer.borderColor = UIColor.red.cgColor
@@ -156,6 +161,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             
             if !newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
+                displayAlertMessage(userMessage: "Le password non corrispondono")
                 passwordText.textColor = UIColor.red
                 passwordText.layer.borderWidth = 1
                 passwordText.layer.borderColor = UIColor.red.cgColor
