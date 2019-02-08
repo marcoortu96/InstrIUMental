@@ -72,14 +72,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             if UserFactory.isUsernamePresent(username: usernameText.text!, usrs: usrs.getUsers()) {
                 print("Password error")
+                displayAlertMessage(userMessage: "Password errata")
             }
             else {
                 print("Username error")
+                displayAlertMessage(userMessage: "Username o Password errati")
             }
         }
         else {
             print(usernameText.text!, " ", passwordText.text!)
         }
+    }
+    
+    func displayAlertMessage(userMessage : String) {
+        let myAlert = UIAlertController(title: "Credenziali errate", message : userMessage, preferredStyle : UIAlertController.Style.alert)
+        
+        let okAction = UIAlertAction(title : "Ok", style : UIAlertAction.Style.default, handler : nil)
+        
+        myAlert.addAction(okAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
     }
     
     /*
