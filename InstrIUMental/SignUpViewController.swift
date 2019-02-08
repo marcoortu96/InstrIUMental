@@ -15,9 +15,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var confirmPassTxt: DesignableTextField!
     
     //var for bottom constraint of password text field
-    @IBOutlet weak var txtBC: NSLayoutConstraint! 
-    
-   
+    @IBOutlet weak var txtBC: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
