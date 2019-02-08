@@ -27,6 +27,7 @@ public class Ad {
     
     init(id : Int, title : String, text : String, price : Float, category : String, author : String, img : [String], date: String){
         self.id = id
+        self.title = title
         self.text = text
         self.price = price
         self.category = category

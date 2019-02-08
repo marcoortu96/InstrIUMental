@@ -10,6 +10,10 @@ import UIKit
 
 class LastAdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView?
+    let ads = AdFactory.getInstance()
+    
+    //use for index the ads
+    var myIndex = 0
     
 
     override func viewDidLoad() {
@@ -19,12 +23,29 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return ads.getAds().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AdsTableViewCell")
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AdsTableViewCell") as! AdsTableViewCell
+        
+        let ad: Ad = ads.getAds() [indexPath.row]
+        
+        cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+        cell.adTitleLabel?.text = ad.getTitle()
+        cell.adDescrLabel?.text = ad.getText()
+        cell.nameUserLabel?.text = "di " + ad.getAuthor()
+        cell.adDateLabel?.text = ad.getDate()
+        cell.adPriceLabel?.text = String(ad.getPrice()) + "€"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        
+        //send ad data to next view
+        performSegue(withIdentifier: "detailAdSegue", sender: self)
     }
     
 

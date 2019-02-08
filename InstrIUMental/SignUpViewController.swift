@@ -10,14 +10,13 @@ import UIKit
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
+    //Storyboard outlet
+    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var nameText: DesignableTextField!
     @IBOutlet weak var surnameText: DesignableTextField!
     @IBOutlet weak var usernameText: DesignableTextField!
     @IBOutlet weak var emailText: DesignableTextField!
     @IBOutlet weak var passwordText: DesignableTextField!
-    
-    //Storyboard outlet
-    @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var confirmPassTxt: DesignableTextField!
     
     //var for bottom constraint of password text field

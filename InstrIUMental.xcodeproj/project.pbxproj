@@ -21,6 +21,7 @@
 		7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B582209D84D006A2D80 /* ViewController.swift */; };
 		7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5A2209D84D006A2D80 /* Main.storyboard */; };
 		7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */; };
+		7DEAFF93220DE712000F9788 /* AdsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7DB11B5B2209D84D006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DB11B602209D84E006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB11B622209D84E006A2D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				7D57775A220C296000C1228B /* LoginViewController.swift */,
 				7D57775E220C41AA00C1228B /* SignUpViewController.swift */,
 				7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */,
+				7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */,
 				7D451614220B864300F2CA68 /* DesignableButton.swift */,
 				7D451612220B7D1D00F2CA68 /* Assets.xcassets */,
 				7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */,
@@ -166,6 +169,7 @@
 				7D57775B220C296000C1228B /* LoginViewController.swift in Sources */,
 				6764883C220B129900C8C682 /* AdFactory.swift in Sources */,
 				7D92E6B0220B1BE900435F01 /* UserFactory.swift in Sources */,
+				7DEAFF93220DE712000F9788 /* AdsTableViewCell.swift in Sources */,
 				7D577781220CB58600C1228B /* LastAdViewController.swift in Sources */,
 				7D92E6AE220ADE6400435F01 /* User.swift in Sources */,
 				7D45160C220B60DB00F2CA68 /* DesignableTextField.swift in Sources */,
