@@ -102,7 +102,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
         
+        UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
         
+        UserFactory.printUsers(usrs: usrs.getUsers())
     }
     
     /*

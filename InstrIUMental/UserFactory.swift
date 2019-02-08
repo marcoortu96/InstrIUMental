@@ -66,13 +66,24 @@ public class UserFactory {
     }
     
     public static func addUser(newUser : User, usrs : [User]) {
-        var listOfUsers : [User] = usrs
+        //var listOfUsers : [User] = usrs
         
         if UserFactory.instance != nil {
-            if UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs) {
-                listOfUsers.append(newUser)
-                instance?.setUsers(usrs: listOfUsers)
+            if !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs) {
+                //listOfUsers.append(newUser)
+                //instance?.setUsers(usrs: listOfUsers)
+                UserFactory.instance?.users.append(newUser)
             }
+        }
+    }
+    
+    public static func printUser(usr : User) {
+        print(usr.getUsername(), " ")
+    }
+    
+    public static func printUsers(usrs : [User]) {
+        for user in usrs {
+            printUser(usr : user)
         }
     }
     
