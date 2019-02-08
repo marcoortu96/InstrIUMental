@@ -75,6 +75,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if UserFactory.isUsernamePresent(username: usernameText.text!, usrs: usrs.getUsers()) {
                 print("Password error")
                 displayAlertMessage(userMessage: "Password errata")
+                usernameLabel.textColor = UIColor.white
+                usernameText.layer.borderWidth = 0
+                usernameText.layer.borderColor = UIColor.white.cgColor
                 passwordLabel.textColor = UIColor.red
                 passwordText.layer.borderWidth = 1
                 passwordText.layer.borderColor = UIColor.red.cgColor
@@ -85,6 +88,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 usernameLabel.textColor = UIColor.red
                 usernameText.layer.borderWidth = 1
                 usernameText.layer.borderColor = UIColor.red.cgColor
+                passwordLabel.textColor = UIColor.red
+                passwordText.layer.borderWidth = 1
+                passwordText.layer.borderColor = UIColor.red.cgColor
             }
         }
         else {
