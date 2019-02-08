@@ -98,6 +98,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // The function shows an alert message with the given message
     func displayAlertMessage(userMessage : String) {
         let myAlert = UIAlertController(title: "Credenziali errate", message : userMessage, preferredStyle : UIAlertController.Style.alert)
         

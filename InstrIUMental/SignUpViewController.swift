@@ -101,9 +101,22 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
         
-        UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
+        if UserFactory.isUserValid(usr: newUser) {
+            UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
+        }
         
         UserFactory.printUsers(usrs: usrs.getUsers())
+    }
+    
+    // The function shows an alert message with the given message
+    func displayAlertMessage(userMessage : String) {
+        let myAlert = UIAlertController(title: "Dati errati", message : userMessage, preferredStyle : UIAlertController.Style.alert)
+        
+        let okAction = UIAlertAction(title : "Ok", style : UIAlertAction.Style.default, handler : nil)
+        
+        myAlert.addAction(okAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
     }
     
     /*
