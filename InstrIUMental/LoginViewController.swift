@@ -24,6 +24,20 @@ class LoginViewController: UIViewController {
     
     //press login button
     @IBAction func loginBtn(_ sender: Any) {
+        let usrs : UserFactory = UserFactory.getInstance()
+        
+        if UserFactory.getUser(username: usernameText.text!, password: passwordText.text!, usrs : usrs.getUsers()) == nil {
+            
+            if UserFactory.isUsernamePresent(username: usernameText.text!, usrs: usrs.getUsers()) {
+                print("Password error")
+            }
+            else {
+                print("Username error")
+            }
+        }
+        else {
+            print(usernameText.text!, " ", passwordText.text!)
+        }
     }
     
     /*
