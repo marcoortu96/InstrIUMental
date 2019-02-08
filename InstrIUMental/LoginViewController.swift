@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet weak var usernameText: DesignableTextField!
     @IBOutlet weak var passwordText: DesignableTextField!
+    @IBOutlet weak var txtBC: NSLayoutConstraint!
     
 
     

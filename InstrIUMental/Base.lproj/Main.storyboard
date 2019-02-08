@@ -148,6 +148,7 @@
                             <constraint firstItem="Adv-AA-BSE" firstAttribute="leading" secondItem="nf0-0V-sVf" secondAttribute="leading" id="XFt-lq-37E"/>
                             <constraint firstItem="aTt-Ct-iX4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="Zw6-s0-QUn"/>
                             <constraint firstItem="nwR-kv-Uw7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="bpK-KN-BmO"/>
+                            <constraint firstAttribute="bottom" secondItem="nf0-0V-sVf" secondAttribute="bottom" constant="191" id="bs5-ry-K57"/>
                             <constraint firstItem="Adv-AA-BSE" firstAttribute="top" secondItem="nf0-0V-sVf" secondAttribute="bottom" constant="54" id="ewz-SZ-2vs"/>
                             <constraint firstItem="nwR-kv-Uw7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="lHs-37-jsm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ltS-e8-PAM" secondAttribute="trailing" constant="85" id="lWT-xv-0dm"/>
@@ -165,6 +166,7 @@
                     <navigationItem key="navigationItem" title="Login" id="0v1-if-3Tn"/>
                     <connections>
                         <outlet property="passwordText" destination="nf0-0V-sVf" id="vA0-WO-EEh"/>
+                        <outlet property="txtBC" destination="bs5-ry-K57" id="8EC-NR-3cs"/>
                         <outlet property="usernameText" destination="aTt-Ct-iX4" id="YNJ-0v-TVC"/>
                     </connections>
                 </viewController>
@@ -606,6 +608,7 @@
         <image name="user1" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ps4-fd-X9y"/>
         <segue reference="d8g-Sx-nSB"/>
     </inferredMetricsTieBreakers>
 </document>
