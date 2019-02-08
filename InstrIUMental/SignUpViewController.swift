@@ -8,17 +8,63 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
-    @IBOutlet weak var imageProfile: UIImageView!
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
+    //Storyboard outlet
+    @IBOutlet weak var imageProfile: UIImageView!
+    @IBOutlet weak var confirmPassTxt: DesignableTextField!
+    
+    //var for bottom constraint of password text field
+    @IBOutlet weak var txtBC: NSLayoutConstraint! 
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
         imageProfile.setRounded() //rounded image
         
+        //fix textfield position when open keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
+        //fix textfield position when hide keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //textifield return to original position
+        confirmPassTxt.delegate = self
+        
+        
+    }
+    
+    //func for return textfield at the original position
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //func for fix textfield position when open keyboard
+    @objc func keyBoardWillShow(notification: Notification) {
+        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+            let keyboardRect = frame?.cgRectValue
+            
+            if let keyboardHeight = keyboardRect?.height {
+                self.txtBC.constant = keyboardHeight
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    //func for fix textfield position when open keyboard
+    @objc func keyBoardWillHide(notification: Notification) {
+        self.txtBC.constant = 150.0
+        
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+        }
         
     }
     

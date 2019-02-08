@@ -341,7 +341,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="pass1"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -443,7 +443,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="pass1"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
@@ -517,6 +517,7 @@
                                             <constraint firstItem="rES-uI-h7G" firstAttribute="trailing" secondItem="LTB-K8-lCA" secondAttribute="trailing" constant="1" id="o50-f7-HYB"/>
                                             <constraint firstItem="rES-uI-h7G" firstAttribute="leading" secondItem="oxy-Uq-6vU" secondAttribute="leading" constant="34" id="ohq-6x-OOo"/>
                                             <constraint firstAttribute="trailing" secondItem="cO9-76-pWd" secondAttribute="trailing" constant="28" id="orq-a9-uCA"/>
+                                            <constraint firstAttribute="bottom" secondItem="myg-E8-6g9" secondAttribute="bottom" constant="150" id="qN2-rW-Vlt"/>
                                             <constraint firstItem="RUC-Z8-dLJ" firstAttribute="leading" secondItem="oxy-Uq-6vU" secondAttribute="leading" constant="28" id="tM4-2q-FAI"/>
                                             <constraint firstItem="KCO-jV-vfz" firstAttribute="top" secondItem="myg-E8-6g9" secondAttribute="bottom" constant="58" id="tsp-KA-dfy"/>
                                             <constraint firstItem="rES-uI-h7G" firstAttribute="top" secondItem="RUC-Z8-dLJ" secondAttribute="bottom" constant="8" id="wMn-l8-qMY"/>
@@ -572,7 +573,9 @@
                     </view>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="confirmPassTxt" destination="myg-E8-6g9" id="V9T-mm-iT5"/>
                         <outlet property="imageProfile" destination="5hF-oC-uVm" id="YE6-bA-RAY"/>
+                        <outlet property="txtBC" destination="qN2-rW-Vlt" id="RF3-bO-CD3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGL-5s-dnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -608,7 +611,6 @@
         <image name="user1" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ps4-fd-X9y"/>
         <segue reference="d8g-Sx-nSB"/>
     </inferredMetricsTieBreakers>
 </document>
