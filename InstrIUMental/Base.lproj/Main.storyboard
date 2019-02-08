@@ -462,6 +462,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCO-jV-vfz" customClass="DesignableButton" customModule="InstrIUMental" customModuleProvider="target">
                                                 <rect key="frame" x="28" y="755" width="319" height="56"/>
                                                 <color key="backgroundColor" red="0.56190894979999995" green="0.45843511409999999" blue="0.22245092790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="signupBtn"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="uhf-TS-EfV"/>
                                                 </constraints>
@@ -475,7 +476,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OVA-Y7-T9z"/>
+                                                    <action selector="signupBtnClicked:" destination="V0a-9k-bck" eventType="touchUpInside" id="yQm-8n-PnH"/>
                                                     <segue destination="BYZ-38-t0r" kind="show" id="d8g-Sx-nSB"/>
                                                 </connections>
                                             </button>
@@ -576,8 +577,13 @@
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="confirmPassTxt" destination="myg-E8-6g9" id="V9T-mm-iT5"/>
+                        <outlet property="emailText" destination="6wT-Jh-06Z" id="vR8-Ow-qAr"/>
                         <outlet property="imageProfile" destination="5hF-oC-uVm" id="YE6-bA-RAY"/>
+                        <outlet property="nameText" destination="RUC-Z8-dLJ" id="YEo-0K-t5M"/>
+                        <outlet property="passwordText" destination="IQZ-Qd-rfs" id="Tou-Du-Bp8"/>
+                        <outlet property="surnameText" destination="cO9-76-pWd" id="gdw-2y-Duw"/>
                         <outlet property="txtBC" destination="qN2-rW-Vlt" id="RF3-bO-CD3"/>
+                        <outlet property="usernameText" destination="1oa-p8-DDv" id="h2a-Hz-Bke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGL-5s-dnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -613,7 +619,6 @@
         <image name="user1" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ps4-fd-X9y"/>
         <segue reference="d8g-Sx-nSB"/>
     </inferredMetricsTieBreakers>
 </document>

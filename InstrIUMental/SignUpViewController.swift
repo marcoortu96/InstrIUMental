@@ -10,6 +10,12 @@ import UIKit
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var nameText: DesignableTextField!
+    @IBOutlet weak var surnameText: DesignableTextField!
+    @IBOutlet weak var usernameText: DesignableTextField!
+    @IBOutlet weak var emailText: DesignableTextField!
+    @IBOutlet weak var passwordText: DesignableTextField!
+    
     //Storyboard outlet
     @IBOutlet weak var imageProfile: UIImageView!
     @IBOutlet weak var confirmPassTxt: DesignableTextField!
@@ -84,6 +90,11 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         imageProfile.image = img
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func signupBtnClicked (_ sender : Any) {
+        var newUser : User = User()
+        //newUser.setName(name: <#T##String#>)
     }
     
     /*

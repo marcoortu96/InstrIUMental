@@ -29,6 +29,17 @@ public class User {
         self.ads = nil
     }
     
+    init () {
+        self.name = ""
+        self.surname = ""
+        self.username = ""
+        self.email = ""
+        self.password = ""
+        
+        self.URLimage = nil
+        self.ads = nil
+    }
+    
     func getName() -> String {
         return name
     }
