@@ -172,28 +172,30 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 passwordText.layer.borderWidth = 1
                 passwordText.layer.borderColor = UIColor.red.cgColor
                 passwordLabel.textColor = UIColor.red
-            }
-            else {
-                passwordText.layer.borderWidth = 0
-                passwordLabel.textColor = UIColor.white
-            }
-            
-            if !newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
-                displayAlertMessage(title: "Dati errati", userMessage: "Le password non corrispondono")
-                passwordText.layer.borderWidth = 1
-                passwordText.layer.borderColor = UIColor.red.cgColor
-                passwordLabel.textColor = UIColor.red
                 
                 confirmPassTxt.layer.borderWidth = 1
                 confirmPassTxt.layer.borderColor = UIColor.red.cgColor
                 confirmPassLabel.textColor = UIColor.red
+                print("*************************************************************")
             }
             else {
-                passwordText.layer.borderWidth = 0
-                passwordLabel.textColor = UIColor.white
-                
-                confirmPassTxt.layer.borderWidth = 0
-                confirmPassLabel.textColor = UIColor.white
+                if !newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
+                    displayAlertMessage(title: "Dati errati", userMessage: "Le password non corrispondono")
+                    passwordText.layer.borderWidth = 1
+                    passwordText.layer.borderColor = UIColor.red.cgColor
+                    passwordLabel.textColor = UIColor.red
+                    
+                    confirmPassTxt.layer.borderWidth = 1
+                    confirmPassTxt.layer.borderColor = UIColor.red.cgColor
+                    confirmPassLabel.textColor = UIColor.red
+                }
+                else {
+                    passwordText.layer.borderWidth = 0
+                    passwordLabel.textColor = UIColor.white
+                    
+                    confirmPassTxt.layer.borderWidth = 0
+                    confirmPassLabel.textColor = UIColor.white
+                }
             }
         }
     }
