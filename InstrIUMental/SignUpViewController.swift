@@ -113,6 +113,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         
         if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
+            self.performSegue(withIdentifier: "seageFromAtoB", sender: self)
         }
         else {
             if newUser.getName().count < 2 {
@@ -189,8 +190,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
         }
         
-        displayAlertMessage(title: "Complimenti", userMessage: "Registrazione completata")
-        UserFactory.printUsers(usrs: usrs.getUsers())
+        /*displayAlertMessage(title: "Complimenti", userMessage: "Registrazione completata")
+        UserFactory.printUsers(usrs: usrs.getUsers())*/
     }
     
     // The function shows an alert message with the given message
