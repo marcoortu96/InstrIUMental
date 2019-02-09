@@ -15,13 +15,35 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     //use for index the ads
     var myIndex = 0
     
-
+    var showMenu = false
+    @IBOutlet weak var menu: UIView!
+    
+    @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu.backgroundColor = UIColor.init(red: 0.813, green: 0.689, blue: 0.353, alpha: 0.95)
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func openMenu(_ sender: Any) {
+        if(showMenu) {
+            
+            leadingConstraint.constant = -240
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded();
+            }
+        } else {
+            leadingConstraint.constant = 0;
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded();
+            }
+        }
+        
+        showMenu = !showMenu
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ads.getAds().count
     }
