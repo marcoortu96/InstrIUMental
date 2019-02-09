@@ -360,7 +360,7 @@
         <!--Annuncio-->
         <scene sceneID="hgh-Zu-9aa">
             <objects>
-                <viewController title="Annuncio" id="Oxi-ha-Wy5" sceneMemberID="viewController">
+                <viewController title="Annuncio" id="Oxi-ha-Wy5" customClass="AdDetailViewController" customModule="InstrIUMental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTH-zO-Y9j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

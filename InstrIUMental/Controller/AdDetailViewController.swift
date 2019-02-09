@@ -9,7 +9,6 @@
 import UIKit
 
 class AdDetailViewController: UIViewController {
-    @IBOutlet weak var scrollView: UIScrollView!
     
     var adTitle = String()
     var adText = String()
