@@ -31,6 +31,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     //var for bottom constraint of password text field
     @IBOutlet weak var txtBC: NSLayoutConstraint!
+    @IBOutlet weak var btnBC: NSLayoutConstraint!
+    @IBOutlet weak var btnTC: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +65,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             
             if let keyboardHeight = keyboardRect?.height {
                 self.txtBC.constant = keyboardHeight
+                self.btnTC.constant = (keyboardHeight - 56)
+                //self.btnBC.constant = (keyboardHeight - 56)
+                
                 
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
@@ -71,9 +76,11 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
     
-    //func for fix textfield position when open keyboard
+    //func for fix textfield position when hide keyboard
     @objc func keyBoardWillHide(notification: Notification) {
         self.txtBC.constant = 150.0
+        self.btnTC.constant = 58.0
+        self.btnBC.constant = 36.0
         
         UIView.animate(withDuration: 0.6) {
             self.view.layoutIfNeeded()

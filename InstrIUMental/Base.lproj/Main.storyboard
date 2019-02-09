@@ -524,6 +524,7 @@
                                         <constraints>
                                             <constraint firstItem="IQZ-Qd-rfs" firstAttribute="top" secondItem="LTB-K8-lCA" secondAttribute="bottom" constant="8" id="3Yi-9V-ahp"/>
                                             <constraint firstItem="6wT-Jh-06Z" firstAttribute="top" secondItem="XaW-zD-DVM" secondAttribute="bottom" constant="8" id="7F6-75-07n"/>
+                                            <constraint firstItem="KCO-jV-vfz" firstAttribute="top" secondItem="myg-E8-6g9" secondAttribute="bottom" constant="58" id="9G9-4e-StZ"/>
                                             <constraint firstItem="LTB-K8-lCA" firstAttribute="leading" secondItem="IQZ-Qd-rfs" secondAttribute="leading" constant="6" id="FD3-Sb-1xz"/>
                                             <constraint firstItem="SXt-xw-evo" firstAttribute="leading" secondItem="myg-E8-6g9" secondAttribute="leading" constant="6" id="GGP-bE-w8B"/>
                                             <constraint firstAttribute="bottom" secondItem="KCO-jV-vfz" secondAttribute="bottom" constant="36" id="JYZ-uU-QjX"/>
@@ -555,7 +556,6 @@
                                             <constraint firstAttribute="trailing" secondItem="cO9-76-pWd" secondAttribute="trailing" constant="28" id="orq-a9-uCA"/>
                                             <constraint firstAttribute="bottom" secondItem="myg-E8-6g9" secondAttribute="bottom" constant="150" id="qN2-rW-Vlt"/>
                                             <constraint firstItem="RUC-Z8-dLJ" firstAttribute="leading" secondItem="oxy-Uq-6vU" secondAttribute="leading" constant="28" id="tM4-2q-FAI"/>
-                                            <constraint firstItem="KCO-jV-vfz" firstAttribute="top" secondItem="myg-E8-6g9" secondAttribute="bottom" constant="58" id="tsp-KA-dfy"/>
                                             <constraint firstItem="rES-uI-h7G" firstAttribute="top" secondItem="RUC-Z8-dLJ" secondAttribute="bottom" constant="8" id="wMn-l8-qMY"/>
                                             <constraint firstItem="myg-E8-6g9" firstAttribute="top" secondItem="SXt-xw-evo" secondAttribute="bottom" constant="8" id="x82-xG-Tks"/>
                                             <constraint firstItem="SXt-xw-evo" firstAttribute="top" secondItem="IQZ-Qd-rfs" secondAttribute="bottom" constant="8" id="zYG-Lp-xed"/>
@@ -609,6 +609,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="btnBC" destination="JYZ-uU-QjX" id="cKY-RZ-DdR"/>
+                        <outlet property="btnTC" destination="9G9-4e-StZ" id="dG5-97-Pzy"/>
                         <outlet property="confirmPassLabel" destination="SXt-xw-evo" id="nwB-kB-GWh"/>
                         <outlet property="confirmPassTxt" destination="myg-E8-6g9" id="V9T-mm-iT5"/>
                         <outlet property="emailLabel" destination="XaW-zD-DVM" id="2O9-K0-aTa"/>
@@ -628,7 +630,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGL-5s-dnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="1245"/>
+            <point key="canvasLocation" x="141.59999999999999" y="1244.9775112443779"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wgE-cn-5AZ">
