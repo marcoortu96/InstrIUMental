@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltS-e8-PAM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltS-e8-PAM">
                                 <rect key="frame" x="217.5" y="606" width="72.5" height="32"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Registrati"/>
@@ -143,6 +143,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ltS-e8-PAM" secondAttribute="bottom" constant="29" id="JU1-aq-ggP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Adv-AA-BSE" secondAttribute="trailing" constant="35" id="Lnm-87-D0M"/>
                             <constraint firstItem="aSd-WI-jZe" firstAttribute="top" secondItem="Adv-AA-BSE" secondAttribute="bottom" constant="27" id="PLI-1G-FEm"/>
+                            <constraint firstItem="ltS-e8-PAM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="217.5" id="SNg-sB-DlG"/>
                             <constraint firstItem="Grs-sN-OrK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="Udh-p6-FdA"/>
                             <constraint firstItem="aSd-WI-jZe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="VkH-dT-SM5"/>
                             <constraint firstItem="Adv-AA-BSE" firstAttribute="leading" secondItem="nf0-0V-sVf" secondAttribute="leading" id="XFt-lq-37E"/>
