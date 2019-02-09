@@ -117,87 +117,73 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         else {
             if newUser.getName().count < 2 {
                 displayAlertMessage(title: "Dati errati", userMessage: "Il nome deve avere almeno 2 caratteri")
-                nameText.textColor = UIColor.red
                 nameText.layer.borderWidth = 1
                 nameText.layer.borderColor = UIColor.red.cgColor
                 nameLabel.textColor = UIColor.red
             }
             else {
-                nameText.textColor = UIColor.white
                 nameText.layer.borderWidth = 0
                 nameLabel.textColor = UIColor.white
             }
             
             if newUser.getSurname().count < 2 {
                 displayAlertMessage(title: "Dati errati", userMessage: "Il cognome deve avere almeno 2 caratteri")
-                surnameText.textColor = UIColor.red
                 surnameText.layer.borderWidth = 1
                 surnameText.layer.borderColor = UIColor.red.cgColor
                 surnameLabel.textColor = UIColor.red
             }
             else {
-                surnameText.textColor = UIColor.white
                 surnameText.layer.borderWidth = 0
                 surnameLabel.textColor = UIColor.white
             }
             
             if newUser.getUsername().count < 2 {
                 displayAlertMessage(title: "Dati errati", userMessage: "Lo username deve avere almeno 2 caratteri")
-                usernameText.textColor = UIColor.red
                 usernameText.layer.borderWidth = 1
                 usernameText.layer.borderColor = UIColor.red.cgColor
                 usernameLabel.textColor = UIColor.red
             }
             else {
-                usernameText.textColor = UIColor.white
                 usernameText.layer.borderWidth = 0
                 usernameLabel.textColor = UIColor.white
             }
             
             if newUser.getEmail().count < 7 {
                 displayAlertMessage(title: "Dati errati", userMessage: "La email inserita non è valida")
-                emailText.textColor = UIColor.red
                 emailText.layer.borderWidth = 1
                 emailText.layer.borderColor = UIColor.red.cgColor
                 emailLabel.textColor = UIColor.red
             }
             else {
-                emailText.textColor = UIColor.white
                 emailText.layer.borderWidth = 1
                 emailLabel.textColor = UIColor.white
             }
             
             if newUser.getPassword().count < 6 {
                 displayAlertMessage(title: "Dati errati", userMessage: "La password deve avere almeno 6 caratteri")
-                passwordText.textColor = UIColor.red
                 passwordText.layer.borderWidth = 1
                 passwordText.layer.borderColor = UIColor.red.cgColor
                 passwordLabel.textColor = UIColor.red
             }
             else {
-                passwordText.textColor = UIColor.white
                 passwordText.layer.borderWidth = 0
                 passwordLabel.textColor = UIColor.white
             }
             
             if !newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
                 displayAlertMessage(title: "Dati errati", userMessage: "Le password non corrispondono")
-                passwordText.textColor = UIColor.red
                 passwordText.layer.borderWidth = 1
                 passwordText.layer.borderColor = UIColor.red.cgColor
                 passwordLabel.textColor = UIColor.red
                 
-                confirmPassTxt.textColor = UIColor.red
                 confirmPassTxt.layer.borderWidth = 1
                 confirmPassTxt.layer.borderColor = UIColor.red.cgColor
                 confirmPassLabel.textColor = UIColor.red
             }
             else {
-                passwordText.textColor = UIColor.white
                 passwordText.layer.borderWidth = 0
                 passwordLabel.textColor = UIColor.white
                 
-                confirmPassTxt.textColor = UIColor.white
                 confirmPassTxt.layer.borderWidth = 0
                 confirmPassLabel.textColor = UIColor.white
             }
