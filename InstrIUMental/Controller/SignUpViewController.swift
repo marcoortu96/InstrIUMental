@@ -156,7 +156,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 emailLabel.textColor = UIColor.red
             }
             else {
-                emailText.layer.borderWidth = 1
+                emailText.layer.borderWidth = 0
                 emailLabel.textColor = UIColor.white
             }
             
@@ -189,9 +189,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 confirmPassLabel.textColor = UIColor.white
             }
         }
-        
-        /*displayAlertMessage(title: "Complimenti", userMessage: "Registrazione completata")
-        UserFactory.printUsers(usrs: usrs.getUsers())*/
     }
     
     // The function shows an alert message with the given message

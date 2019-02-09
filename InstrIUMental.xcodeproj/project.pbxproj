@@ -18,7 +18,7 @@
 		7D92E6AE220ADE6400435F01 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92E6AD220ADE6400435F01 /* User.swift */; };
 		7D92E6B0220B1BE900435F01 /* UserFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92E6AF220B1BE900435F01 /* UserFactory.swift */; };
 		7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B562209D84D006A2D80 /* AppDelegate.swift */; };
-		7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B582209D84D006A2D80 /* ViewController.swift */; };
+		7DB11B592209D84D006A2D80 /* StyleOfManyObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B582209D84D006A2D80 /* StyleOfManyObj.swift */; };
 		7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5A2209D84D006A2D80 /* Main.storyboard */; };
 		7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */; };
 		7DEAFF93220DE712000F9788 /* AdsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */; };
@@ -37,7 +37,7 @@
 		7D92E6AF220B1BE900435F01 /* UserFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFactory.swift; sourceTree = "<group>"; };
 		7DB11B532209D84D006A2D80 /* InstrIUMental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstrIUMental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DB11B562209D84D006A2D80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7DB11B582209D84D006A2D80 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7DB11B582209D84D006A2D80 /* StyleOfManyObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleOfManyObj.swift; sourceTree = "<group>"; };
 		7DB11B5B2209D84D006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DB11B602209D84E006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB11B622209D84E006A2D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +55,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D319EAF220F003D00BA9FC5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				670DEE60220ADA82000C05F6 /* Ad.swift */,
+				7D92E6AD220ADE6400435F01 /* User.swift */,
+				6764883B220B129900C8C682 /* AdFactory.swift */,
+				7D92E6AF220B1BE900435F01 /* UserFactory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D319EB0220F007700BA9FC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7DB11B582209D84D006A2D80 /* StyleOfManyObj.swift */,
+				7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */,
+				7D451614220B864300F2CA68 /* DesignableButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D319EB1220F01B300BA9FC5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7D57775A220C296000C1228B /* LoginViewController.swift */,
+				7D57775E220C41AA00C1228B /* SignUpViewController.swift */,
+				7D577780220CB58600C1228B /* LastAdViewController.swift */,
+				7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		7DB11B4A2209D84D006A2D80 = {
 			isa = PBXGroup;
 			children = (
@@ -75,21 +107,13 @@
 			isa = PBXGroup;
 			children = (
 				7DB11B562209D84D006A2D80 /* AppDelegate.swift */,
-				7DB11B582209D84D006A2D80 /* ViewController.swift */,
+				7D319EAF220F003D00BA9FC5 /* Model */,
+				7D319EB0220F007700BA9FC5 /* View */,
+				7D319EB1220F01B300BA9FC5 /* Controller */,
 				7DB11B5A2209D84D006A2D80 /* Main.storyboard */,
-				7D577780220CB58600C1228B /* LastAdViewController.swift */,
-				7D57775A220C296000C1228B /* LoginViewController.swift */,
-				7D57775E220C41AA00C1228B /* SignUpViewController.swift */,
-				7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */,
-				7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */,
-				7D451614220B864300F2CA68 /* DesignableButton.swift */,
 				7D451612220B7D1D00F2CA68 /* Assets.xcassets */,
 				7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */,
 				7DB11B622209D84E006A2D80 /* Info.plist */,
-				670DEE60220ADA82000C05F6 /* Ad.swift */,
-				7D92E6AD220ADE6400435F01 /* User.swift */,
-				6764883B220B129900C8C682 /* AdFactory.swift */,
-				7D92E6AF220B1BE900435F01 /* UserFactory.swift */,
 			);
 			path = InstrIUMental;
 			sourceTree = "<group>";
@@ -174,7 +198,7 @@
 				7D92E6AE220ADE6400435F01 /* User.swift in Sources */,
 				7D45160C220B60DB00F2CA68 /* DesignableTextField.swift in Sources */,
 				670DEE61220ADA82000C05F6 /* Ad.swift in Sources */,
-				7DB11B592209D84D006A2D80 /* ViewController.swift in Sources */,
+				7DB11B592209D84D006A2D80 /* StyleOfManyObj.swift in Sources */,
 				7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */,
 				7D451615220B864300F2CA68 /* DesignableButton.swift in Sources */,
 			);

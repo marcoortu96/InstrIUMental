@@ -29,7 +29,10 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdsTableViewCell") as! AdsTableViewCell
         
-        let ad: Ad = ads.getAds() [indexPath.row]
+        let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+        
+        //let ad: Ad = ads.getAds() [indexPath.row]
+        let ad: Ad = adSort [indexPath.row]
         
         cell.adImageView?.image = UIImage(named: ad.getImg()[0])
         cell.adTitleLabel?.text = ad.getTitle()
