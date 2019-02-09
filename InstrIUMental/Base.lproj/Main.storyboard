@@ -609,13 +609,19 @@
                     </view>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="confirmPassLabel" destination="SXt-xw-evo" id="nwB-kB-GWh"/>
                         <outlet property="confirmPassTxt" destination="myg-E8-6g9" id="V9T-mm-iT5"/>
+                        <outlet property="emailLabel" destination="XaW-zD-DVM" id="2O9-K0-aTa"/>
                         <outlet property="emailText" destination="6wT-Jh-06Z" id="vR8-Ow-qAr"/>
                         <outlet property="imageProfile" destination="5hF-oC-uVm" id="YE6-bA-RAY"/>
+                        <outlet property="nameLabel" destination="qrp-30-BlI" id="Kjb-R3-eY6"/>
                         <outlet property="nameText" destination="RUC-Z8-dLJ" id="YEo-0K-t5M"/>
+                        <outlet property="passwordLabel" destination="LTB-K8-lCA" id="0ld-xI-WpS"/>
                         <outlet property="passwordText" destination="IQZ-Qd-rfs" id="Tou-Du-Bp8"/>
+                        <outlet property="surnameLabel" destination="rES-uI-h7G" id="t0g-aH-7Il"/>
                         <outlet property="surnameText" destination="cO9-76-pWd" id="gdw-2y-Duw"/>
                         <outlet property="txtBC" destination="qN2-rW-Vlt" id="RF3-bO-CD3"/>
+                        <outlet property="usernameLabel" destination="jUC-dJ-bRv" id="4RU-ee-1Bi"/>
                         <outlet property="usernameText" destination="1oa-p8-DDv" id="h2a-Hz-Bke"/>
                     </connections>
                 </viewController>
