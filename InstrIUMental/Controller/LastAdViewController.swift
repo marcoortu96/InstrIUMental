@@ -46,9 +46,18 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
+        let currentAd = ads.getAds() [indexPath.row]
         
         //send ad data to next view
-        performSegue(withIdentifier: "detailAdSegue", sender: self)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+        vc?.adTitle = currentAd.getTitle()
+        vc?.adText = currentAd.getText()
+        vc?.category = "Categoria: " + currentAd.getCategory()
+        vc?.price = String(currentAd.getPrice()) + "€"
+        vc?.author = currentAd.getAuthor()
+        vc?.date = currentAd.getDate()
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
 
