@@ -97,7 +97,7 @@ public class UserFactory {
     
     // The function returns true if the user is valid, false otherwise
     public static func isUserValid(usr : User) -> Bool {
-        if usr.getName().count > 1 && usr.getSurname().count > 1 && usr.getPassword().count > 6 && usr.getEmail().count > 7 && usr.getUsername().count > 1 {
+        if usr.getName().count > 1 && usr.getSurname().count > 1 && usr.getPassword().count > 5 && usr.getEmail().count > 6 && usr.getUsername().count > 1 {
             return true
         }
         else {
