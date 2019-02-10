@@ -17,6 +17,7 @@ public class User {
     private var password : String
     private var URLimage : String?
     private var ads : [Ad]?
+    private var logged : Bool
     
     init (name : String, surname : String, username : String, email : String, password : String) {
         self.name = name
@@ -24,6 +25,7 @@ public class User {
         self.username = username
         self.email = email
         self.password = password
+        self.logged = false
         
         self.URLimage = nil
         self.ads = nil
@@ -35,6 +37,7 @@ public class User {
         self.username = ""
         self.email = ""
         self.password = ""
+        self.logged = false
         
         self.URLimage = nil
         self.ads = nil
@@ -94,5 +97,13 @@ public class User {
     
     func setAds(ads : [Ad]) {
         self.ads = ads
+    }
+    
+    func isLogged() -> Bool {
+        return self.logged
+    }
+    
+    func setLogState(logged : Bool) {
+        self.logged = logged
     }
 }

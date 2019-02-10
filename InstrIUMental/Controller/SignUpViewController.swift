@@ -184,7 +184,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 confirmPassTxt.layer.borderWidth = 1
                 confirmPassTxt.layer.borderColor = UIColor.red.cgColor
                 confirmPassLabel.textColor = UIColor.red
-                print("*************************************************************")
             }
             else {
                 if !newUser.getPassword().elementsEqual(confirmPassTxt.text!) {

@@ -104,4 +104,14 @@ public class UserFactory {
             return false
         }
     }
+    
+    public static func getLoggedUser(usrs : [User]) -> User! {
+        for user in usrs {
+            if user.isLogged() {
+                return user
+            }
+        }
+        
+        return nil
+    }
 }

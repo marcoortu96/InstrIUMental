@@ -124,7 +124,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QRq-YU-98f"/>
-                                    <segue destination="q0W-dW-EPR" kind="show" id="fbE-GB-8SZ"/>
+                                    <segue destination="q0W-dW-EPR" kind="presentation" identifier="" id="fbE-GB-8SZ"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logoInstrIUMental" translatesAutoresizingMaskIntoConstraints="NO" id="nwR-kv-Uw7">
