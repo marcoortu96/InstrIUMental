@@ -59,5 +59,18 @@ public class AdFactory {
         
         return nil
     }
+    
+    // This function returns an array of ads which title matches with the given one
+    public static func getAdsByTitle(title : String, adsSet : [Ad]) -> [Ad]! {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adsSet {
+            if ad.getTitle().lowercased().contains(title.lowercased()) {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
+    }
 
 }
