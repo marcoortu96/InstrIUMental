@@ -73,7 +73,7 @@ extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension AdDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.size
+        let size = UIScreen.main.bounds
         
         return CGSize(width: size.width, height: size.height)
     }

@@ -76,7 +76,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
         vc?.adTitle = currentAd.getTitle()
         vc?.adText = currentAd.getText()
-        vc?.category = "Categoria: " + currentAd.getCategory()
+        vc?.category = currentAd.getCategory()
         vc?.price = String(currentAd.getPrice()) + "€"
         vc?.author = currentAd.getAuthor()
         vc?.date = currentAd.getDate()
