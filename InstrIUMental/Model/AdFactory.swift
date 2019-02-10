@@ -85,5 +85,18 @@ public class AdFactory {
         
         return adsToReturn
     }
+    
+    // This function returns an array of ads which price stays between the lowestPrice and the highestPrice
+    public static func getAdsByPrice(lowestPrice : Float, highestPrice : Float, adsSet : [Ad]!) -> [Ad]! {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adsSet {
+            if ad.getPrice() >= lowestPrice && ad.getPrice() <= highestPrice {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
+    }
 
 }
