@@ -304,6 +304,9 @@
                                                 <state key="normal" title="Ultimi Annunci">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="fuC-lp-6nc" kind="show" id="8e4-uX-kHf"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s25-n5-224">
                                                 <rect key="frame" x="0.0" y="114" width="111" height="33"/>
@@ -341,6 +344,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ultimi Annunci" id="jJB-vA-XKT">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menu.png" id="0l5-ww-WlN">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="openMenu:" destination="fuC-lp-6nc" id="pn0-Vt-LCY"/>
                             </connections>
@@ -350,6 +354,7 @@
                         <outlet property="leadingConstraint" destination="AgW-U5-T2D" id="MBD-kr-mMK"/>
                         <outlet property="menu" destination="d57-m8-vOa" id="5lD-zQ-gZb"/>
                         <outlet property="tableView" destination="GVu-Uh-OoR" id="kpI-Cf-YLF"/>
+                        <outlet property="userLogged" destination="qpW-Ld-Ow6" id="L59-6j-vKL"/>
                         <segue destination="Oxi-ha-Wy5" kind="show" identifier="detailAdSegue" id="h1F-qo-jRT"/>
                     </connections>
                 </viewController>

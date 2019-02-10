@@ -15,35 +15,37 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     //use for index the ads
     var myIndex = 0
     
+    //variables for the side menu
     var showMenu = false
     @IBOutlet weak var menu: UIView!
-    
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    
+    //username of the logged user
+    @IBOutlet weak var userLogged: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         menu.backgroundColor = UIColor.init(red: 0.813, green: 0.689, blue: 0.353, alpha: 0.95)
-
-        // Do any additional setup after loading the view.
+        userLogged.text = "Mario"
     }
     
+    //func that controls the side menu
     @IBAction func openMenu(_ sender: Any) {
         if(showMenu) {
-            
             leadingConstraint.constant = -240
             UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded();
+                self.view.layoutIfNeeded()
             }
         } else {
-            leadingConstraint.constant = 0;
+            leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded();
+                self.view.layoutIfNeeded()
             }
         }
-        
         showMenu = !showMenu
-        
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ads.getAds().count
     }
