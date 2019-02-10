@@ -118,7 +118,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
         
-        if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) {
+        if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) && !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) {
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
             self.performSegue(withIdentifier: "seageFromAtoB", sender: self)
         }
@@ -152,8 +152,16 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 usernameLabel.textColor = UIColor.red
             }
             else {
-                usernameText.layer.borderWidth = 0
-                usernameLabel.textColor = UIColor.white
+                if UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) {
+                    displayAlertMessage(title: "Dati errati", userMessage: "Username già esistente")
+                    usernameText.layer.borderWidth = 1
+                    usernameText.layer.borderColor = UIColor.red.cgColor
+                    usernameLabel.textColor = UIColor.red
+                }
+                else {
+                    usernameText.layer.borderWidth = 0
+                    usernameLabel.textColor = UIColor.white
+                }
             }
             
             if newUser.getEmail().count < 7 {
