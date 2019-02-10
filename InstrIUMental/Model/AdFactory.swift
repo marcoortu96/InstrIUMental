@@ -14,7 +14,6 @@ public class AdFactory {
     private static var instance : AdFactory?
     private var  ads : [Ad]! = []
     
-    
     init() {
         ads.append(Ad(id: 1, title: "FENDER TELECASTER BAJA", text: "Vendo come da titolo Fender Telecaster Baja colore butterscotch blonde. La chitarra è in eccellenti condizioni estetiche e funzionali, i tasti sono in perfetto stato e tutta l' elettronica è completamente originale. Vendo per passaggio a uno strumento di livello superiore. È compresa nel prezzo una custodia rigida d' annata ma che svolge perfettamente il suo compito. Per maggiori informazioni è possibile contattarmi al 899899899 (Mattia). Non accetto scambi.", price: 650.00, category: "Chitarre", author: "sora", img: ["img1","img2","img3"], date: "2018-04-23"))
     
@@ -33,7 +32,6 @@ public class AdFactory {
         ads.append(Ad(id: 3, title: "FENDER TELECASTER ROAD WORN 50",text: "Stupenda Tele dal look e dal suono spettacolare, nulla da invidiare alle custom shop. Una chitarra davvero ben costruita. Completa di custodia morbida certificati e masherine di riserva anche di colore vintage white. prezzo leggermente trattabile.",price: 990.00, category:"Batterie", author: "ramino", img: ["img22","img23","img24"], date: "2019-01-28"))
     }
     
-    
     public static func getInstance() -> AdFactory {
         if (AdFactory.instance == nil) {
             AdFactory.instance = AdFactory()
@@ -41,8 +39,64 @@ public class AdFactory {
         return AdFactory.instance!
     }
     
-    func getAds() -> [Ad] {
+    // Getters and Setters
+    
+    public func getAds() -> [Ad] {
         return ads!
+    }
+    
+    public func setAds(ads : [Ad]) {
+        self.ads = ads
+    }
+    
+    // This function finds and return the searched ad if it finds it, nil otherwise
+    public static func getAdById(id : Int, adsSet : [Ad]) -> Ad! {
+        for ad in adsSet {
+            if ad.getId() == id {
+                return ad
+            }
+        }
+        
+        return nil
+    }
+    
+    // This function returns an array of ads which title matches with the given one
+    public static func getAdsByTitle(title : String, adsSet : [Ad]) -> [Ad]! {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adsSet {
+            if ad.getTitle().lowercased().contains(title.lowercased()) {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
+    }
+    
+    // This function returns an array of ads which category matches with the given one
+    public static func getAdsByCategory(category : String, adsSet : [Ad]) -> [Ad]! {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adsSet {
+            if ad.getCategory().lowercased().elementsEqual(category.lowercased()) {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
+    }
+    
+    // This function returns an array of ads which price stays between the lowestPrice and the highestPrice
+    public static func getAdsByPrice(lowestPrice : Float, highestPrice : Float, adsSet : [Ad]!) -> [Ad]! {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adsSet {
+            if ad.getPrice() >= lowestPrice && ad.getPrice() <= highestPrice {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
     }
 
 }
