@@ -72,5 +72,18 @@ public class AdFactory {
         
         return adsToReturn
     }
+    
+    // This function returns an array of ads which category matches with the given one
+    public static func getAdsByCategory(category : String, adsSet : [Ad]) -> [Ad]! {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adsSet {
+            if ad.getCategory().lowercased().elementsEqual(category.lowercased()) {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
+    }
 
 }
