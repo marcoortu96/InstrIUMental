@@ -68,7 +68,9 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
-        let currentAd = ads.getAds() [indexPath.row]
+        
+        let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+        let currentAd = adSort [indexPath.row]
         
         //send ad data to next view
         let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
@@ -78,6 +80,12 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         vc?.price = String(currentAd.getPrice()) + "€"
         vc?.author = currentAd.getAuthor()
         vc?.date = currentAd.getDate()
+        
+        for img in currentAd.getImg() {
+            print(img)
+            vc?.adImages.append(UIImage(named: img)!)
+        }
+        
         
         self.navigationController?.pushViewController(vc!, animated: true)
     }

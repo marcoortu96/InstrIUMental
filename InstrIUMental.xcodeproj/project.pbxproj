@@ -23,6 +23,7 @@
 		7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5A2209D84D006A2D80 /* Main.storyboard */; };
 		7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */; };
 		7DEAFF93220DE712000F9788 /* AdsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */; };
+		7DFE915222107D0C0002EEA8 /* DataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE915122107D0C0002EEA8 /* DataCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7DB11B602209D84E006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB11B622209D84E006A2D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTableViewCell.swift; sourceTree = "<group>"; };
+		7DFE915122107D0C0002EEA8 /* DataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				7DB11B582209D84D006A2D80 /* StyleOfManyObj.swift */,
 				7D45160B220B60DB00F2CA68 /* DesignableTextField.swift */,
 				7D451614220B864300F2CA68 /* DesignableButton.swift */,
+				7DFE915122107D0C0002EEA8 /* DataCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				670DEE61220ADA82000C05F6 /* Ad.swift in Sources */,
 				7DB11B592209D84D006A2D80 /* StyleOfManyObj.swift in Sources */,
 				7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */,
+				7DFE915222107D0C0002EEA8 /* DataCollectionViewCell.swift in Sources */,
 				7D451615220B864300F2CA68 /* DesignableButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

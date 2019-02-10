@@ -16,29 +16,34 @@ class AdDetailViewController: UIViewController {
     var category = String()
     var author = String()
     var date = String()
+    var adImages = [UIImage()]
     
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     //Outlet storyboard
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UITextView!
-    @IBOutlet weak var categotyLabel: UILabel!
-    @IBOutlet weak var nameUser: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var adPriceLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleLabel.text = adTitle
         descriptionLabel.text = adText
-        categotyLabel.text = category
-        nameUser.text = author
+        categoryLabel.text = category
+        userNameLabel.text = author
         dateLabel.text = date
-        adPriceLabel.text = price
+        priceLabel.text = price
     }
     
-
+    @IBAction func PressFavoritesBtn(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -50,3 +55,40 @@ class AdDetailViewController: UIViewController {
     */
 
 }
+
+//Extension of this class for pick the imageView from UICollection view
+extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return adImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DataCollectionViewCell
+        cell?.slideImageView.image = adImages[indexPath.row]
+        
+        return cell!
+    }
+}
+
+extension AdDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.frame.size
+        
+        return CGSize(width: size.width, height: size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+
