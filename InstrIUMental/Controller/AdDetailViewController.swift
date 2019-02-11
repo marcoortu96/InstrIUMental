@@ -20,6 +20,7 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     var adId = Int()
     
     let factory = AdFactory.getInstance()
+    let factoryUser = UserFactory.getInstance()
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -89,12 +90,13 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     func configureMailController() -> MFMailComposeViewController {
         let id = AdFactory.getAdById(id: adId, adsSet: factory.getAds())
+        let user = UserFactory.getUserByUsername(username: (id?.getAuthor())!, usrs: factoryUser.getUsers())
         
         let mailComposerVC = MFMailComposeViewController()
         
         mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["sora004@ium.it"])
-        mailComposerVC.setSubject("[Sono interessato al seguente articolo]")
+        mailComposerVC.setToRecipients([(user?.getEmail())!])
+        mailComposerVC.setSubject("[info]" + (id?.getTitle())!)
         
         return mailComposerVC
     }
