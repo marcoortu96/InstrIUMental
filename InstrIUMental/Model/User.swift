@@ -31,6 +31,18 @@ public class User {
         self.ads = nil
     }
     
+    init (name : String, surname : String, username : String, email : String, password : String, URLimage: String) {
+        self.name = name
+        self.surname = surname
+        self.username = username
+        self.email = email
+        self.password = password
+        self.logged = false
+        
+        self.URLimage = URLimage
+        self.ads = nil
+    }
+    
     init () {
         self.name = ""
         self.surname = ""

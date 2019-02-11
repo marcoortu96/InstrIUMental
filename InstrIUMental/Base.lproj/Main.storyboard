@@ -288,11 +288,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-dz-OVP">
-                                        <rect key="frame" x="71" y="99" width="111" height="204"/>
+                                        <rect key="frame" x="51" y="103" width="139" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0E-ch-pw3">
-                                                <rect key="frame" x="0.0" y="0.0" width="111" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="139" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Profilo">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -302,7 +302,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeW-Vf-gcb">
-                                                <rect key="frame" x="0.0" y="57" width="111" height="33"/>
+                                                <rect key="frame" x="0.0" y="57" width="139" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Ultimi Annunci">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -312,14 +312,14 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s25-n5-224">
-                                                <rect key="frame" x="0.0" y="114" width="111" height="33"/>
+                                                <rect key="frame" x="0.0" y="114" width="139" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Impostazioni">
+                                                <state key="normal" title="Inserisci Annuncio">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mY8-Mx-2rP">
-                                                <rect key="frame" x="0.0" y="171" width="111" height="33"/>
+                                                <rect key="frame" x="0.0" y="171" width="139" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Chi siamo">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -357,6 +357,7 @@
                         <outlet property="leadingConstraint" destination="AgW-U5-T2D" id="MBD-kr-mMK"/>
                         <outlet property="menu" destination="d57-m8-vOa" id="5lD-zQ-gZb"/>
                         <outlet property="tableView" destination="GVu-Uh-OoR" id="kpI-Cf-YLF"/>
+                        <outlet property="userImage" destination="Rye-ko-kP4" id="Zfj-7Z-gYo"/>
                         <outlet property="userLogged" destination="qpW-Ld-Ow6" id="L59-6j-vKL"/>
                         <segue destination="Oxi-ha-Wy5" kind="show" identifier="detailAdSegue" id="h1F-qo-jRT"/>
                     </connections>
@@ -381,7 +382,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oH6-Tr-9lV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018" y="1017"/>
+            <point key="canvasLocation" x="1980" y="824"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="UOe-Dq-hZL">
@@ -390,14 +391,90 @@
                     <view key="view" contentMode="scaleToFill" id="ckC-bJ-GAr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mnh-fo-Ggf" userLabel="SideMenu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="603"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img10" translatesAutoresizingMaskIntoConstraints="NO" id="1gg-Xy-qsp">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH7-ij-V8k">
+                                        <rect key="frame" x="128" y="27" width="76" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tiS-YP-AWX">
+                                        <rect key="frame" x="51" y="96" width="139" height="204"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foG-or-xz0">
+                                                <rect key="frame" x="0.0" y="0.0" width="139" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Profilo">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTc-sW-lr2">
+                                                <rect key="frame" x="0.0" y="57" width="139" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Ultimi Annunci">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkT-Sx-6XZ" userLabel="Inserisci Annuncio">
+                                                <rect key="frame" x="0.0" y="114" width="139" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Inserisci Annuncio">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9TC-xc-Mcs">
+                                                <rect key="frame" x="0.0" y="171" width="139" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Chi siamo">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="9xv-kG-Gnd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="603" id="qCx-Vw-tAw"/>
+                                    <constraint firstAttribute="height" constant="603" id="wC9-Bh-EMs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="wqz-UW-xgM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mnh-fo-Ggf" firstAttribute="top" secondItem="cBc-15-h7H" secondAttribute="top" id="WAG-5a-jVb"/>
+                            <constraint firstItem="mnh-fo-Ggf" firstAttribute="leading" secondItem="cBc-15-h7H" secondAttribute="leading" constant="-240" id="Yxc-S5-Fwp"/>
+                            <constraint firstItem="mnh-fo-Ggf" firstAttribute="bottom" secondItem="cBc-15-h7H" secondAttribute="bottom" id="kQe-7c-PVz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cBc-15-h7H"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TKe-Ly-j2U"/>
+                    <navigationItem key="navigationItem" id="TKe-Ly-j2U">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="menu.png" id="kHd-eb-qt0">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="showMenu:" destination="dGn-Um-aQc" id="wjM-oe-9ok"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leadingConstraint" destination="Yxc-S5-Fwp" id="Wbu-KW-MZ9"/>
+                        <outlet property="menu" destination="mnh-fo-Ggf" id="ge8-cU-66d"/>
+                        <outlet property="userLogged" destination="hH7-ij-V8k" id="iEw-vr-vhj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqc-WY-YuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2017" y="1802"/>
+            <point key="canvasLocation" x="1980" y="1576"/>
         </scene>
         <!--Annuncio-->
         <scene sceneID="hgh-Zu-9aa">
