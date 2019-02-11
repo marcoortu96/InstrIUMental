@@ -19,9 +19,9 @@ public class AdFactory {
     
         ads.append(Ad(id: 2, title: "CORT GB75",text: "Vendo basso cort gb 75 5 corde in ottime condizioni. Disponibile a qualsiasi prova.",price: 350.00, category:"Bassi", author: "ramino", img: ["img4","img5","img6"], date: "2017-12-24", region : "Lombardia"))
         
-        ads.append(Ad(id: 3, title: "PEARL FORUM SERIES",text: "Vendo batteria Pearl compresa di piatti e kit pelli nuove. Disponibile a qualsiasi prova non spedisco.",price: 1350.00, category:"Batterie", author: "colonello", img: ["img7","img8","img9"], date: "2019-01-02", region : "Valle d'Aosta"))
+        ads.append(Ad(id: 3, title: "PEARL FORUM SERIES",text: "Vendo batteria Pearl compresa di piatti e kit pelli nuove. Disponibile a qualsiasi prova non spedisco.",price: 1350.00, category:"Batterie", author: "colonnello", img: ["img7","img8","img9"], date: "2019-01-02", region : "Valle d'Aosta"))
         
-        ads.append(Ad(id: 4, title: "UFIP RIDE/PING",text: "Vendo piatto UFIP Ping/ride come da foto a euro 100 escluso spese di spedizione a carico del compratore! (NO PERMUTE NON TRATTABILI).",price: 100.00, category:"Batterie", author: "colonello", img: ["img10","img11","img12"], date: "2018-10-07", region : "Sicilia"))
+        ads.append(Ad(id: 4, title: "UFIP RIDE/PING",text: "Vendo piatto UFIP Ping/ride come da foto a euro 100 escluso spese di spedizione a carico del compratore! (NO PERMUTE NON TRATTABILI).",price: 100.00, category:"Batterie", author: "colonnello", img: ["img10","img11","img12"], date: "2018-10-07", region : "Sicilia"))
         
         ads.append(Ad(id: 5, title: "ROLAND V DRUMS SESSION TD10 + SCHEDATDW- 1",text: "Vendo Roland V session perfetta e funzionante, dinamiche realistiche. Ottimo uso per studi di registrazioni e in situazioni live per pub e locali. Incluso nel prezzo ci sono extra accessori.",price: 1000.00, category:"Batterie", author: "king", img: ["img13","img14","img15"], date: "2019-02-09", region : "Sardegna"))
         
