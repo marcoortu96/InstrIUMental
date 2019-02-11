@@ -54,6 +54,21 @@ public class UserFactory {
         return nil
     }
     
+    public static func getUserByUsername(username : String, usrs : [User]) -> User! {
+        if UserFactory.instance != nil {
+            for user in usrs {
+                if user.getUsername().elementsEqual(username) {
+                    return user
+                }
+            }
+        }
+        else {
+            return nil
+        }
+        
+        return nil
+    }
+    
     // The function returns true if the given username is found, false otherwise
     public static func isUsernamePresent(username : String, usrs : [User]) -> Bool {
         if UserFactory.instance != nil {
