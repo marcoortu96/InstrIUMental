@@ -31,6 +31,7 @@ class AdDetailViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    //outlet for next and previous image button
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prevBtn: UIButton!
     
@@ -44,10 +45,15 @@ class AdDetailViewController: UIViewController {
         dateLabel.text = date
         priceLabel.text = price
         
+        //change image with next and previous button
         nextBtn.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         prevBtn.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
+        
+        //don't change the image from page control
+        pageControl.isEnabled = false
     }
     
+    //func for change to next image
     @objc private func handleNext() {
         let nextIndex = min(pageControl.currentPage+1, 2)
         let indexPath = IndexPath(item: nextIndex, section: 0)
@@ -55,6 +61,7 @@ class AdDetailViewController: UIViewController {
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+    //func for change to previous image
     @objc private func handlePrev() {
         let nextIndex = max(pageControl.currentPage-1, 0)
         let indexPath = IndexPath(item: nextIndex, section: 0)
