@@ -20,12 +20,13 @@ public class Ad {
     private var price : Float!
     private var category : String!
     private var author : String!
-    private var img: [String]!
-    private var date: String!
+    private var img : [String]!
+    private var date : String!
+    private var region : String!
     
     //init function
     
-    init(id : Int, title : String, text : String, price : Float, category : String, author : String, img : [String], date: String){
+    init(id : Int, title : String, text : String, price : Float, category : String, author : String, img : [String], date: String, region : String){
         self.id = id
         self.title = title
         self.text = text
@@ -34,6 +35,7 @@ public class Ad {
         self.author = author
         self.img = img
         self.date = date
+        self.region = region
     }
     
     // get functions
@@ -70,6 +72,10 @@ public class Ad {
         return self.date
     }
     
+    func getRegion() -> String {
+        return self.region
+    }
+    
     // set functions
     
     func setId(id : Int) -> Void {
@@ -102,6 +108,10 @@ public class Ad {
     
     func setDate(date : String) -> Void {
         self.date = date
+    }
+    
+    func setRegion(region : String) -> Void {
+        self.region = region
     }
 }
 
