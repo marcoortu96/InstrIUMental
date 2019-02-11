@@ -20,6 +20,8 @@ class AdDetailViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     
     //Outlet storyboard
     @IBOutlet weak var titleLabel: UILabel!
@@ -29,6 +31,8 @@ class AdDetailViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var prevBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,23 @@ class AdDetailViewController: UIViewController {
         userNameLabel.text = author
         dateLabel.text = date
         priceLabel.text = price
+        
+        nextBtn.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        prevBtn.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
+    }
+    
+    @objc private func handleNext() {
+        let nextIndex = min(pageControl.currentPage+1, 2)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc private func handlePrev() {
+        let nextIndex = max(pageControl.currentPage-1, 0)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     @IBAction func PressFavoritesBtn(_ sender: Any) {
@@ -78,6 +99,15 @@ extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewData
 }
 
 extension AdDetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let x = targetContentOffset.pointee.x
+        
+        pageControl.currentPage = Int(x / view.frame.width)
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = UIScreen.main.bounds
         
