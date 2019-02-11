@@ -14,10 +14,10 @@ public class UserFactory {
     
     // Private constructor
     private init () {
-        users.append(User(name : "Marco", surname : "Ortu", username : "sora", email : "sora004@ium.it", password : "0000"))
-        users.append(User(name: "Andrea", surname: "Re", username: "king", email: "blugori@ium.it", password: "shisonson"))
-        users.append(User(name : "Emanuele", surname: "Spano", username : "ramino", email : "manu@ium.it", password : "aimech"))
-        users.append(User(name : "Giacomo", surname : "Meloni", username : "colonnello", email : "giacomo@ium.it", password : "1234"))
+        users.append(User(name : "Marco", surname : "Ortu", username : "sora", email : "sora004@ium.it", password : "0000", URLimage: "sora"))
+        users.append(User(name: "Andrea", surname: "Re", username: "king", email: "blugori@ium.it", password: "shisonson", URLimage: "king"))
+        users.append(User(name : "Emanuele", surname: "Spano", username : "ramino", email : "manu@ium.it", password : "aimech", URLimage: "ramino"))
+        users.append(User(name : "Giacomo", surname : "Meloni", username : "colonnello", email : "giacomo@ium.it", password : "1234", URLimage: "colonnello"))
     }
     
     // The constructor, which is private, is called just in here
@@ -97,7 +97,7 @@ public class UserFactory {
     
     // The function returns true if the user is valid, false otherwise
     public static func isUserValid(usr : User) -> Bool {
-        if usr.getName().count > 1 && usr.getSurname().count > 1 && usr.getPassword().count > 5 && usr.getEmail().count > 6 && usr.getUsername().count > 1 {
+        if usr.getName().count > 1 && usr.getSurname().count > 1 && usr.getPassword().count > 5 && usr.getEmail().count > 4 && usr.getUsername().count > 1 {
             return true
         }
         else {

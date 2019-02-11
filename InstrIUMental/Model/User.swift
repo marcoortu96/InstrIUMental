@@ -10,14 +10,15 @@ import Foundation
 import UIKit
 
 public class User {
-    private var name : String
-    private var surname : String
-    private var username : String
-    private var email : String
-    private var password : String
+    private var name : String!
+    private var surname : String!
+    private var username : String!
+    private var email : String!
+    private var password : String!
     private var URLimage : String?
     private var ads : [Ad]?
-    private var logged : Bool
+    private var logged : Bool!
+    private var phoneNumber : String?
     
     init (name : String, surname : String, username : String, email : String, password : String) {
         self.name = name
@@ -29,6 +30,20 @@ public class User {
         
         self.URLimage = nil
         self.ads = nil
+        self.phoneNumber = nil
+    }
+    
+    init (name : String, surname : String, username : String, email : String, password : String, URLimage: String) {
+        self.name = name
+        self.surname = surname
+        self.username = username
+        self.email = email
+        self.password = password
+        self.logged = false
+        
+        self.URLimage = URLimage
+        self.ads = nil
+        self.phoneNumber = nil
     }
     
     init () {
@@ -41,6 +56,7 @@ public class User {
         
         self.URLimage = nil
         self.ads = nil
+        self.phoneNumber = nil
     }
     
     func getName() -> String {
@@ -69,6 +85,10 @@ public class User {
     
     func getEmail() -> String {
         return email
+    }
+    
+    func getPhoneNumber() -> String {
+        return phoneNumber!
     }
     
     func setEmail(email : String) {
@@ -105,5 +125,9 @@ public class User {
     
     func setLogState(logged : Bool) {
         self.logged = logged
+    }
+    
+    func setPhoneNumber(phoneNumber : String) {
+        self.phoneNumber = phoneNumber
     }
 }

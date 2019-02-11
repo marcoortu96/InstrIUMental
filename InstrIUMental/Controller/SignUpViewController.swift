@@ -118,7 +118,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
         
-        if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) && !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) {
+        if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) && !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) && newUser.getEmail().contains("@") && newUser.getEmail().contains(".") {
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
             self.performSegue(withIdentifier: "seageFromAtoB", sender: self)
         }
@@ -164,7 +164,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 }
             }
             
-            if newUser.getEmail().count < 7 {
+            if newUser.getEmail().count < 5 || !newUser.getEmail().contains("@") || !newUser.getEmail().contains(".") {
                 displayAlertMessage(title: "Dati errati", userMessage: "La email inserita non è valida")
                 emailText.layer.borderWidth = 1
                 emailText.layer.borderColor = UIColor.red.cgColor

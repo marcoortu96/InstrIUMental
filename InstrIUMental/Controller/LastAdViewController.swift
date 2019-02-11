@@ -21,6 +21,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
     //username of the logged user
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userLogged: UILabel!
     
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         
         menu.backgroundColor = UIColor.init(red: 0.813, green: 0.689, blue: 0.353, alpha: 0.95)
         userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
+        userImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
     }
     
     //func that controls the side menu
