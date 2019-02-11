@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class AdDetailViewController: UIViewController {
+class AdDetailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     var adTitle = String()
     var adText = String()
@@ -17,6 +18,9 @@ class AdDetailViewController: UIViewController {
     var author = String()
     var date = String()
     var adId = Int()
+    
+    let factory = AdFactory.getInstance()
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -72,16 +76,40 @@ class AdDetailViewController: UIViewController {
     @IBAction func PressFavoritesBtn(_ sender: Any) {
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //Button to contact the seller
+    @IBAction func sendEmail(_ sender: Any) {
+        let mailComposeViewController = configureMailController()
+        
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            showEmailError()
+        }
     }
-    */
-
+    
+    func configureMailController() -> MFMailComposeViewController {
+        let id = AdFactory.getAdById(id: adId, adsSet: factory.getAds())
+        
+        let mailComposerVC = MFMailComposeViewController()
+        
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients(["sora004@ium.it"])
+        mailComposerVC.setSubject("[Sono interessato al seguente articolo]")
+        
+        return mailComposerVC
+    }
+    
+    func showEmailError() {
+        let sendEmailErrorAlert = UIAlertController(title: "Non puoi inviare la mail", message: "Il tuo dispositivo non è connesso a nessuna mail", preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "OK", style: .default, handler: nil)
+        sendEmailErrorAlert.addAction(dismiss)
+        self.present(sendEmailErrorAlert, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 //Extension of this class for pick the imageView from UICollection view
@@ -95,7 +123,7 @@ extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DataCollectionViewCell
         
         //take ads image
-        let factory = AdFactory.getInstance()
+        //let factory = AdFactory.getInstance()
         let id = AdFactory.getAdById(id: adId, adsSet: factory.getAds())
         let adImages = id?.getImg()
         

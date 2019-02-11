@@ -529,7 +529,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhK-jF-eIh">
-                                <rect key="frame" x="16" y="477" width="343" height="115"/>
+                                <rect key="frame" x="16" y="433" width="343" height="115"/>
                                 <string key="text">Vendo come da titolo Fender Telecaster Baja colore butterscotch blonde. La chitarra è in eccellenti condizioni estetiche e funzionali, i tasti sono in perfetto stato e tutta l' elettronica è completamente originale. Vendo per passaggio a uno strumento di livello superiore. È compresa nel prezzo una custodia rigida d' annata ma che svolge perfettamente il suo compito. Per maggiori informazioni è possibile contattarmi al 899899899 (Mattia). Non accetto scambi.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -564,26 +564,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="NomeUtente" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPn-fI-q9l">
-                                <rect key="frame" x="216" y="347" width="143" height="17"/>
+                                <rect key="frame" x="216" y="332" width="143" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Data" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxQ-Li-AFI">
-                                <rect key="frame" x="328" y="376" width="31" height="17"/>
+                                <rect key="frame" x="328" y="361" width="31" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlU-Ha-WQW">
-                                <rect key="frame" x="313" y="294.5" width="46" height="46.5"/>
+                                <rect key="frame" x="313" y="294.5" width="46" height="31.5"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="PressFavoritesBtn:" destination="Oxi-ha-Wy5" eventType="touchUpInside" id="ZT4-p3-loN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Descrizione:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT1-An-Eb6">
-                                <rect key="frame" x="16" y="427" width="87" height="54"/>
+                                <rect key="frame" x="16" y="408" width="87" height="12"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -608,22 +608,40 @@
                                     <color key="titleColor" red="0.7725490196" green="0.62745098040000002" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chl-zn-eiT" customClass="DesignableButton" customModule="InstrIUMental" customModuleProvider="target">
+                                <rect key="frame" x="59" y="559" width="257" height="30"/>
+                                <color key="backgroundColor" red="0.49123432069850942" green="0.71109612944162437" blue="0.46724607265265355" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Contatta">
+                                    <color key="titleColor" red="0.98873730959999995" green="0.98873730959999995" blue="0.98873730959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendEmail:" destination="Oxi-ha-Wy5" eventType="touchUpInside" id="1t2-tf-wPx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="bottom" secondItem="u7c-Ve-1e7" secondAttribute="bottom" constant="369" id="0Vc-fA-VS4"/>
-                            <constraint firstItem="nhK-jF-eIh" firstAttribute="top" secondItem="yT1-An-Eb6" secondAttribute="bottom" constant="-4" id="2Pn-Xu-nY9"/>
+                            <constraint firstItem="chl-zn-eiT" firstAttribute="top" secondItem="nhK-jF-eIh" secondAttribute="bottom" constant="11" id="1uc-P1-ENo"/>
+                            <constraint firstItem="nhK-jF-eIh" firstAttribute="top" secondItem="yT1-An-Eb6" secondAttribute="bottom" constant="13" id="2Pn-Xu-nY9"/>
                             <constraint firstItem="u7c-Ve-1e7" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" id="2dA-ak-WmD"/>
                             <constraint firstItem="zhK-Pa-iOC" firstAttribute="top" secondItem="yTM-hL-cTS" secondAttribute="bottom" constant="1" id="5d2-jL-bfX"/>
                             <constraint firstItem="KRH-Yg-GJy" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" constant="16" id="5p8-lr-4n6"/>
                             <constraint firstItem="KRH-Yg-GJy" firstAttribute="top" secondItem="u7c-Ve-1e7" secondAttribute="bottom" constant="40" id="6fp-Yk-Y1e"/>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ibi-JR-DeH" secondAttribute="trailing" symbolic="YES" id="78d-eq-QxO"/>
-                            <constraint firstItem="nhK-jF-eIh" firstAttribute="top" secondItem="jxQ-Li-AFI" secondAttribute="bottom" constant="84" id="8l2-9U-3zn"/>
+                            <constraint firstItem="nhK-jF-eIh" firstAttribute="top" secondItem="jxQ-Li-AFI" secondAttribute="bottom" constant="55" id="8l2-9U-3zn"/>
                             <constraint firstItem="XPn-fI-q9l" firstAttribute="top" secondItem="VlU-Ha-WQW" secondAttribute="bottom" constant="6" id="8xd-Gg-Ioy"/>
                             <constraint firstItem="Brz-5q-GCF" firstAttribute="top" secondItem="Ibi-JR-DeH" secondAttribute="bottom" constant="-33" id="AWq-OJ-TEl"/>
+                            <constraint firstItem="xFK-R2-yFb" firstAttribute="bottom" secondItem="chl-zn-eiT" secondAttribute="bottom" constant="14" id="Czz-Z0-R3J"/>
                             <constraint firstItem="VlU-Ha-WQW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="07W-V6-MGw" secondAttribute="trailing" constant="8" symbolic="YES" id="DtW-Cc-9cs"/>
                             <constraint firstItem="yTM-hL-cTS" firstAttribute="top" secondItem="07W-V6-MGw" secondAttribute="bottom" constant="16" id="ERe-8h-pGI"/>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="trailing" secondItem="nhK-jF-eIh" secondAttribute="trailing" constant="16" id="GAi-5E-Z67"/>
+                            <constraint firstItem="xFK-R2-yFb" firstAttribute="trailing" secondItem="chl-zn-eiT" secondAttribute="trailing" constant="59" id="HeR-MU-c7o"/>
                             <constraint firstItem="Ibi-JR-DeH" firstAttribute="leading" secondItem="X2p-lH-TJP" secondAttribute="trailing" constant="249" id="Hv9-Rb-8Gi"/>
                             <constraint firstItem="u7c-Ve-1e7" firstAttribute="trailing" secondItem="xFK-R2-yFb" secondAttribute="trailing" id="Hx8-cu-rL7"/>
                             <constraint firstItem="07W-V6-MGw" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" constant="16" id="IBd-th-hC7"/>
@@ -639,7 +657,7 @@
                             <constraint firstItem="XPn-fI-q9l" firstAttribute="leading" secondItem="yTM-hL-cTS" secondAttribute="trailing" constant="127" id="Tii-kY-01i"/>
                             <constraint firstItem="Brz-5q-GCF" firstAttribute="top" secondItem="xFK-R2-yFb" secondAttribute="top" constant="235" id="Ug3-po-RyA"/>
                             <constraint firstItem="X2p-lH-TJP" firstAttribute="baseline" secondItem="Ibi-JR-DeH" secondAttribute="baseline" id="WmP-4x-iiE"/>
-                            <constraint firstItem="yT1-An-Eb6" firstAttribute="firstBaseline" secondItem="zhK-Pa-iOC" secondAttribute="baseline" constant="46" id="Wuf-yy-p1N"/>
+                            <constraint firstItem="yT1-An-Eb6" firstAttribute="firstBaseline" secondItem="zhK-Pa-iOC" secondAttribute="baseline" constant="27" id="Wuf-yy-p1N"/>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="top" secondItem="u7c-Ve-1e7" secondAttribute="bottom" constant="-234" id="ZMv-gp-f9M"/>
                             <constraint firstItem="yTM-hL-cTS" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" constant="16" id="aF6-rb-ca2"/>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yT1-An-Eb6" secondAttribute="trailing" symbolic="YES" id="bql-eI-2XQ"/>
@@ -647,11 +665,12 @@
                             <constraint firstItem="nhK-jF-eIh" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" constant="16" id="fNX-Sk-w6k"/>
                             <constraint firstItem="Brz-5q-GCF" firstAttribute="leading" secondItem="u7c-Ve-1e7" secondAttribute="leading" constant="152" id="g1e-k3-vPK"/>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="trailing" secondItem="jxQ-Li-AFI" secondAttribute="trailing" constant="16" id="kJh-Us-CwI"/>
-                            <constraint firstItem="nhK-jF-eIh" firstAttribute="top" secondItem="KRH-Yg-GJy" secondAttribute="bottom" constant="182.5" id="pOq-HM-3Fh"/>
+                            <constraint firstItem="nhK-jF-eIh" firstAttribute="top" secondItem="KRH-Yg-GJy" secondAttribute="bottom" constant="138.5" id="pOq-HM-3Fh"/>
                             <constraint firstItem="jxQ-Li-AFI" firstAttribute="top" secondItem="XPn-fI-q9l" secondAttribute="bottom" constant="12" id="qcG-w6-dsk"/>
                             <constraint firstItem="xFK-R2-yFb" firstAttribute="trailing" secondItem="KRH-Yg-GJy" secondAttribute="trailing" constant="16" id="tdM-NW-VP8"/>
                             <constraint firstItem="VlU-Ha-WQW" firstAttribute="top" secondItem="KRH-Yg-GJy" secondAttribute="bottom" id="uYx-Ek-72W"/>
                             <constraint firstItem="zhK-Pa-iOC" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" constant="16" id="vfs-x0-nb9"/>
+                            <constraint firstItem="chl-zn-eiT" firstAttribute="leading" secondItem="xFK-R2-yFb" secondAttribute="leading" constant="59" id="wFG-6G-pZH"/>
                             <constraint firstItem="07W-V6-MGw" firstAttribute="top" secondItem="KRH-Yg-GJy" secondAttribute="bottom" constant="8" id="zUM-dP-LC2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xFK-R2-yFb"/>
