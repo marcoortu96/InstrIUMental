@@ -16,7 +16,7 @@ class AdDetailViewController: UIViewController {
     var category = String()
     var author = String()
     var date = String()
-    var adImages = [UIImage()]
+    var adId = Int()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -60,13 +60,19 @@ class AdDetailViewController: UIViewController {
 extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return adImages.count
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DataCollectionViewCell
-        cell?.slideImageView.image = adImages[indexPath.row]
         
+        //take ads image
+        let factory = AdFactory.getInstance()
+        let id = AdFactory.getAdById(id: adId, adsSet: factory.getAds())
+        let adImages = id?.getImg()
+        
+        cell?.slideImageView.image = UIImage(named: (adImages?[indexPath.row])!)
+       
         return cell!
     }
 }

@@ -65,7 +65,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         cell.adDescrLabel?.text = ad.getText()
         cell.nameUserLabel?.text = "di " + ad.getAuthor()
         cell.adDateLabel?.text = ad.getDate()
-        cell.adPriceLabel?.text = String(ad.getPrice()) + "€"
+        cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
         
         return cell
     }
@@ -81,15 +81,10 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         vc?.adTitle = currentAd.getTitle()
         vc?.adText = currentAd.getText()
         vc?.category = currentAd.getCategory()
-        vc?.price = String(currentAd.getPrice()) + "€"
+        vc?.price = String(currentAd.getPrice()) + "0 €"
         vc?.author = currentAd.getAuthor()
         vc?.date = currentAd.getDate()
-        
-        for img in currentAd.getImg() {
-            print(img)
-            vc?.adImages.append(UIImage(named: img)!)
-        }
-        
+        vc?.adId = currentAd.getId()
         
         self.navigationController?.pushViewController(vc!, animated: true)
     }
