@@ -27,12 +27,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let usrs = UserFactory.getInstance()
-        
-        menu.backgroundColor = UIColor.init(red: 0.813, green: 0.689, blue: 0.353, alpha: 0.95)
-        userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
-        userImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
-        userImage.setRounded()
+        preparemenu()
     }
     
     //func that controls the side menu
@@ -49,6 +44,16 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
         showMenu = !showMenu
+    }
+    
+    func preparemenu() {
+        menu.backgroundColor = UIColor.init(red: 0.813, green: 0.689, blue: 0.353, alpha: 0.95)
+        
+        let usrs = UserFactory.getInstance()
+        
+        userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
+        userImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
+        userImage.setRounded()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
