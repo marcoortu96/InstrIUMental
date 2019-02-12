@@ -69,7 +69,6 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func preparemenu() {
-        menu.backgroundColor = UIColor.init(red: 0.913, green: 0.789, blue: 0.453, alpha: 1)
         
         let usrs = UserFactory.getInstance()
         
