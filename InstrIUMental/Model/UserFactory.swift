@@ -142,7 +142,7 @@ public class UserFactory {
         UserFactory.getUserByUsername(username: username, usrs: UserFactory.getInstance().getUsers())?.setLogState(logged: false)
     }
     
-    // This function deletes the specified user
+    
     public static func deleteUser(username : String) {
         var usrs : [User] = []
         
@@ -153,5 +153,5 @@ public class UserFactory {
         }
         
         UserFactory.getInstance().setUsers(usrs: usrs)
-    
+    }
 }
