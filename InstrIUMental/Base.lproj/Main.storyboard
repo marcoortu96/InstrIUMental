@@ -181,11 +181,11 @@
             <objects>
                 <viewController title="LastAdViewController" id="fuC-lp-6nc" customClass="LastAdViewController" customModule="InstrIUMental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uV0-6C-xrO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GVu-Uh-OoR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdsTableViewCell" id="rWA-N3-eJv" customClass="AdsTableViewCell" customModule="InstrIUMental" customModuleProvider="target">
@@ -1161,7 +1161,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhK-jF-eIh">
-                                <rect key="frame" x="16" y="453" width="343" height="115"/>
+                                <rect key="frame" x="16" y="453" width="343" height="159"/>
                                 <string key="text">Vendo come da titolo Fender Telecaster Baja colore butterscotch blonde. La chitarra è in eccellenti condizioni estetiche e funzionali, i tasti sono in perfetto stato e tutta l' elettronica è completamente originale. Vendo per passaggio a uno strumento di livello superiore. È compresa nel prezzo una custodia rigida d' annata ma che svolge perfettamente il suo compito. Per maggiori informazioni è possibile contattarmi al 899899899 (Mattia). Non accetto scambi.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -1241,7 +1241,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chl-zn-eiT" customClass="DesignableButton" customModule="InstrIUMental" customModuleProvider="target">
-                                <rect key="frame" x="59" y="579" width="257" height="30"/>
+                                <rect key="frame" x="59" y="623" width="257" height="30"/>
                                 <color key="backgroundColor" red="0.49123432069850942" green="0.71109612944162437" blue="0.46724607265265355" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Contatta">
                                     <color key="titleColor" red="0.98873730959999995" green="0.98873730959999995" blue="0.98873730959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1836,7 +1836,6 @@
         <image name="who" width="177.23077392578125" height="177.23077392578125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="32G-ll-V4t"/>
         <segue reference="pEi-ae-xJ8"/>
         <segue reference="bsZ-Zn-Jbh"/>
         <segue reference="qAj-GK-DgK"/>

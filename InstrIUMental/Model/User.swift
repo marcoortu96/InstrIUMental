@@ -19,6 +19,7 @@ public class User {
     private var ads : [Ad]?
     private var logged : Bool!
     private var phoneNumber : String?
+    private var favorites : [Int]?
     
     init (name : String, surname : String, username : String, email : String, password : String) {
         self.name = name
@@ -28,9 +29,10 @@ public class User {
         self.password = password
         self.logged = false
         
-        self.URLimage = nil
-        self.ads = nil
-        self.phoneNumber = nil
+        self.URLimage = ""
+        self.ads = []
+        self.phoneNumber = ""
+        self.favorites = []
     }
     
     init (name : String, surname : String, username : String, email : String, password : String, URLimage: String) {
@@ -42,8 +44,9 @@ public class User {
         self.logged = false
         
         self.URLimage = URLimage
-        self.ads = nil
-        self.phoneNumber = nil
+        self.ads = []
+        self.phoneNumber = ""
+        self.favorites = []
     }
     
     init () {
@@ -54,9 +57,10 @@ public class User {
         self.password = ""
         self.logged = false
         
-        self.URLimage = nil
-        self.ads = nil
-        self.phoneNumber = nil
+        self.URLimage = ""
+        self.ads = []
+        self.phoneNumber = ""
+        self.favorites = []
     }
     
     func getName() -> String {
@@ -129,5 +133,19 @@ public class User {
     
     func setPhoneNumber(phoneNumber : String) {
         self.phoneNumber = phoneNumber
+    }
+    
+    func getFavorites() -> [Int] {
+        return self.favorites!
+    }
+    
+    func setFavorites(favorites : [Int]) {
+        self.favorites = favorites
+    }
+    
+    func addFavorite(adId : Int) {
+        var fvrs = self.getFavorites()
+        fvrs.append(adId)
+        self.setFavorites(favorites: fvrs)
     }
 }

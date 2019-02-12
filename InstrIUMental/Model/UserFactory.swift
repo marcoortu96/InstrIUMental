@@ -129,4 +129,11 @@ public class UserFactory {
         
         return nil
     }
+    
+    // This function allows to add a new favorite ad to the specify user
+    public static func addFavorite(adId : Int, username : String) {
+        let usrs = UserFactory.getInstance().getUsers()
+        let usr = UserFactory.getUserByUsername(username: username, usrs: usrs)
+        usr?.addFavorite(adId: adId)
+    }
 }
