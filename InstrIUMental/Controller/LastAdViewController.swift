@@ -17,6 +17,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     
     //variables for the side menu
     var showMenu = false
+    
     @IBOutlet weak var menu: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
@@ -28,32 +29,54 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         preparemenu()
+
     }
     
     //func that controls the side menu
     @IBAction func openMenu(_ sender: Any) {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
         if(showMenu) {
             leadingConstraint.constant = -240
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
+            
+            tableView?.isUserInteractionEnabled = true
+            
+            for subview in (tableView?.subviews)! {
+                subview.removeFromSuperview()
+            }
+            
+            tableView?.reloadData()
+            
         } else {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
+            tableView?.isUserInteractionEnabled = false
+            
+            blurEffectView.frame = tableView!.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurEffectView.alpha = 0.7
+            
+            tableView!.addSubview(blurEffectView)
         }
         showMenu = !showMenu
     }
     
     func preparemenu() {
-        menu.backgroundColor = UIColor.init(red: 0.813, green: 0.689, blue: 0.353, alpha: 0.95)
+        menu.backgroundColor = UIColor.init(red: 0.913, green: 0.789, blue: 0.453, alpha: 1)
         
         let usrs = UserFactory.getInstance()
         
         userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
         userImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
         userImage.setRounded()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

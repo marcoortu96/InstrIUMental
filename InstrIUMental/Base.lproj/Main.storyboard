@@ -276,138 +276,6 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d57-m8-vOa" userLabel="SideMenu">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="603"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img10" translatesAutoresizingMaskIntoConstraints="NO" id="Rye-ko-kP4">
-                                        <rect key="frame" x="15" y="17" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="jxE-G1-zD5"/>
-                                            <constraint firstAttribute="width" constant="100" id="oCR-bb-pHu"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-dz-OVP">
-                                        <rect key="frame" x="10" y="176" width="240" height="196"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-hZ-qe9" userLabel="Profilo">
-                                                <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user1" translatesAutoresizingMaskIntoConstraints="NO" id="yWH-fp-w5k">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="ksY-TY-pLH"/>
-                                                            <constraint firstAttribute="width" constant="20" id="xLB-VT-l1m"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-O5-y2T">
-                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
-                                                        <accessibility key="accessibilityConfiguration">
-                                                            <bool key="isElement" value="NO"/>
-                                                        </accessibility>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Profilo">
-                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="XYC-aS-iN0" kind="show" id="32G-ll-V4t"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ziu-JU-Rae" userLabel="Ultimi Annunci">
-                                                <rect key="frame" x="0.0" y="44" width="240" height="20"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lastad" translatesAutoresizingMaskIntoConstraints="NO" id="7nM-U5-JIg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="20" id="1vF-cl-jHl"/>
-                                                            <constraint firstAttribute="height" constant="20" id="SyR-oc-SGe"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbz-OO-A3E">
-                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Ultimi Annunci">
-                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="fuC-lp-6nc" kind="show" id="dff-CL-iW8"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0LS-r0-yzt" userLabel="Preferiti">
-                                                <rect key="frame" x="0.0" y="88" width="240" height="20"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="ra0-dV-3h0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="20" id="62A-B8-73S"/>
-                                                            <constraint firstAttribute="height" constant="20" id="u1l-GB-1lj"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0f-gX-ndt">
-                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Cerca">
-                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="Paa-jZ-uC7" kind="show" id="4fZ-Ap-zND"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qgR-dR-t4Y" userLabel="Aggiungi Annuncio">
-                                                <rect key="frame" x="0.0" y="132" width="240" height="20"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-R6-ybb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="20" id="2WS-PL-IND"/>
-                                                            <constraint firstAttribute="height" constant="20" id="EqU-bp-okU"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-gQ-NHs">
-                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Preferiti">
-                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mfk-BQ-nmU" userLabel="Cerca">
-                                                <rect key="frame" x="0.0" y="176" width="240" height="20"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addfile" translatesAutoresizingMaskIntoConstraints="NO" id="oiI-Qw-suj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="2y7-wo-C7a"/>
-                                                            <constraint firstAttribute="width" constant="20" id="hI9-7u-PTq"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkv-aL-ak9">
-                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <state key="normal" title="Inserisci Annuncio">
-                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="Qmx-pC-Y3D" kind="show" id="pEi-ae-xJ8"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="Lus-EK-miA"/>
-                                        </constraints>
-                                    </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-Ld-Ow6">
-                                        <rect key="frame" x="134" y="72" width="90.5" height="25.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="zH6-3d-e1M">
                                         <rect key="frame" x="8" y="520" width="240" height="64"/>
                                         <subviews>
@@ -462,30 +330,186 @@
                                             <constraint firstAttribute="width" constant="240" id="3WP-5N-Tzr"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c8G-7Q-kRP">
+                                        <rect key="frame" x="0.0" y="18" width="240" height="118"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="bottom" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="wMp-s4-cNN">
+                                                <rect key="frame" x="0.0" y="-8" width="240" height="118"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img10" translatesAutoresizingMaskIntoConstraints="NO" id="Rye-ko-kP4">
+                                                        <rect key="frame" x="0.0" y="18" width="100" height="100"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="jxE-G1-zD5"/>
+                                                            <constraint firstAttribute="width" constant="100" id="oCR-bb-pHu"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-Ld-Ow6">
+                                                        <rect key="frame" x="125" y="92.5" width="115" height="25.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="LJN-nO-yTu"/>
+                                                    <constraint firstItem="Rye-ko-kP4" firstAttribute="leading" secondItem="wMp-s4-cNN" secondAttribute="leading" constant="6" id="UT4-Fy-RoU"/>
+                                                    <constraint firstItem="Rye-ko-kP4" firstAttribute="top" secondItem="wMp-s4-cNN" secondAttribute="top" constant="18" id="abY-Gb-07u"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-dz-OVP">
+                                        <rect key="frame" x="8" y="180" width="240" height="200"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-hZ-qe9" userLabel="Profilo">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user1" translatesAutoresizingMaskIntoConstraints="NO" id="yWH-fp-w5k">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="ksY-TY-pLH"/>
+                                                            <constraint firstAttribute="width" constant="20" id="xLB-VT-l1m"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcm-O5-y2T">
+                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
+                                                        <accessibility key="accessibilityConfiguration">
+                                                            <bool key="isElement" value="NO"/>
+                                                        </accessibility>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Profilo">
+                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="XYC-aS-iN0" kind="show" id="32G-ll-V4t"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ziu-JU-Rae" userLabel="Ultimi Annunci">
+                                                <rect key="frame" x="0.0" y="36" width="240" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lastad" translatesAutoresizingMaskIntoConstraints="NO" id="7nM-U5-JIg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="1vF-cl-jHl"/>
+                                                            <constraint firstAttribute="height" constant="20" id="SyR-oc-SGe"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbz-OO-A3E">
+                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Ultimi Annunci">
+                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="fuC-lp-6nc" kind="show" id="dff-CL-iW8"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ht0-Mn-Elb" userLabel="I miei Annunci">
+                                                <rect key="frame" x="0.0" y="72" width="240" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myads" translatesAutoresizingMaskIntoConstraints="NO" id="RsC-1q-yYw" userLabel="myads">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="jz9-OM-JNk"/>
+                                                            <constraint firstAttribute="height" constant="20" id="luO-NE-kQR"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phh-zf-sfe" userLabel="I miei Annunci">
+                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="I miei Annunci">
+                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="0LS-r0-yzt" userLabel="Preferiti">
+                                                <rect key="frame" x="0.0" y="108" width="240" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="ra0-dV-3h0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="62A-B8-73S"/>
+                                                            <constraint firstAttribute="height" constant="20" id="u1l-GB-1lj"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0f-gX-ndt">
+                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Cerca">
+                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="Paa-jZ-uC7" kind="show" id="4fZ-Ap-zND"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="qgR-dR-t4Y" userLabel="Aggiungi Annuncio">
+                                                <rect key="frame" x="0.0" y="144" width="240" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-R6-ybb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="2WS-PL-IND"/>
+                                                            <constraint firstAttribute="height" constant="20" id="EqU-bp-okU"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-gQ-NHs">
+                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Preferiti">
+                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mfk-BQ-nmU" userLabel="Cerca">
+                                                <rect key="frame" x="0.0" y="180" width="240" height="20"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addfile" translatesAutoresizingMaskIntoConstraints="NO" id="oiI-Qw-suj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="2y7-wo-C7a"/>
+                                                            <constraint firstAttribute="width" constant="20" id="hI9-7u-PTq"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkv-aL-ak9">
+                                                        <rect key="frame" x="24" y="0.0" width="216" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="Inserisci Annuncio">
+                                                            <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="Qmx-pC-Y3D" kind="show" id="pEi-ae-xJ8"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="Lus-EK-miA"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.79607843140000001" green="0.62745098040000002" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="qpW-Ld-Ow6" secondAttribute="trailing" constant="15.5" id="1Vo-vm-clf"/>
-                                    <constraint firstItem="6pg-dz-OVP" firstAttribute="top" secondItem="qpW-Ld-Ow6" secondAttribute="bottom" constant="78.5" id="5yc-9e-J1I"/>
                                     <constraint firstAttribute="trailing" secondItem="zH6-3d-e1M" secondAttribute="trailing" constant="-8" id="7xn-FF-fuz"/>
-                                    <constraint firstAttribute="trailing" secondItem="6pg-dz-OVP" secondAttribute="trailing" constant="-10" id="8Cj-H5-MMF"/>
-                                    <constraint firstItem="Rye-ko-kP4" firstAttribute="leading" secondItem="d57-m8-vOa" secondAttribute="leading" constant="15" id="FBf-Kn-l41"/>
-                                    <constraint firstAttribute="trailing" secondItem="6pg-dz-OVP" secondAttribute="trailing" id="Fdi-MP-DbG"/>
-                                    <constraint firstItem="6pg-dz-OVP" firstAttribute="leading" secondItem="d57-m8-vOa" secondAttribute="leading" constant="10" id="Whw-qa-Lti"/>
-                                    <constraint firstAttribute="trailing" secondItem="6pg-dz-OVP" secondAttribute="trailing" constant="-10" id="WiW-pp-9HY"/>
                                     <constraint firstAttribute="bottom" secondItem="zH6-3d-e1M" secondAttribute="bottom" constant="19" id="WiZ-gR-xv2"/>
-                                    <constraint firstItem="6pg-dz-OVP" firstAttribute="leading" secondItem="d57-m8-vOa" secondAttribute="leading" constant="10" id="bMj-Rd-yPG"/>
                                     <constraint firstItem="zH6-3d-e1M" firstAttribute="leading" secondItem="d57-m8-vOa" secondAttribute="leading" constant="8" id="c1J-H6-aYR"/>
                                     <constraint firstAttribute="height" constant="603" id="cjX-Uq-CkY"/>
                                     <constraint firstAttribute="trailing" secondItem="zH6-3d-e1M" secondAttribute="trailing" constant="-8" id="ckk-C8-5rI"/>
-                                    <constraint firstItem="zH6-3d-e1M" firstAttribute="top" secondItem="6pg-dz-OVP" secondAttribute="bottom" constant="148" id="gPQ-34-2jC"/>
                                     <constraint firstAttribute="width" constant="240" id="hLs-2U-N7H"/>
-                                    <constraint firstItem="qpW-Ld-Ow6" firstAttribute="leading" secondItem="Rye-ko-kP4" secondAttribute="trailing" constant="19" id="mRz-N7-En4"/>
-                                    <constraint firstItem="qpW-Ld-Ow6" firstAttribute="top" secondItem="d57-m8-vOa" secondAttribute="top" constant="72" id="oJV-yQ-edx"/>
-                                    <constraint firstItem="6pg-dz-OVP" firstAttribute="top" secondItem="Rye-ko-kP4" secondAttribute="bottom" constant="59" id="q6p-vm-FFM"/>
-                                    <constraint firstItem="6pg-dz-OVP" firstAttribute="leading" secondItem="d57-m8-vOa" secondAttribute="leading" constant="10" id="qeD-JE-X4b"/>
                                     <constraint firstItem="zH6-3d-e1M" firstAttribute="leading" secondItem="d57-m8-vOa" secondAttribute="leading" constant="8" id="rpo-GM-5cf"/>
-                                    <constraint firstItem="Rye-ko-kP4" firstAttribute="top" secondItem="d57-m8-vOa" secondAttribute="top" constant="17" id="vBj-1V-8WS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -536,7 +560,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oH6-Tr-9lV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2919.1999999999998" y="823.53823088455783"/>
+            <point key="canvasLocation" x="2958" y="1140"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="boN-Aj-2dK">
@@ -659,7 +683,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79T-mM-JUq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3876" y="842.42878560719646"/>
+            <point key="canvasLocation" x="3866" y="1140"/>
         </scene>
         <!--Profilo-->
         <scene sceneID="UOe-Dq-hZL">
@@ -1034,6 +1058,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerView" destination="hv3-kt-Q9S" id="ho6-HM-Ol4"/>
                         <outlet property="emailLabel" destination="IkG-Hn-Vzb" id="wBU-yW-A2n"/>
                         <outlet property="leadingConstraint" destination="aAB-5v-4Ck" id="csp-gJ-L6o"/>
                         <outlet property="menu" destination="yi1-ON-LGB" id="7I8-GS-VU5"/>
@@ -1048,7 +1073,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqc-WY-YuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2919.1999999999998" y="1574.6626686656673"/>
+            <point key="canvasLocation" x="2918" y="2051"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xa9-P9-db7">
@@ -1088,11 +1113,11 @@
             <objects>
                 <viewController storyboardIdentifier="AdDetailViewController" title="Annuncio" id="Oxi-ha-Wy5" customClass="AdDetailViewController" customModule="InstrIUMental" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTH-zO-Y9j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-Ve-1e7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="234"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CSH-Vj-QA6">
                                     <size key="itemSize" width="375" height="217"/>
@@ -1130,20 +1155,20 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRH-Yg-GJy">
-                                <rect key="frame" x="16" y="274" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="294" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhK-jF-eIh">
-                                <rect key="frame" x="16" y="433" width="343" height="115"/>
+                                <rect key="frame" x="16" y="453" width="343" height="115"/>
                                 <string key="text">Vendo come da titolo Fender Telecaster Baja colore butterscotch blonde. La chitarra è in eccellenti condizioni estetiche e funzionali, i tasti sono in perfetto stato e tutta l' elettronica è completamente originale. Vendo per passaggio a uno strumento di livello superiore. È compresa nel prezzo una custodia rigida d' annata ma che svolge perfettamente il suo compito. Per maggiori informazioni è possibile contattarmi al 899899899 (Mattia). Non accetto scambi.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Pric€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="66" translatesAutoresizingMaskIntoConstraints="NO" id="07W-V6-MGw">
-                                <rect key="frame" x="16" y="302.5" width="116" height="30.5"/>
+                                <rect key="frame" x="16" y="322.5" width="116" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30.5" id="BsU-Xy-J5o"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="116" id="Cce-qm-K7Z"/>
@@ -1153,7 +1178,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Categoria:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTM-hL-cTS">
-                                <rect key="frame" x="16" y="349" width="73" height="20"/>
+                                <rect key="frame" x="16" y="369" width="73" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="p9y-c1-It2"/>
                                 </constraints>
@@ -1162,7 +1187,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chitarra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhK-Pa-iOC">
-                                <rect key="frame" x="16" y="370" width="50" height="28"/>
+                                <rect key="frame" x="16" y="390" width="50" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Hgp-KS-9kt"/>
                                 </constraints>
@@ -1171,52 +1196,52 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="NomeUtente" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPn-fI-q9l">
-                                <rect key="frame" x="216" y="332" width="143" height="17"/>
+                                <rect key="frame" x="216" y="352" width="143" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Data" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxQ-Li-AFI">
-                                <rect key="frame" x="328" y="361" width="31" height="17"/>
+                                <rect key="frame" x="328" y="381" width="31" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlU-Ha-WQW">
-                                <rect key="frame" x="313" y="294.5" width="46" height="31.5"/>
+                                <rect key="frame" x="313" y="314.5" width="46" height="31.5"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="PressFavoritesBtn:" destination="Oxi-ha-Wy5" eventType="touchUpInside" id="ZT4-p3-loN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Descrizione:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yT1-An-Eb6">
-                                <rect key="frame" x="16" y="408" width="87" height="12"/>
+                                <rect key="frame" x="16" y="428" width="87" height="12"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Brz-5q-GCF">
-                                <rect key="frame" x="152" y="235" width="62" height="36"/>
+                                <rect key="frame" x="152" y="255" width="62" height="36"/>
                                 <color key="tintColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <color key="pageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" red="0.79607843140000001" green="0.62745098040000002" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibi-JR-DeH">
-                                <rect key="frame" x="313" y="238" width="48" height="30"/>
+                                <rect key="frame" x="313" y="258" width="48" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Next &gt;">
                                     <color key="titleColor" red="0.7725490196" green="0.62745098040000002" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2p-lH-TJP">
-                                <rect key="frame" x="17" y="238" width="47" height="30"/>
+                                <rect key="frame" x="17" y="258" width="47" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="&lt; Prev">
                                     <color key="titleColor" red="0.7725490196" green="0.62745098040000002" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chl-zn-eiT" customClass="DesignableButton" customModule="InstrIUMental" customModuleProvider="target">
-                                <rect key="frame" x="59" y="559" width="257" height="30"/>
+                                <rect key="frame" x="59" y="579" width="257" height="30"/>
                                 <color key="backgroundColor" red="0.49123432069850942" green="0.71109612944162437" blue="0.46724607265265355" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Contatta">
                                     <color key="titleColor" red="0.98873730959999995" green="0.98873730959999995" blue="0.98873730959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1803,6 +1828,7 @@
         <image name="love" width="180" height="180"/>
         <image name="mail" width="37.5" height="37.5"/>
         <image name="menu.png" width="72" height="72"/>
+        <image name="myads" width="180" height="180"/>
         <image name="pass1" width="37.5" height="37.5"/>
         <image name="photo" width="37.5" height="37.5"/>
         <image name="search" width="180" height="180"/>
@@ -1810,9 +1836,10 @@
         <image name="who" width="177.23077392578125" height="177.23077392578125"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="32G-ll-V4t"/>
         <segue reference="pEi-ae-xJ8"/>
         <segue reference="bsZ-Zn-Jbh"/>
-        <segue reference="m18-EX-ljP"/>
+        <segue reference="qAj-GK-DgK"/>
         <segue reference="ABv-NY-0vQ"/>
     </inferredMetricsTieBreakers>
 </document>
