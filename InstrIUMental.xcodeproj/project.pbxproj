@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BE80E574FAFD615FDA5A12E /* libPods-InstrIUMental.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E608D7D6F8ABE72DFBD299DF /* libPods-InstrIUMental.a */; };
+		3DAE543E2212341B00E85D50 /* SearchMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAE543D2212341B00E85D50 /* SearchMapViewController.swift */; };
+		3DAE54402212356100E85D50 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE543F2212356100E85D50 /* Podfile */; };
 		670DEE61220ADA82000C05F6 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DEE60220ADA82000C05F6 /* Ad.swift */; };
 		6764883C220B129900C8C682 /* AdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764883B220B129900C8C682 /* AdFactory.swift */; };
 		67B50A4C22117492009D4AF5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B50A4B22117492009D4AF5 /* ProfileViewController.swift */; };
@@ -29,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DAE543D2212341B00E85D50 /* SearchMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapViewController.swift; sourceTree = "<group>"; };
+		3DAE543F2212356100E85D50 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		42ECE1C69ACD1E2F8800A554 /* Pods-InstrIUMental.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstrIUMental.debug.xcconfig"; path = "Target Support Files/Pods-InstrIUMental/Pods-InstrIUMental.debug.xcconfig"; sourceTree = "<group>"; };
+		4FD9ED9BB941917340B3BDAB /* Pods-InstrIUMental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstrIUMental.release.xcconfig"; path = "Target Support Files/Pods-InstrIUMental/Pods-InstrIUMental.release.xcconfig"; sourceTree = "<group>"; };
 		670DEE60220ADA82000C05F6 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		6764883B220B129900C8C682 /* AdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdFactory.swift; sourceTree = "<group>"; };
 		67B50A4B22117492009D4AF5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +57,7 @@
 		7DB11B622209D84E006A2D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTableViewCell.swift; sourceTree = "<group>"; };
 		7DFE915122107D0C0002EEA8 /* DataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionViewCell.swift; sourceTree = "<group>"; };
+		E608D7D6F8ABE72DFBD299DF /* libPods-InstrIUMental.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstrIUMental.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +65,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE80E574FAFD615FDA5A12E /* libPods-InstrIUMental.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0027BD20F50B7EDC9A6727E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E608D7D6F8ABE72DFBD299DF /* libPods-InstrIUMental.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3339565A3E98EF49AC13EBE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42ECE1C69ACD1E2F8800A554 /* Pods-InstrIUMental.debug.xcconfig */,
+				4FD9ED9BB941917340B3BDAB /* Pods-InstrIUMental.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7D319EAF220F003D00BA9FC5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +122,7 @@
 				7D319EB2220F20BF00BA9FC5 /* AdDetailViewController.swift */,
 				67B50A4B22117492009D4AF5 /* ProfileViewController.swift */,
 				67B50A4D221177C9009D4AF5 /* CustomNavigationController.swift */,
+				3DAE543D2212341B00E85D50 /* SearchMapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -102,8 +130,11 @@
 		7DB11B4A2209D84D006A2D80 = {
 			isa = PBXGroup;
 			children = (
+				3DAE543F2212356100E85D50 /* Podfile */,
 				7DB11B552209D84D006A2D80 /* InstrIUMental */,
 				7DB11B542209D84D006A2D80 /* Products */,
+				3339565A3E98EF49AC13EBE5 /* Pods */,
+				0027BD20F50B7EDC9A6727E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DB11B652209D84E006A2D80 /* Build configuration list for PBXNativeTarget "InstrIUMental" */;
 			buildPhases = (
+				06725427ECAB8EB9DF836210 /* [CP] Check Pods Manifest.lock */,
 				7DB11B4F2209D84D006A2D80 /* Sources */,
 				7DB11B502209D84D006A2D80 /* Frameworks */,
 				7DB11B512209D84D006A2D80 /* Resources */,
+				D63D2B445CE29435659D3A06 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,11 +223,61 @@
 			files = (
 				7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */,
 				7D451613220B7D1D00F2CA68 /* Assets.xcassets in Resources */,
+				3DAE54402212356100E85D50 /* Podfile in Resources */,
 				7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06725427ECAB8EB9DF836210 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstrIUMental-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D63D2B445CE29435659D3A06 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InstrIUMental/Pods-InstrIUMental-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InstrIUMental/Pods-InstrIUMental-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7DB11B4F2209D84D006A2D80 /* Sources */ = {
@@ -214,6 +297,7 @@
 				670DEE61220ADA82000C05F6 /* Ad.swift in Sources */,
 				7DB11B592209D84D006A2D80 /* StyleOfManyObj.swift in Sources */,
 				7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */,
+				3DAE543E2212341B00E85D50 /* SearchMapViewController.swift in Sources */,
 				67B50A4C22117492009D4AF5 /* ProfileViewController.swift in Sources */,
 				7DFE915222107D0C0002EEA8 /* DataCollectionViewCell.swift in Sources */,
 				7D451615220B864300F2CA68 /* DesignableButton.swift in Sources */,
@@ -360,6 +444,7 @@
 		};
 		7DB11B662209D84E006A2D80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42ECE1C69ACD1E2F8800A554 /* Pods-InstrIUMental.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +463,7 @@
 		};
 		7DB11B672209D84E006A2D80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FD9ED9BB941917340B3BDAB /* Pods-InstrIUMental.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
