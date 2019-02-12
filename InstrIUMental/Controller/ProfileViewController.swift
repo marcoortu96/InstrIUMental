@@ -101,4 +101,8 @@ class ProfileViewController: UIViewController {
      }
      */
     
+    @IBAction func deleteUserBtn(_ sender: Any) {
+        UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+    }
+    
 }
