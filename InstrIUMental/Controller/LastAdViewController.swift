@@ -29,7 +29,6 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         preparemenu()
-
     }
     
     //func that controls the side menu
