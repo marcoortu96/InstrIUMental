@@ -136,4 +136,22 @@ public class UserFactory {
         let usr = UserFactory.getUserByUsername(username: username, usrs: usrs)
         usr?.addFavorite(adId: adId)
     }
+    
+    // This function performes the logout of the specified user
+    public static func logout(username : String) {
+        UserFactory.getUserByUsername(username: username, usrs: UserFactory.getInstance().getUsers())?.setLogState(logged: false)
+    }
+    
+    // This function deletes the specified user
+    public static func deleteUser(username : String) {
+        var usrs : [User] = []
+        
+        for usr in UserFactory.getInstance().getUsers() {
+            if !usr.getUsername().elementsEqual(username) {
+                usrs.append(usr)
+            }
+        }
+        
+        UserFactory.getInstance().setUsers(usrs: usrs)
+    
 }
