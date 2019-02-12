@@ -88,6 +88,9 @@ class ProfileViewController: UIViewController {
         userImage.setRounded()
     }
     
+    @IBAction func logoutBtn(_ sender: Any) {
+        UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+    }
     /*
      // MARK: - Navigation
      

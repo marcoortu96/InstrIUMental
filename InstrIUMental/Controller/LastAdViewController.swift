@@ -118,5 +118,9 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-
+    
+    @IBAction func logoutBtn(_ sender: Any) {
+        UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+    }
+    
 }
