@@ -18,8 +18,14 @@ class SearchMapViewController: UIViewController {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinates of the Palace of Sciences in Cagliari
         let camera = GMSCameraPosition.camera(withLatitude: 39.222508, longitude: 9.114050, zoom: 10)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        view = mapView
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 12.5, y: 100, width: 350, height: 480), camera: camera)
+        
+        view.addSubview(mapView)
+        
+        
+        
+        
+        
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
