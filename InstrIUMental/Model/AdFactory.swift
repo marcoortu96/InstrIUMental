@@ -16,7 +16,7 @@ public class AdFactory {
     
     init() {
         ads.append(Ad(id: 1, title: "FENDER TELECASTER BAJA", text: "Vendo come da titolo Fender Telecaster Baja colore butterscotch blonde. È compresa nel prezzo una custodia rigida d'annata ma che svolge perfettamente il suo compito. Per maggiori informazioni è possibile contattarmi al 899899899 (Mattia).", price: 650.00, category: "Chitarre", author: "sora", img: ["img1","img2","img3"], date: "2018-04-23", region : "Sardegna"))
-    
+        
         ads.append(Ad(id: 2, title: "CORT GB75",text: "Vendo basso cort gb 75 5 corde in ottime condizioni. Disponibile a qualsiasi prova.",price: 350.00, category:"Bassi", author: "ramino", img: ["img4","img5","img6"], date: "2017-12-24", region : "Lombardia"))
         
         ads.append(Ad(id: 3, title: "PEARL FORUM SERIES",text: "Vendo batteria Pearl compresa di piatti e kit pelli nuove. Disponibile a qualsiasi prova non spedisco.",price: 1350.00, category:"Batterie", author: "colonnello", img: ["img7","img8","img9"], date: "2019-01-02", region : "Valle d'Aosta"))
@@ -98,5 +98,12 @@ public class AdFactory {
         
         return adsToReturn
     }
-
+    
+    // This function adds the specified ad
+    public static func insertAd(ad : Ad) {
+        var ads = AdFactory.getInstance().getAds()
+        ads.append(ad)
+        AdFactory.getInstance().setAds(ads: ads)
+    }
+    
 }
