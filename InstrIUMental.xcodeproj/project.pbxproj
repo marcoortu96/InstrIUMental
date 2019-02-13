@@ -28,6 +28,7 @@
 		7DB11B592209D84D006A2D80 /* StyleOfManyObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB11B582209D84D006A2D80 /* StyleOfManyObj.swift */; };
 		7DB11B5C2209D84D006A2D80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5A2209D84D006A2D80 /* Main.storyboard */; };
 		7DB11B612209D84E006A2D80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB11B5F2209D84E006A2D80 /* LaunchScreen.storyboard */; };
+		7DC93F6B2214BB0D00621F46 /* InsertAdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC93F6A2214BB0D00621F46 /* InsertAdController.swift */; };
 		7DEAFF93220DE712000F9788 /* AdsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */; };
 		7DFE915222107D0C0002EEA8 /* DataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE915122107D0C0002EEA8 /* DataCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		7DB11B5B2209D84D006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DB11B602209D84E006A2D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DB11B622209D84E006A2D80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DC93F6A2214BB0D00621F46 /* InsertAdController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertAdController.swift; sourceTree = "<group>"; };
 		7DEAFF92220DE712000F9788 /* AdsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTableViewCell.swift; sourceTree = "<group>"; };
 		7DFE915122107D0C0002EEA8 /* DataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionViewCell.swift; sourceTree = "<group>"; };
 		E608D7D6F8ABE72DFBD299DF /* libPods-InstrIUMental.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstrIUMental.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				67B50A4D221177C9009D4AF5 /* CustomNavigationController.swift */,
 				3DAE543D2212341B00E85D50 /* SearchMapViewController.swift */,
 				678F7E6E221423DC0054F9A2 /* SearchAdViewController.swift */,
+				7DC93F6A2214BB0D00621F46 /* InsertAdController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				3DAE543E2212341B00E85D50 /* SearchMapViewController.swift in Sources */,
 				67B50A4C22117492009D4AF5 /* ProfileViewController.swift in Sources */,
 				678F7E6F221423DC0054F9A2 /* SearchAdViewController.swift in Sources */,
+				7DC93F6B2214BB0D00621F46 /* InsertAdController.swift in Sources */,
 				7DFE915222107D0C0002EEA8 /* DataCollectionViewCell.swift in Sources */,
 				7D451615220B864300F2CA68 /* DesignableButton.swift in Sources */,
 			);
