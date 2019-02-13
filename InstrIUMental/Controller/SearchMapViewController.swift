@@ -10,10 +10,17 @@ import UIKit
 import GoogleMaps
 
 class SearchMapViewController: UIViewController {
-
+    
+    @IBOutlet weak var distanceValue: UILabel!
+    
+    @IBAction func distanceSlider(_ sender: UISlider) {
+        distanceValue.text = String(Int(sender.value))
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         GMSServices.provideAPIKey("AIzaSyDlpx0HWAPyEzY03osumMUVZOGKm5Cc3GM")
         // Create a GMSCameraPosition that tells the map to display the
         // coordinates of the Palace of Sciences in Cagliari
@@ -35,6 +42,6 @@ class SearchMapViewController: UIViewController {
         marker.map = mapView
     }
     
-
-
+    
+    
 }

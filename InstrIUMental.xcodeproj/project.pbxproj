@@ -12,6 +12,7 @@
 		3DAE54402212356100E85D50 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3DAE543F2212356100E85D50 /* Podfile */; };
 		670DEE61220ADA82000C05F6 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DEE60220ADA82000C05F6 /* Ad.swift */; };
 		6764883C220B129900C8C682 /* AdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6764883B220B129900C8C682 /* AdFactory.swift */; };
+		678F7E6F221423DC0054F9A2 /* SearchAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F7E6E221423DC0054F9A2 /* SearchAdViewController.swift */; };
 		67B50A4C22117492009D4AF5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B50A4B22117492009D4AF5 /* ProfileViewController.swift */; };
 		67B50A4E221177C9009D4AF5 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B50A4D221177C9009D4AF5 /* CustomNavigationController.swift */; };
 		7D319EB3220F20BF00BA9FC5 /* AdDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D319EB2220F20BF00BA9FC5 /* AdDetailViewController.swift */; };
@@ -38,6 +39,7 @@
 		4FD9ED9BB941917340B3BDAB /* Pods-InstrIUMental.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstrIUMental.release.xcconfig"; path = "Target Support Files/Pods-InstrIUMental/Pods-InstrIUMental.release.xcconfig"; sourceTree = "<group>"; };
 		670DEE60220ADA82000C05F6 /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		6764883B220B129900C8C682 /* AdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdFactory.swift; sourceTree = "<group>"; };
+		678F7E6E221423DC0054F9A2 /* SearchAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAdViewController.swift; sourceTree = "<group>"; };
 		67B50A4B22117492009D4AF5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		67B50A4D221177C9009D4AF5 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		7D319EB2220F20BF00BA9FC5 /* AdDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +88,6 @@
 				42ECE1C69ACD1E2F8800A554 /* Pods-InstrIUMental.debug.xcconfig */,
 				4FD9ED9BB941917340B3BDAB /* Pods-InstrIUMental.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -123,6 +124,7 @@
 				67B50A4B22117492009D4AF5 /* ProfileViewController.swift */,
 				67B50A4D221177C9009D4AF5 /* CustomNavigationController.swift */,
 				3DAE543D2212341B00E85D50 /* SearchMapViewController.swift */,
+				678F7E6E221423DC0054F9A2 /* SearchAdViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,6 +301,7 @@
 				7DB11B572209D84D006A2D80 /* AppDelegate.swift in Sources */,
 				3DAE543E2212341B00E85D50 /* SearchMapViewController.swift in Sources */,
 				67B50A4C22117492009D4AF5 /* ProfileViewController.swift in Sources */,
+				678F7E6F221423DC0054F9A2 /* SearchAdViewController.swift in Sources */,
 				7DFE915222107D0C0002EEA8 /* DataCollectionViewCell.swift in Sources */,
 				7D451615220B864300F2CA68 /* DesignableButton.swift in Sources */,
 			);
