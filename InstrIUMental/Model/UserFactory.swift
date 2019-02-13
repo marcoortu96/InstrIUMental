@@ -131,10 +131,10 @@ public class UserFactory {
     }
     
     // This function allows to add a new favorite ad to the specify user
-    public static func addFavorite(adId : Int, username : String) {
+    public static func addFavorite(ad : Ad, username : String) {
         let usrs = UserFactory.getInstance().getUsers()
         let usr = UserFactory.getUserByUsername(username: username, usrs: usrs)
-        usr?.addFavorite(adId: adId)
+        usr?.addFavorite(ad: ad)
     }
     
     // This function performes the logout of the specified user

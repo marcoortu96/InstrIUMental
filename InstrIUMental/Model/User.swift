@@ -19,7 +19,7 @@ public class User {
     private var ads : [Ad]?
     private var logged : Bool!
     private var phoneNumber : String?
-    private var favorites : [Int]?
+    private var favorites : [Ad]?
     
     init (name : String, surname : String, username : String, email : String, password : String) {
         self.name = name
@@ -135,17 +135,18 @@ public class User {
         self.phoneNumber = phoneNumber
     }
     
-    func getFavorites() -> [Int] {
+    func getFavorites() -> [Ad] {
         return self.favorites!
     }
     
-    func setFavorites(favorites : [Int]) {
+    func setFavorites(favorites : [Ad]) {
         self.favorites = favorites
     }
     
-    func addFavorite(adId : Int) {
+    func addFavorite(ad : Ad) {
         var fvrs = self.getFavorites()
-        fvrs.append(adId)
+        fvrs.append(ad)
         self.setFavorites(favorites: fvrs)
     }
 }
+

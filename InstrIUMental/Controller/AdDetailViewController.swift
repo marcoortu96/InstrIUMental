@@ -75,7 +75,7 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func PressFavoritesBtn(_ sender: Any) {
-        UserFactory.addFavorite(adId: adId, username: author)
+        UserFactory.addFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: author)
     }
     
     //Button to contact the seller
@@ -131,7 +131,7 @@ extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewData
         let adImages = id?.getImg()
         
         cell?.slideImageView.image = UIImage(named: (adImages?[indexPath.row])!)
-       
+        
         return cell!
     }
 }
