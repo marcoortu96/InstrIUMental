@@ -92,6 +92,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         
         userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
         userImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
+        userImage.contentMode = .scaleAspectFit
+        userImage.backgroundColor = UIColor.white
         userImage.setRounded()
         
     }
