@@ -18,6 +18,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     //variables for the side menu
     var showMenu = false
     
+    @IBOutlet weak var closeMenu: UIView! //hidden view that manage the menu closing function
     @IBOutlet weak var menu: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
@@ -29,6 +30,24 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         preparemenu()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        
+        closeMenu.addGestureRecognizer(tap)
+    }
+    
+    //tap to close the side menu
+    @objc func handleTap (sender: UITapGestureRecognizer) {
+        for subview in (tableView?.subviews)! {
+            subview.removeFromSuperview()
+        }
+        showMenu = !showMenu
+        leadingConstraint.constant = -240
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        tableView?.isUserInteractionEnabled = true
+        tableView?.reloadData()
     }
     
     //func that controls the side menu
