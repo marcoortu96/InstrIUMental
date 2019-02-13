@@ -8,28 +8,233 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     var showMenu = false
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var menu: UIView!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerView: UIScrollView!
     
-    //username of the logged user
+    //sidemenu outlet
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userLogged: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var surnameLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var telephoneLabel: UILabel!
+    
+    //profile outlet
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var surnameLabel: UITextField!
+    @IBOutlet weak var usernameLabel: UITextField!
+    @IBOutlet weak var emailLabel: UITextField!
+    @IBOutlet weak var changePassLabel: UILabel!
+    @IBOutlet weak var changePassTxt: UITextField!
+    @IBOutlet weak var newPassLabel: UILabel!
+    @IBOutlet weak var newPassTxt: UITextField!
+    
+    //outlet modify button (pencil)
+    @IBOutlet weak var modifyNameBtn: UIButton!
+    @IBOutlet weak var modifySurnameBtn: UIButton!
+    @IBOutlet weak var modifyUsernameBtn: UIButton!
+    @IBOutlet weak var modifyEmailBtn: UIButton!
+    @IBOutlet weak var modifyPassBtn: UIButton!
+    
+    //constraints for fix textfield
+    @IBOutlet weak var txtBC: NSLayoutConstraint!
+    @IBOutlet weak var btnTC: NSLayoutConstraint!
+    @IBOutlet weak var btnBC: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround() //func for hide keyboard
+        
+        profileImage.setRounded()
+        
+        nameLabel.isEnabled = false
+        surnameLabel.isEnabled = false
+        usernameLabel.isEnabled = false
+        emailLabel.isEnabled = false
+        changePassTxt.isEnabled = false
+        
+        //set constraints save button
+        btnBC.constant = 120
+        btnTC.constant = -40
+        
+        
+        //fix textfield position when open keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        //fix textfield position when hide keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        //textifield return to original position
+        newPassTxt.delegate = self
+        
         prepareMenu()
         prepareUser()
+    }
+    
+    //modify profile photo
+    @IBAction func pressPhotoBtn(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary;
+        image.allowsEditing = false
+        
+        self.present(image, animated: true, completion: nil)
+    }
+    
+    //take photo from photo gallery
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let theInfo : NSDictionary = info as NSDictionary
+        let img: UIImage = theInfo.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
+        profileImage.image = img
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //action for modify textfield of profile
+    @IBAction func modifyName(_ sender: Any) {
+        modifyNameBtn.isHidden = true
+        nameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        nameLabel.layer.cornerRadius = 15
+        nameLabel.setLeftPaddingPoints(10)
+        nameLabel.layer.borderWidth = 1
+        nameLabel.layer.borderColor = UIColor.lightGray.cgColor
+        
+        nameLabel.isEnabled = true
+    }
+    
+    @IBAction func modifySurname(_ sender: Any) {
+        modifySurnameBtn.isHidden = true
+        surnameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        surnameLabel.layer.cornerRadius = 15
+        surnameLabel.setLeftPaddingPoints(10)
+        surnameLabel.layer.borderWidth = 1
+        surnameLabel.layer.borderColor = UIColor.lightGray.cgColor
+        surnameLabel.isEnabled = true
+    }
+    
+    @IBAction func modifyUsername(_ sender: Any) {
+        modifyUsernameBtn.isHidden = true
+        usernameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        usernameLabel.layer.cornerRadius = 15
+        usernameLabel.setLeftPaddingPoints(10)
+        usernameLabel.layer.borderWidth = 1
+        usernameLabel.layer.borderColor = UIColor.lightGray.cgColor
+        usernameLabel.isEnabled = true
+    }
+    
+    @IBAction func modifyEmail(_ sender: Any) {
+        modifyEmailBtn.isHidden = true
+        emailLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        emailLabel.layer.cornerRadius = 15
+        emailLabel.setLeftPaddingPoints(10)
+        emailLabel.layer.borderWidth = 1
+        emailLabel.layer.borderColor = UIColor.lightGray.cgColor
+        emailLabel.isEnabled = true
+    }
+    
+    @IBAction func modifyPassword(_ sender: Any) {
+        btnBC.constant = 57
+        btnTC.constant = 30
+        
+        modifyPassBtn.isHidden = true
+        changePassTxt.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        changePassTxt.layer.cornerRadius = 15
+        changePassTxt.setLeftPaddingPoints(10)
+        changePassTxt.layer.borderWidth = 1
+        changePassTxt.layer.borderColor = UIColor.lightGray.cgColor
+        changePassTxt.isEnabled = true
+        changePassLabel.text = "Vecchia password"
+        
+        newPassLabel.isHidden = false
+        newPassTxt.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        newPassTxt.setLeftPaddingPoints(10)
+        newPassTxt.layer.borderWidth = 1
+        newPassTxt.layer.borderColor = UIColor.lightGray.cgColor
+        newPassTxt.layer.cornerRadius = 15
+        newPassTxt.isHidden = false
+    }
+    
+    //func for return textfield at the original position
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //func for fix textfield position when open keyboard
+    @objc func keyBoardWillShow(notification: Notification) {
+        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
+            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
+            let keyboardRect = frame?.cgRectValue
+            
+            if let keyboardHeight = keyboardRect?.height {
+                self.txtBC.constant = keyboardHeight
+                self.btnTC.constant = (keyboardHeight - 56)
+                //self.btnBC.constant = (keyboardHeight - 56)
+                
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    //func for fix textfield position when hide keyboard
+    @objc func keyBoardWillHide(notification: Notification) {
+        self.txtBC.constant = 150.0
+        self.btnTC.constant = 58.0
+        self.btnBC.constant = 36.0
+        
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    //save changes
+    @IBAction func saveProfileChanges(_ sender: Any) {
+        btnBC.constant = 130
+        btnTC.constant = -40
+        
+        nameLabel.isEnabled = false
+        nameLabel.textColor = UIColor.black
+        nameLabel.layer.borderWidth = 0
+        nameLabel.setLeftPaddingPoints(0)
+        modifyNameBtn.isHidden = false
+        
+        surnameLabel.isEnabled = false
+        surnameLabel.textColor = UIColor.black
+        surnameLabel.layer.borderWidth = 0
+        surnameLabel.setLeftPaddingPoints(0)
+        modifySurnameBtn.isHidden = false
+        
+        usernameLabel.isEnabled = false
+        usernameLabel.textColor = UIColor.black
+        usernameLabel.layer.borderWidth = 0
+        usernameLabel.setLeftPaddingPoints(0)
+        modifyUsernameBtn.isHidden = false
+        
+        emailLabel.isEnabled = false
+        emailLabel.textColor = UIColor.black
+        emailLabel.layer.borderWidth = 0
+        emailLabel.setLeftPaddingPoints(0)
+        modifyEmailBtn.isHidden = false
+        
+        changePassTxt.isEnabled = false
+        changePassTxt.textColor = UIColor.black
+        changePassTxt.layer.borderWidth = 0
+        changePassTxt.setLeftPaddingPoints(0)
+        modifyPassBtn.isHidden = false
+        changePassLabel.text = "Modifica password"
+        newPassLabel.isHidden = true
+        newPassTxt.isHidden = true
+    }
+    
+    //delte profile
+    @IBAction func deleteUserBtn(_ sender: Any) {
+        UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
     }
     
     @IBAction func openMenu(_ sender: Any) {
@@ -50,7 +255,7 @@ class ProfileViewController: UIViewController {
                     subview.removeFromSuperview()
                 }
             }
-
+            
         } else {
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
@@ -76,11 +281,11 @@ class ProfileViewController: UIViewController {
         surnameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getSurname()
         usernameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getUsername()
         emailLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getEmail()
-        telephoneLabel.text =  /*MARK: - DA MODIFICARE*/"Telefono mancante"
+        /*telephoneLabel.text =  /*MARK: - DA MODIFICARE*/"Telefono mancante"*/
         
     }
     
-    func prepareMenu() {        
+    func prepareMenu() {
         let usrs = UserFactory.getInstance()
         
         userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
@@ -101,8 +306,14 @@ class ProfileViewController: UIViewController {
      }
      */
     
-    @IBAction func deleteUserBtn(_ sender: Any) {
-        UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
-    }
     
+    
+}
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
 }
