@@ -332,6 +332,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         usr.setUsername(username: usernameLabel.text!)
         usr.setEmail(email: emailLabel.text!)
         usr.setPassword(password: newPassTxt.text!)
+        usr.setURLimage(URLimage: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getURLimage())!)
         
         var isValid = true
         
