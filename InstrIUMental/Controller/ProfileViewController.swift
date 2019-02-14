@@ -36,28 +36,35 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var modifyUsernameBtn: UIButton!
     @IBOutlet weak var modifyEmailBtn: UIButton!
     @IBOutlet weak var modifyPassBtn: UIButton!
+    @IBOutlet weak var saveChangeProfile: UIButton!
+    @IBOutlet weak var deleteProfileBtn: UIButton!
     
     //constraints for fix textfield
     @IBOutlet weak var txtBC: NSLayoutConstraint!
     @IBOutlet weak var btnTC: NSLayoutConstraint!
     @IBOutlet weak var btnBC: NSLayoutConstraint!
+    @IBOutlet weak var deletePBC: NSLayoutConstraint!
+    @IBOutlet weak var deletePTC: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboardWhenTappedAround() //func for hide keyboard
+        //func for hide keyboard
+        self.hideKeyboardWhenTappedAround()
         
         profileImage.setRounded()
         
+        //disable textfield for modify profile
         nameLabel.isEnabled = false
         surnameLabel.isEnabled = false
         usernameLabel.isEnabled = false
         emailLabel.isEnabled = false
         changePassTxt.isEnabled = false
         
-        //set constraints save button
-        btnBC.constant = 120
-        btnTC.constant = -40
+        //set constraint for delete user button
+        deletePTC.constant = -40
+        deletePBC.constant = 160
+
         
         
         //fix textfield position when open keyboard
@@ -95,56 +102,72 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     //action for modify textfield of profile
     @IBAction func modifyName(_ sender: Any) {
         modifyNameBtn.isHidden = true
+        nameLabel.isEnabled = true
+        nameLabel.becomeFirstResponder()
         nameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         nameLabel.layer.cornerRadius = 15
         nameLabel.setLeftPaddingPoints(10)
         nameLabel.layer.borderWidth = 1
         nameLabel.layer.borderColor = UIColor.lightGray.cgColor
         
-        nameLabel.isEnabled = true
+        deleteProfileBtn.isHidden = true
+        saveChangeProfile.isHidden = false
     }
     
     @IBAction func modifySurname(_ sender: Any) {
         modifySurnameBtn.isHidden = true
+        surnameLabel.isEnabled = true
+        surnameLabel.becomeFirstResponder()
         surnameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         surnameLabel.layer.cornerRadius = 15
         surnameLabel.setLeftPaddingPoints(10)
         surnameLabel.layer.borderWidth = 1
         surnameLabel.layer.borderColor = UIColor.lightGray.cgColor
-        surnameLabel.isEnabled = true
+        
+        deleteProfileBtn.isHidden = true
+        saveChangeProfile.isHidden = false
     }
     
     @IBAction func modifyUsername(_ sender: Any) {
         modifyUsernameBtn.isHidden = true
+        usernameLabel.isEnabled = true
+        usernameLabel.becomeFirstResponder()
         usernameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         usernameLabel.layer.cornerRadius = 15
         usernameLabel.setLeftPaddingPoints(10)
         usernameLabel.layer.borderWidth = 1
         usernameLabel.layer.borderColor = UIColor.lightGray.cgColor
-        usernameLabel.isEnabled = true
+        
+        deleteProfileBtn.isHidden = true
+        saveChangeProfile.isHidden = false
     }
     
     @IBAction func modifyEmail(_ sender: Any) {
+        emailLabel.isEnabled = true
+        emailLabel.becomeFirstResponder()
         modifyEmailBtn.isHidden = true
         emailLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         emailLabel.layer.cornerRadius = 15
         emailLabel.setLeftPaddingPoints(10)
         emailLabel.layer.borderWidth = 1
         emailLabel.layer.borderColor = UIColor.lightGray.cgColor
-        emailLabel.isEnabled = true
+        
+        deleteProfileBtn.isHidden = true
+        saveChangeProfile.isHidden = false
     }
     
     @IBAction func modifyPassword(_ sender: Any) {
         btnBC.constant = 57
         btnTC.constant = 30
-        
+
         modifyPassBtn.isHidden = true
+        changePassTxt.isEnabled = true
+        changePassTxt.becomeFirstResponder()
         changePassTxt.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         changePassTxt.layer.cornerRadius = 15
         changePassTxt.setLeftPaddingPoints(10)
         changePassTxt.layer.borderWidth = 1
         changePassTxt.layer.borderColor = UIColor.lightGray.cgColor
-        changePassTxt.isEnabled = true
         changePassLabel.text = "Vecchia password"
         
         newPassLabel.isHidden = false
@@ -154,6 +177,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         newPassTxt.layer.borderColor = UIColor.lightGray.cgColor
         newPassTxt.layer.cornerRadius = 15
         newPassTxt.isHidden = false
+        
+        deleteProfileBtn.isHidden = true
+        saveChangeProfile.isHidden = false
     }
     
     //func for return textfield at the original position
@@ -171,7 +197,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             if let keyboardHeight = keyboardRect?.height {
                 self.txtBC.constant = keyboardHeight
                 self.btnTC.constant = (keyboardHeight - 56)
-                //self.btnBC.constant = (keyboardHeight - 56)
                 
                 
                 UIView.animate(withDuration: 0.5) {
@@ -183,9 +208,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     //func for fix textfield position when hide keyboard
     @objc func keyBoardWillHide(notification: Notification) {
-        self.txtBC.constant = 150.0
-        self.btnTC.constant = 58.0
-        self.btnBC.constant = 36.0
+        
+        if modifyPassBtn.isHidden == false {
+            self.txtBC.constant = 142
+            self.btnTC.constant = -40
+            self.btnBC.constant = 125
+        }else {
+            self.txtBC.constant = 142
+            self.btnTC.constant = 58
+            self.btnTC.constant = 36
+        }
         
         UIView.animate(withDuration: 0.6) {
             self.view.layoutIfNeeded()
@@ -230,11 +262,30 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         changePassLabel.text = "Modifica password"
         newPassLabel.isHidden = true
         newPassTxt.isHidden = true
+        
+        saveChangeProfile.isHidden = true
+        deleteProfileBtn.isHidden = false
     }
     
     //delte profile
     @IBAction func deleteUserBtn(_ sender: Any) {
-        UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+        let myAlert = UIAlertController(title: "Elimina profilo", message : "Sei sicuro di voler eliminare il profilo?", preferredStyle : UIAlertController.Style.alert)
+        
+        let backAction = UIAlertAction(title : "Indietro", style : UIAlertAction.Style.cancel, handler : nil)
+        myAlert.addAction(backAction)
+        
+        let confirmAction = UIAlertAction(title: "Conferma", style: UIAlertAction.Style.destructive) { (confirmAction) in
+            UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+            
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+    
+        myAlert.addAction(confirmAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
+        
+        //UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
     }
     
     @IBAction func openMenu(_ sender: Any) {
