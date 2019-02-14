@@ -26,6 +26,7 @@ class InsertAdController: UIViewController {
     
     var isValid = true
     var price : String = ""
+    var alert:UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class InsertAdController: UIViewController {
             titleLabel.textColor = UIColor.black
         }
         
-        if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 {
+        if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 || !priceText.text!.contains(".") || !priceText.text!.contains(","){
             
             price = priceText.text!
             
@@ -99,6 +100,7 @@ class InsertAdController: UIViewController {
             let ad : Ad = Ad(id: AdFactory.getInstance().getAds().count, title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
             
             AdFactory.insertAd(ad: ad)
+            showAlert()
         }
     }
     
@@ -111,6 +113,12 @@ class InsertAdController: UIViewController {
         myAlert.addAction(okAction)
         
         self.present(myAlert, animated : true, completion : nil)
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Annuncio inserito", message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     /*

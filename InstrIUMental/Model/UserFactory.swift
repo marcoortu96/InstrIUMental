@@ -152,6 +152,15 @@ public class UserFactory {
             }
         }
         
+        var ads : [Ad] = []
+        
+        for ad in AdFactory.getInstance().getAds() {
+            if !ad.getAuthor().elementsEqual(username) {
+                ads.append(ad)
+            }
+        }
+        
+        AdFactory.getInstance().setAds(ads: ads)
         UserFactory.getInstance().setUsers(usrs: usrs)
     }
 }
