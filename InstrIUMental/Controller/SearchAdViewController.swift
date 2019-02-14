@@ -11,6 +11,11 @@ import UIKit
 class SearchAdViewController: UIViewController {
 
     @IBOutlet weak var priceValue: UILabel!
+    
+    @IBAction func priceSlider(_ sender: UISlider) {
+        priceValue.text = String(Int(sender.value))
+    }
+ 
     var showMenu = false
     
     @IBOutlet weak var containerView: UIView!
@@ -30,6 +35,7 @@ class SearchAdViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         
         closeMenu.addGestureRecognizer(tap)
+        closeMenu.isHidden = true
     }
     
     //tap to close the side menu
@@ -62,6 +68,7 @@ class SearchAdViewController: UIViewController {
             }
             
             containerView.isUserInteractionEnabled = true
+            closeMenu.isHidden = false
             
             for subview in (containerView.subviews) {
                 if subview.tag == 100 {
@@ -76,7 +83,9 @@ class SearchAdViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
+            
             containerView.isUserInteractionEnabled = false
+            closeMenu.isHidden = false
             
             blurEffectView.frame = self.view.bounds
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
