@@ -33,6 +33,10 @@ class InsertAdController: UIViewController {
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
     }
 
+    @IBAction func cancelInsert(_ sender: Any) {
+        dismiss(animated: true, completion: reloadInputViews)
+    }
+    
     @IBAction func insertBtn(_ sender: Any) {
         
         price = priceText.text!

@@ -108,6 +108,10 @@ class SearchAdViewController: UIViewController {
         
     }
     
+    @IBAction func logoutBtn(_ sender: Any) {
+        UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+    }
+    
     
     
 

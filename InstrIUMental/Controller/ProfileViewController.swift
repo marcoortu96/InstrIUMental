@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var menu: UIView!
     @IBOutlet weak var containerView: UIScrollView!
+    @IBOutlet weak var closeMenu: UIView!
     
     //sidemenu outlet
     @IBOutlet weak var userImage: UIImageView!
@@ -78,6 +79,65 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         prepareMenu()
         prepareUser()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        
+        closeMenu.addGestureRecognizer(tap)
+        closeMenu.isHidden = true
+    }
+    
+    //tap to close the side menu
+    @objc func handleTap (sender: UITapGestureRecognizer) {
+        for subview in (containerView.subviews) {
+            if subview.tag == 100 {
+                subview.removeFromSuperview()
+            }
+        }
+        showMenu = !showMenu
+        leadingConstraint.constant = -240
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        closeMenu.isHidden = true
+        containerView.isUserInteractionEnabled = true
+        self.view.layoutIfNeeded()
+    }
+    
+    @IBAction func openMenu(_ sender: Any) {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.tag = 100
+        
+        if(showMenu) {
+            leadingConstraint.constant = -240
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+            
+            containerView.isUserInteractionEnabled = true
+            closeMenu.isHidden = true
+            
+            for subview in (containerView.subviews) {
+                if subview.tag == 100 {
+                    subview.removeFromSuperview()
+                }
+            }
+            
+        } else {
+            leadingConstraint.constant = 0
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+            containerView.isUserInteractionEnabled = false
+            closeMenu.isHidden = false
+            
+            blurEffectView.frame = containerView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurEffectView.alpha = 0.7
+            
+            containerView.addSubview(blurEffectView)
+        }
+        showMenu = !showMenu
     }
     
     //modify profile photo
@@ -285,42 +345,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         self.present(myAlert, animated : true, completion : nil)
         
-        //UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
-    }
-    
-    @IBAction func openMenu(_ sender: Any) {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.tag = 100
-        
-        if(showMenu) {
-            leadingConstraint.constant = -240
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-            }
-            
-            containerView.isUserInteractionEnabled = true
-            
-            for subview in (containerView.subviews) {
-                if subview.tag == 100 {
-                    subview.removeFromSuperview()
-                }
-            }
-            
-        } else {
-            leadingConstraint.constant = 0
-            UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
-            }
-            containerView.isUserInteractionEnabled = false
-            
-            blurEffectView.frame = containerView.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            blurEffectView.alpha = 0.7
-            
-            containerView.addSubview(blurEffectView)
-        }
-        showMenu = !showMenu
     }
     
     func prepareUser() {
