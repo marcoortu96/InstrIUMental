@@ -325,6 +325,83 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         saveChangeProfile.isHidden = true
         deleteProfileBtn.isHidden = false
+        
+        let usr = User()
+        usr.setName(name: nameLabel.text!)
+        usr.setSurname(surname: surnameLabel.text!)
+        usr.setUsername(username: usernameLabel.text!)
+        usr.setEmail(email: emailLabel.text!)
+        usr.setPassword(password: newPassTxt.text!)
+        
+        var isValid = true
+        
+        if nameLabel.text!.count < 2 {
+            nameLabel.layer.borderWidth = 1
+            nameLabel.layer.borderColor = UIColor.red.cgColor
+            isValid = false
+            displayAlertMessage(userMessage: "Il nome deve avere almeno 2 caratteri")
+        }
+        else {
+            nameLabel.layer.borderWidth = 0
+        }
+        
+        if surnameLabel.text!.count < 2 {
+            surnameLabel.layer.borderWidth = 1
+            surnameLabel.layer.borderColor = UIColor.red.cgColor
+            isValid = false
+            displayAlertMessage(userMessage: "Il cognome deve avere almeno 2 caratteri")
+        }
+        else {
+            surnameLabel.layer.borderWidth = 0
+        }
+        
+        if usernameLabel.text!.count < 2 {
+            surnameLabel.layer.borderWidth = 1
+            surnameLabel.layer.borderColor = UIColor.red.cgColor
+            isValid = false
+            displayAlertMessage(userMessage: "Lo username deve avere almeno 2 caratteri")
+        }
+        else {
+            if UserFactory.isUsernamePresent(username: usernameLabel.text!, usrs: UserFactory.getInstance().getUsers()) && !usr.getUsername().elementsEqual(UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).getUsername()) {
+                displayAlertMessage(userMessage: "Username già esistente")
+                surnameLabel.layer.borderWidth = 1
+                surnameLabel.layer.borderColor = UIColor.red.cgColor
+                isValid = false
+            }
+            else {
+                surnameLabel.layer.borderWidth = 0
+            }
+        }
+        
+        if isValid {
+            UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+            
+            UserFactory.addUser(newUser: usr, usrs: UserFactory.getInstance().getUsers())
+            usr.setLogState(logged: true)
+            
+            showAlert()
+            prepareMenu()
+        }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Modifica effettuata con successo", message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        alert.view.backgroundColor = UIColor.green
+        alert.view.layer.borderWidth = 0
+        alert.view.layer.cornerRadius = 15
+    }
+    
+    // The function shows an alert message with the given message
+    func displayAlertMessage(userMessage : String) {
+        let myAlert = UIAlertController(title: "Dati errati", message : userMessage, preferredStyle : UIAlertController.Style.alert)
+        
+        let okAction = UIAlertAction(title : "Ok", style : UIAlertAction.Style.default, handler : nil)
+        
+        myAlert.addAction(okAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
     }
     
     //delte profile

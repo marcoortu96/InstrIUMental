@@ -124,6 +124,9 @@ class InsertAdController: UIViewController {
         let alert = UIAlertController(title: "Annuncio inserito", message: "", preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        alert.view.backgroundColor = UIColor.green
+        alert.view.layer.borderWidth = 0
+        alert.view.layer.cornerRadius = 15
     }
     
     /*
