@@ -18,11 +18,15 @@ class InsertAdController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var titleText: DesignableTextField!
-    @IBOutlet weak var imgText: DesignableTextField!
+    @IBOutlet weak var imgText: DesignableTextField! // TO CHANGE
     @IBOutlet weak var priceText: DesignableTextField!
     @IBOutlet weak var category: UIPickerView!
     @IBOutlet weak var region: UIPickerView!
     @IBOutlet weak var descriptionText: UITextView!
+    
+    var isValid = true
+    var price : String = ""
+    var alert:UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +34,92 @@ class InsertAdController: UIViewController {
     }
 
     @IBAction func insertBtn(_ sender: Any) {
-        let ad : Ad = Ad(id: AdFactory.getInstance().getAds().count, title: titleText.text!, text: descriptionText.text!, price: Float(priceText.text!)!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
         
-        AdFactory.insertAd(ad: ad)
+        price = priceText.text!
+        isValid = true
+        
+        if titleText.text!.count < 6 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere almeno 6 caratteri")
+            titleText.layer.borderWidth = 1
+            titleText.layer.borderColor = UIColor.red.cgColor
+            titleLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            titleText.layer.borderWidth = 0
+            titleLabel.textColor = UIColor.black
+        }
+        
+        if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 || !priceText.text!.contains(".") || !priceText.text!.contains(","){
+            
+            price = priceText.text!
+            
+            if priceText.text!.components(separatedBy: ",").count == 2 {
+                let tmp = priceText.text!.components(separatedBy: ",")[1]
+                price = priceText.text!.components(separatedBy: ",")[0]
+                price = price + "." + tmp
+            }
+            
+            priceText.layer.borderWidth = 0
+            priceLabel.textColor = UIColor.black
+        }
+        else {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
+            priceText.layer.borderWidth = 1
+            priceText.layer.borderColor = UIColor.red.cgColor
+            priceLabel.textColor = UIColor.red
+            isValid = false
+        }
+        
+        let temp = Float(price)
+        
+        if temp == nil {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
+            priceText.layer.borderWidth = 1
+            priceText.layer.borderColor = UIColor.red.cgColor
+            priceLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            priceText.layer.borderWidth = 0
+            priceLabel.textColor = UIColor.black
+        }
+        
+        if descriptionText.text!.count < 20 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "La descrizione deve avere almeno 20 caratteri")
+            descriptionText.layer.borderWidth = 1
+            descriptionText.layer.borderColor = UIColor.red.cgColor
+            descriptionLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            descriptionText.layer.borderWidth = 0
+            descriptionLabel.textColor = UIColor.black
+        }
+        
+        if isValid {
+            let ad : Ad = Ad(id: AdFactory.getInstance().getAds().count, title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
+            
+            AdFactory.insertAd(ad: ad)
+            showAlert()
+        }
+    }
+    
+    // The function shows an alert message with the given message
+    func displayAlertMessage(title: String, userMessage : String) {
+        let myAlert = UIAlertController(title: title, message : userMessage, preferredStyle : UIAlertController.Style.alert)
+        
+        let okAction = UIAlertAction(title : "Ok", style : UIAlertAction.Style.default, handler : nil)
+        
+        myAlert.addAction(okAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Annuncio inserito", message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     /*

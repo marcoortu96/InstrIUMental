@@ -148,5 +148,16 @@ public class User {
         fvrs.append(ad)
         self.setFavorites(favorites: fvrs)
     }
+    
+    // This function returns true if the specified ad is already present in the user's favorites list, false otherwise
+    func isFavoritePresente(ad : Ad) -> Bool {
+        for currentAd in self.getAds() {
+            if currentAd.getId() == ad.getId() {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
