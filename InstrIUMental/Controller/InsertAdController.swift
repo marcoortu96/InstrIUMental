@@ -36,6 +36,7 @@ class InsertAdController: UIViewController {
     @IBAction func insertBtn(_ sender: Any) {
         
         price = priceText.text!
+        isValid = true
         
         if titleText.text!.count < 6 {
             displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere almeno 6 caratteri")
