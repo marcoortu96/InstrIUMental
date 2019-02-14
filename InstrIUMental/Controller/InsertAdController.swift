@@ -34,8 +34,10 @@ class InsertAdController: UIViewController {
 
     @IBAction func insertBtn(_ sender: Any) {
         
+        price = priceText.text!
+        
         if titleText.text!.count < 6 {
-            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere al minimo 6 caratteri")
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere almeno 6 caratteri")
             titleText.layer.borderWidth = 1
             titleText.layer.borderColor = UIColor.red.cgColor
             titleLabel.textColor = UIColor.red
@@ -44,10 +46,11 @@ class InsertAdController: UIViewController {
         else {
             titleText.layer.borderWidth = 0
             titleLabel.textColor = UIColor.black
-            isValid = true
         }
         
         if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 {
+            
+            price = priceText.text!
             
             if priceText.text!.components(separatedBy: ",").count == 2 {
                 let tmp = priceText.text!.components(separatedBy: ",")[1]
@@ -57,7 +60,6 @@ class InsertAdController: UIViewController {
             
             priceText.layer.borderWidth = 0
             priceLabel.textColor = UIColor.black
-            isValid = true
         }
         else {
             displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
@@ -79,7 +81,18 @@ class InsertAdController: UIViewController {
         else {
             priceText.layer.borderWidth = 0
             priceLabel.textColor = UIColor.black
-            isValid = true
+        }
+        
+        if descriptionText.text!.count < 20 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "La descrizione deve avere almeno 20 caratteri")
+            descriptionText.layer.borderWidth = 1
+            descriptionText.layer.borderColor = UIColor.red.cgColor
+            descriptionLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            descriptionText.layer.borderWidth = 0
+            descriptionLabel.textColor = UIColor.black
         }
         
         if isValid {
