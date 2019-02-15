@@ -166,20 +166,70 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
         
-        let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
-        let currentAd = adSort [indexPath.row]
-        
-        //send ad data to next view
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
-        vc?.adTitle = currentAd.getTitle()
-        vc?.adText = currentAd.getText()
-        vc?.category = currentAd.getCategory()
-        vc?.price = String(currentAd.getPrice()) + "0 €"
-        vc?.author = currentAd.getAuthor()
-        vc?.date = currentAd.getDate()
-        vc?.adId = currentAd.getId()
-        
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag == true {
+            let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort [indexPath.row]
+            
+            //send ad data to next view
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            vc?.adTitle = currentAd.getTitle()
+            vc?.adText = currentAd.getText()
+            vc?.category = currentAd.getCategory()
+            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.author = currentAd.getAuthor()
+            vc?.date = currentAd.getDate()
+            vc?.adId = currentAd.getId()
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
+            let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort! [indexPath.row]
+            
+            //send ad data to next view
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            vc?.adTitle = currentAd.getTitle()
+            vc?.adText = currentAd.getText()
+            vc?.category = currentAd.getCategory()
+            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.author = currentAd.getAuthor()
+            vc?.date = currentAd.getDate()
+            vc?.adId = currentAd.getId()
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
+            let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort! [indexPath.row]
+            
+            //send ad data to next view
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            vc?.adTitle = currentAd.getTitle()
+            vc?.adText = currentAd.getText()
+            vc?.category = currentAd.getCategory()
+            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.author = currentAd.getAuthor()
+            vc?.date = currentAd.getDate()
+            vc?.adId = currentAd.getId()
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        else {
+            let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort [indexPath.row]
+            
+            //send ad data to next view
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            vc?.adTitle = currentAd.getTitle()
+            vc?.adText = currentAd.getText()
+            vc?.category = currentAd.getCategory()
+            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.author = currentAd.getAuthor()
+            vc?.date = currentAd.getDate()
+            vc?.adId = currentAd.getId()
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     

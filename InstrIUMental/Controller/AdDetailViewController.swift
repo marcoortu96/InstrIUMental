@@ -76,6 +76,17 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     @IBAction func PressFavoritesBtn(_ sender: Any) {
         UserFactory.addFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+        
+        showAlert()
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Annuncio inserito ai preferiti", message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        alert.view.backgroundColor = UIColor.green
+        alert.view.layer.borderWidth = 0
+        alert.view.layer.cornerRadius = 15
     }
     
     //Button to contact the seller
