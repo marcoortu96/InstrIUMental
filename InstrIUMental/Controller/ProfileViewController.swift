@@ -333,6 +333,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         usr.setEmail(email: emailLabel.text!)
         usr.setPassword(password: newPassTxt.text!)
         usr.setURLimage(URLimage: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getURLimage())!)
+        usr.setAds(ads: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds())!)
+        usr.setFavorites(fvrts: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())!)
         
         var isValid = true
         
