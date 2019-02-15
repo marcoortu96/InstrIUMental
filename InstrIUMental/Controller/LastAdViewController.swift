@@ -131,7 +131,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
-            cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().sorted() {$0.getDate() > $1.getDate()}
@@ -144,7 +144,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
-            cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
@@ -157,7 +157,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
-            cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
         }
         
         return cell
@@ -175,7 +175,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
@@ -191,7 +191,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
@@ -207,7 +207,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
@@ -223,7 +223,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(currentAd.getPrice()) + "0 €"
+            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
