@@ -99,23 +99,63 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ads.getAds().count
+        
+        if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag == true {
+            return ads.getAds().count
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
+            return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().count)!
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
+            return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().count)!
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdsTableViewCell") as! AdsTableViewCell
         
-        let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
-        
-        //let ad: Ad = ads.getAds() [indexPath.row]
-        let ad: Ad = adSort [indexPath.row]
-        
-        cell.adImageView?.image = UIImage(named: ad.getImg()[0])
-        cell.adTitleLabel?.text = ad.getTitle()
-        cell.adDescrLabel?.text = ad.getText()
-        cell.nameUserLabel?.text = "di " + ad.getAuthor()
-        cell.adDateLabel?.text = ad.getDate()
-        cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+        if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag == true {
+            let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+            
+            //let ad: Ad = ads.getAds() [indexPath.row]
+            let ad: Ad = adSort [indexPath.row]
+            
+            cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+            cell.adTitleLabel?.text = ad.getTitle()
+            cell.adDescrLabel?.text = ad.getText()
+            cell.nameUserLabel?.text = "di " + ad.getAuthor()
+            cell.adDateLabel?.text = ad.getDate()
+            cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
+            let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().sorted() {$0.getDate() > $1.getDate()}
+            
+            //let ad: Ad = ads.getAds() [indexPath.row]
+            let ad: Ad = adSort! [indexPath.row]
+            
+            cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+            cell.adTitleLabel?.text = ad.getTitle()
+            cell.adDescrLabel?.text = ad.getText()
+            cell.nameUserLabel?.text = "di " + ad.getAuthor()
+            cell.adDateLabel?.text = ad.getDate()
+            cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
+            let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
+            
+            //let ad: Ad = ads.getAds() [indexPath.row]
+            let ad: Ad = adSort! [indexPath.row]
+            
+            cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+            cell.adTitleLabel?.text = ad.getTitle()
+            cell.adDescrLabel?.text = ad.getText()
+            cell.nameUserLabel?.text = "di " + ad.getAuthor()
+            cell.adDateLabel?.text = ad.getDate()
+            cell.adPriceLabel?.text = String(ad.getPrice()) + "0 €"
+        }
         
         return cell
     }
@@ -144,4 +184,27 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
     }
     
+    @IBAction func lastAdsBtn(_ sender: Any) {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = true
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+    }
+    
+    @IBAction func myAdsBtn(_ sender: Any) {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = true
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+    }
+    
+    @IBAction func favoritesAdBtn(_ sender: Any) {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = true
+    }
 }

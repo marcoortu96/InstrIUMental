@@ -23,6 +23,7 @@ public class Ad {
     private var img : [String]!
     private var date : String!
     private var region : String!
+    private static var currentId = 8
     
     //init function
     
@@ -112,6 +113,11 @@ public class Ad {
     
     func setRegion(region : String) -> Void {
         self.region = region
+    }
+    
+    static func nextId() -> Int {
+        Ad.currentId = Ad.currentId + 1
+        return Ad.currentId
     }
 }
 

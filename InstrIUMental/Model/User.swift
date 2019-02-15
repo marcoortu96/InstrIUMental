@@ -21,6 +21,10 @@ public class User {
     private var phoneNumber : String?
     private var favorites : [Ad]?
     
+    public var lastAdsFlag = false
+    public var myAdsFlag = false
+    public var favoritesAdFlag = false
+    
     init (name : String, surname : String, username : String, email : String, password : String) {
         self.name = name
         self.surname = surname
@@ -42,9 +46,23 @@ public class User {
         self.email = email
         self.password = password
         self.logged = false
-        
         self.URLimage = URLimage
+        
         self.ads = []
+        self.phoneNumber = ""
+        self.favorites = []
+    }
+    
+    init (name : String, surname : String, username : String, email : String, password : String, URLimage: String, ads : [Ad]) {
+        self.name = name
+        self.surname = surname
+        self.username = username
+        self.email = email
+        self.password = password
+        self.logged = false
+        self.URLimage = URLimage
+        self.ads = ads
+        
         self.phoneNumber = ""
         self.favorites = []
     }
@@ -139,14 +157,14 @@ public class User {
         return self.favorites!
     }
     
-    func setFavorites(favorites : [Ad]) {
-        self.favorites = favorites
+    func setFavorites(fvrts : [Ad]) {
+        self.favorites = fvrts
     }
     
     func addFavorite(ad : Ad) {
         var fvrs = self.getFavorites()
         fvrs.append(ad)
-        self.setFavorites(favorites: fvrs)
+        self.setFavorites(fvrts: fvrs)
     }
     
     // This function returns true if the specified ad is already present in the user's favorites list, false otherwise

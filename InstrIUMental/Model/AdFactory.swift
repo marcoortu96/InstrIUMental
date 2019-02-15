@@ -102,8 +102,22 @@ public class AdFactory {
     // This function adds the specified ad
     public static func insertAd(ad : Ad) {
         var ads = AdFactory.getInstance().getAds()
+        ad.setId(id: Ad.nextId())
         ads.append(ad)
         AdFactory.getInstance().setAds(ads: ads)
+    }
+    
+    public static func getAdByAuthor(username : String) -> [Ad] {
+        let ads = AdFactory.getInstance().getAds()
+        var adsToReturn : [Ad] = []
+        
+        for ad in ads {
+            if ad.getAuthor().elementsEqual(username) {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
     }
     
 }

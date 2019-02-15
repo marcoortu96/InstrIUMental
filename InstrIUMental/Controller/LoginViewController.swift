@@ -96,6 +96,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         else {
             print(usernameText.text!, " ", passwordText.text!)
             (UserFactory.getUser(username: usernameText.text!, password: passwordText.text!, usrs: usrs.getUsers()))?.setLogState(logged: true)
+            
+            (UserFactory.getUser(username: usernameText.text!, password: passwordText.text!, usrs: usrs.getUsers()))?.lastAdsFlag = true
         }
     }
     

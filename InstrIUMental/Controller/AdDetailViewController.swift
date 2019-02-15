@@ -75,7 +75,7 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func PressFavoritesBtn(_ sender: Any) {
-        UserFactory.addFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: author)
+        UserFactory.addFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
     }
     
     //Button to contact the seller

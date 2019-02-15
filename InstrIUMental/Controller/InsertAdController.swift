@@ -136,5 +136,7 @@ class InsertAdController: UIViewController {
         // Drawing code
     }
     */
-
+    @IBAction func LastAdsBtn(_ sender: Any) {
+    }
+    
 }
