@@ -177,5 +177,11 @@ public class User {
         
         return false
     }
+    
+    func addAd(ad : Ad) {
+        var ads = self.getAds()
+        ads.append(ad)
+        self.setAds(ads: ads)
+    }
 }
 

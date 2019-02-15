@@ -105,6 +105,7 @@ class InsertAdController: UIViewController {
             let ad : Ad = Ad(id: AdFactory.getInstance().getAds().count, title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
             
             AdFactory.insertAd(ad: ad)
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)
             showAlert()
         }
     }
