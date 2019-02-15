@@ -183,5 +183,16 @@ public class User {
         ads.append(ad)
         self.setAds(ads: ads)
     }
+    
+    func isFavoriteAdPresent(adId : Int) -> Bool {
+        
+        for ad in self.getFavorites() {
+            if adId == ad.getId() {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
