@@ -459,6 +459,29 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
      }
      */
     
+    @IBAction func lastAdsBtn(_ sender: Any) {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = true
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+    }
+    
+    @IBAction func myAdsBtn(_ sender: Any) {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = true
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+    }
+    
+    @IBAction func favoritesAdBtn(_ sender: Any) {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = true
+    }
     
     
 }
@@ -469,4 +492,6 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
+    
+    
 }

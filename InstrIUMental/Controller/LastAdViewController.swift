@@ -101,12 +101,15 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag == true {
+            self.title = "Ultimi Annunci"
             return ads.getAds().count
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
+            self.title = "I Miei Annunci"
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().count)!
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
+            self.title = "Preferiti"
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().count)!
         }
         else {
