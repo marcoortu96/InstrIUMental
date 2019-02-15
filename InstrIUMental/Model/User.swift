@@ -167,6 +167,17 @@ public class User {
         self.setFavorites(fvrts: fvrs)
     }
     
+    func removeFavorite(ad : Ad) {
+        var fvrs = self.getFavorites()
+        
+        for fav in fvrs {
+            if fav.getId() == ad.getId() {
+                fvrs = fvrs.filter {$0.getId() != ad.getId()}
+            }
+        }
+        self.setFavorites(fvrts: fvrs)
+    }
+    
     // This function returns true if the specified ad is already present in the user's favorites list, false otherwise
     func isFavoritePresente(ad : Ad) -> Bool {
         for currentAd in self.getAds() {

@@ -158,11 +158,12 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
             cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            
         }
         
         return cell
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
         
@@ -204,6 +205,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             
             //send ad data to next view
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()

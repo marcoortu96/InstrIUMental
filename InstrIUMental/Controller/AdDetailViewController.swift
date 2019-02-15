@@ -43,13 +43,19 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reloadInputViews()
+        
         titleLabel.text = adTitle
         descriptionLabel.text = adText
         categoryLabel.text = category
         userNameLabel.text = author
         dateLabel.text = date
         priceLabel.text = price
+        
+        if (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.isFavoriteAdPresent(adId: adId))! {
+            favoriteBtn.setImage(UIImage(named: "favoriteFull"), for: UIControl.State.normal)
+        } else if (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.isFavoriteAdPresent(adId: adId))! == false {
+            favoriteBtn.setImage(UIImage(named: "favorite"), for: UIControl.State.normal)
+        }
         
         //change image with next and previous button
         nextBtn.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
@@ -79,11 +85,17 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
         
         if favoriteBtn.imageView?.image == UIImage(named: "favorite") {
             UserFactory.addFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+            
             favoriteBtn.setImage(UIImage(named: "favoriteFull"), for: UIControl.State.normal)
+            
             showAlert(title: "Annuncio inserito ai preferiti", color: UIColor.green)
+            
         } else if favoriteBtn.imageView?.image == UIImage(named: "favoriteFull") {
+            UserFactory.removeFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+            
             favoriteBtn.setImage(UIImage(named: "favorite"), for: UIControl.State.normal)
             showAlert(title: "Annuncio rimosso dai preferiti", color: UIColor.red)
+            
             
         }
 
