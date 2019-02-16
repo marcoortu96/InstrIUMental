@@ -378,25 +378,41 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         if isValid {
             
+            var listOfAds0 : [Ad] = []
+            
             for item in AdFactory.getInstance().getAds() {
                 if item.getAuthor().elementsEqual((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!) {
                     item.setAuthor(author: usr.getUsername())
                 }
+                
+                listOfAds0.append(item)
             }
+                
+            var listOfAds1 : [Ad] = []
             
             for item in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds())! {
                 if item.getAuthor().elementsEqual((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!) {
                     item.setAuthor(author: usr.getUsername())
                 }
+                
+                listOfAds1.append(item)
             }
+            
+            var listOfAds2 : [Ad] = []
             
             for item in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
                 if item.getAuthor().elementsEqual((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!) {
                     item.setAuthor(author: usr.getUsername())
                 }
+                
+                listOfAds2.append(item)
             }
             
             UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+            
+            AdFactory.getInstance().setAds(ads: listOfAds0)
+            usr.setAds(ads: listOfAds1)
+            usr.setFavorites(fvrts: listOfAds2)
             
             UserFactory.addUser(newUser: usr, usrs: UserFactory.getInstance().getUsers())
             usr.setLogState(logged: true)
