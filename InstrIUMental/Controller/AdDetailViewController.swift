@@ -88,7 +88,7 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
             
             favoriteBtn.setImage(UIImage(named: "favoriteFull"), for: UIControl.State.normal)
             
-            showAlert(title: "Annuncio inserito ai preferiti", color: UIColor.green)
+            showAlert(title: "Annuncio aggiunto ai preferiti", color: UIColor.green)
             
         } else if favoriteBtn.imageView?.image == UIImage(named: "favoriteFull") {
             UserFactory.removeFavorite(ad: AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
