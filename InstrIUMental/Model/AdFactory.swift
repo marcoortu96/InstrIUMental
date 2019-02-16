@@ -107,6 +107,17 @@ public class AdFactory {
         AdFactory.getInstance().setAds(ads: ads)
     }
     
+    //func for remove one ad from last ads
+    public static func removeFromLastAd(ad : Ad) {
+        var ads = AdFactory.getInstance().getAds()
+        for a in ads {
+            if a.getId() == ad.getId() {
+                ads = ads.filter {$0.getId() != ad.getId()}
+            }
+        }
+        AdFactory.getInstance().setAds(ads: ads)
+    }
+    
     public static func getAdByAuthor(username : String) -> [Ad] {
         let ads = AdFactory.getInstance().getAds()
         var adsToReturn : [Ad] = []

@@ -51,6 +51,10 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
         dateLabel.text = date
         priceLabel.text = price
         
+        if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername() == userNameLabel.text {
+            favoriteBtn.isHidden = true
+        }
+        
         if (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.isFavoriteAdPresent(adId: adId))! {
             favoriteBtn.setImage(UIImage(named: "favoriteFull"), for: UIControl.State.normal)
         } else if (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.isFavoriteAdPresent(adId: adId))! == false {

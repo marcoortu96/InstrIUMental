@@ -195,6 +195,17 @@ public class User {
         self.setAds(ads: ads)
     }
     
+    //func for remove an ad of user
+    func removeAd(ad : Ad) {
+        var myAds = self.getAds()
+        
+        for myAd in myAds {
+            if myAd.getId() == ad.getId() {
+                myAds = myAds.filter {$0.getId() != ad.getId()}
+            }
+        }
+        self.setAds(ads: myAds)    }
+    
     func isFavoriteAdPresent(adId : Int) -> Bool {
         
         for ad in self.getFavorites() {

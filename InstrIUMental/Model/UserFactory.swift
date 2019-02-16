@@ -145,6 +145,13 @@ public class UserFactory {
         usr?.removeFavorite(ad: ad)
     }
     
+    // This function allows to remove an ad to the specify user
+    public static func removeAd(ad : Ad, username : String) {
+        let usrs = UserFactory.getInstance().getUsers()
+        let usr = UserFactory.getUserByUsername(username: username, usrs: usrs)
+        usr?.removeAd(ad: ad)
+    }
+    
     // This function performes the logout of the specified user
     public static func logout(username : String) {
         UserFactory.getUserByUsername(username: username, usrs: UserFactory.getInstance().getUsers())?.setLogState(logged: false)
