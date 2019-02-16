@@ -293,7 +293,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 self.isEditing = false
                 
-                let myAlert = UIAlertController(title: "Elimina profilo", message : "Sei sicuro di voler eliminare il profilo?", preferredStyle : UIAlertController.Style.alert)
+                let myAlert = UIAlertController(title: "Elimina annuncio", message : "Sei sicuro di voler eliminare questo annuncio?", preferredStyle : UIAlertController.Style.alert)
                 
                 let backAction = UIAlertAction(title : "Indietro", style : UIAlertAction.Style.cancel, handler : nil)
                 myAlert.addAction(backAction)
