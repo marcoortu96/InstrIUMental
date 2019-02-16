@@ -320,7 +320,29 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
                 self.present(myAlert, animated : true, completion : nil)
             }
             
-            return [delete]
+            let modify = UITableViewRowAction(style: .normal, title: "Modifica") { (action, indexPath) in
+                
+                self.isEditing = false
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "InsertAdController") as! InsertAdController
+               
+                vc.title = "Modifica annuncio"
+                
+                vc.adTitle = currentAd.getTitle()
+                vc.adText = currentAd.getText()
+                vc.adCategory = currentAd.getCategory()
+                vc.adPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+                vc.adRegion = currentAd.getRegion()
+                vc.adId = currentAd.getId()
+                vc.adImages = currentAd.getImg()
+                
+                //self.present(vc, animated: true, completion: nil)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            modify.backgroundColor = UIColor.blue
+            
+            return [delete, modify]
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}

@@ -10,6 +10,16 @@ import UIKit
 
 class InsertAdController: UIViewController {
     
+    var adTitle = String()
+    var adText = String()
+    var adPrice = String()
+    var adCategory = String()
+    var adRegion = String()
+    var date = String()
+    var adId = Int()
+    var adImages = [String()]
+    
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -23,6 +33,7 @@ class InsertAdController: UIViewController {
     @IBOutlet weak var category: UIPickerView!
     @IBOutlet weak var region: UIPickerView!
     @IBOutlet weak var descriptionText: UITextView!
+    @IBOutlet weak var addBtn: DesignableButton!
     
     var isValid = true
     var price : String = ""
@@ -31,6 +42,12 @@ class InsertAdController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
+        
+        //insert data of ad
+        titleText.text = adTitle
+        priceText.text = adPrice
+        descriptionText.text = adText
+        
     }
 
     @IBAction func cancelInsert(_ sender: Any) {
