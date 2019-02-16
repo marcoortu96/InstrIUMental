@@ -234,6 +234,136 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func showAlert(title: String, color: UIColor) {
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        alert.view.backgroundColor = color
+        alert.view.layer.borderWidth = 0
+        alert.view.layer.cornerRadius = 15
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag == true {
+            let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort [indexPath.row]
+            
+            let favorite = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
+                // share item at indexPath
+                self.isEditing = false
+                print("fav at index \(indexPath.row)")
+                for fav in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
+                    if fav.getId() == currentAd.getId() {
+                        
+                    }
+                }
+                
+                if ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.isFavoriteAdPresent(adId: currentAd.getId()))! {
+                    UserFactory.removeFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Rimosso dai preferiti", color: UIColor.white)
+                    tableView.reloadData()
+                } else {
+                    UserFactory.addFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Aggiunto ai preferiti", color: UIColor.white)
+                }
+            }
+            
+            favorite.backgroundColor = UIColor.init(displayP3Red: 1, green: 0, blue: 0, alpha: 0.4)
+            
+            return [favorite]
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
+            let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort! [indexPath.row]
+            
+            let favorite = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
+                // share item at indexPath
+                self.isEditing = false
+                print("fav at index \(indexPath.row)")
+                for fav in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
+                    if fav.getId() == currentAd.getId() {
+                        
+                    }
+                }
+                
+                if ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.isFavoriteAdPresent(adId: currentAd.getId()))! {
+                    UserFactory.removeFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Rimosso dai preferiti", color: UIColor.white)
+                    tableView.reloadData()
+                } else {
+                    UserFactory.addFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Aggiunto ai preferiti", color: UIColor.white)
+                }
+            }
+            
+            favorite.backgroundColor = UIColor.init(displayP3Red: 1, green: 0, blue: 0, alpha: 0.4)
+            
+            return [favorite]
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
+            let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort! [indexPath.row]
+            
+            let favorite = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
+                // share item at indexPath
+                self.isEditing = false
+                print("fav at index \(indexPath.row)")
+                for fav in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
+                    if fav.getId() == currentAd.getId() {
+                        
+                    }
+                }
+                
+                if ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.isFavoriteAdPresent(adId: currentAd.getId()))! {
+                    UserFactory.removeFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Rimosso dai preferiti", color: UIColor.white)
+                    tableView.reloadData()
+                } else {
+                    UserFactory.addFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Aggiunto ai preferiti", color: UIColor.white)
+                }
+            }
+            
+            favorite.backgroundColor = UIColor.init(displayP3Red: 1, green: 0, blue: 0, alpha: 0.4)
+            
+            return [favorite]
+        }
+        else {
+            let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort [indexPath.row]
+            
+            let favorite = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
+                // share item at indexPath
+                self.isEditing = false
+                print("fav at index \(indexPath.row)")
+                for fav in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
+                    if fav.getId() == currentAd.getId() {
+                        
+                    }
+                }
+                
+                if ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.isFavoriteAdPresent(adId: currentAd.getId()))! {
+                    UserFactory.removeFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Rimosso dai preferiti", color: UIColor.white)
+                    tableView.reloadData()
+                } else {
+                    UserFactory.addFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Aggiunto ai preferiti", color: UIColor.white)
+                }
+            }
+            
+            favorite.backgroundColor = UIColor.init(displayP3Red: 1, green: 0, blue: 0, alpha: 0.4)
+            
+            return [favorite]
+            
+            
+        }
+        
+        
+    }
+    
+    
     
     @IBAction func logoutBtn(_ sender: Any) {
         UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
