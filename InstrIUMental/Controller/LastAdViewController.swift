@@ -262,4 +262,9 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = true
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView!.reloadData()
+    }
 }

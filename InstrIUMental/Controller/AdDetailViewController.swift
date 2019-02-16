@@ -96,9 +96,8 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
             favoriteBtn.setImage(UIImage(named: "favorite"), for: UIControl.State.normal)
             showAlert(title: "Annuncio rimosso dai preferiti", color: UIColor.red)
             
-            
         }
-
+        
     }
     
     func showAlert(title: String, color: UIColor) {
