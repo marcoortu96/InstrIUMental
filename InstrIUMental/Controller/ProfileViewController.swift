@@ -377,6 +377,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         }
         
         if isValid {
+            
+            for item in AdFactory.getInstance().getAds() {
+                if item.getAuthor().elementsEqual((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!) {
+                    item.setAuthor(author: usr.getUsername())
+                }
+            }
+            
+            for item in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds())! {
+                if item.getAuthor().elementsEqual((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!) {
+                    item.setAuthor(author: usr.getUsername())
+                }
+            }
+            
+            for item in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
+                if item.getAuthor().elementsEqual((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!) {
+                    item.setAuthor(author: usr.getUsername())
+                }
+            }
+            
             UserFactory.deleteUser(username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
             
             UserFactory.addUser(newUser: usr, usrs: UserFactory.getInstance().getUsers())
