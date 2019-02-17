@@ -61,6 +61,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var price : String = ""
     var alert:UIAlertController!
     
+    var newImages : [UIImage] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
@@ -98,9 +100,9 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func img1Pressed(_ sender: UIButton) {
-        let image = UIImagePickerController()
-        
         flag = 1
+        
+        let image = UIImagePickerController()
         
         image.delegate = self
         
@@ -113,9 +115,9 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func img2Pressed(_ sender: UIButton) {
-        let image = UIImagePickerController()
-        
         flag = 2
+        
+        let image = UIImagePickerController()
         
         image.delegate = self
         
@@ -128,9 +130,9 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func img3Pressed(_ sender: UIButton) {
-        let image = UIImagePickerController()
-        
         flag = 3
+        
+        let image = UIImagePickerController()
         
         image.delegate = self
         
@@ -150,12 +152,15 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             if flag == 1 {
                 btnImg1.setBackgroundImage(image, for: .normal)
                 adImages.append(image)
+                newImages.append(image)
             } else if flag == 2 {
                 btnImg2.setBackgroundImage(image, for: .normal)
                 adImages.append(image)
+                newImages.append(image)
             } else if flag == 3 {
                 btnImg3.setBackgroundImage(image, for: .normal)
                 adImages.append(image)
+                newImages.append(image)
             }
         
         
@@ -294,7 +299,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             }
             else {
                 
-                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [UIImage(named: "")!,UIImage(named: "")!,UIImage(named: "")!], date: "2019-02-14", region : "regione1")
+                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0], newImages[1], newImages[2]], date: "2019-02-14", region : "regione1")
                 
                 AdFactory.insertAd(ad: ad)
                 UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)
