@@ -237,7 +237,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     func showAlert(title: String, color: UIColor) {
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
         alert.view.backgroundColor = color
         alert.view.layer.borderWidth = 0
         alert.view.layer.cornerRadius = 15
@@ -252,7 +252,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
           
                 if currentAd.getAuthor() ==  UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername() {
                     let dontFav = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
-                        self.showAlert(title: "Non puoi aggiungere un tuo annuncio tra i preferiti", color: UIColor.white)
+                        self.showAlert(title: "Non puoi aggiungere un tuo annuncio tra i preferiti", color: UIColor.red)
                     }
                     
                     return [dontFav]
@@ -340,7 +340,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
-            modify.backgroundColor = UIColor.blue
+            modify.backgroundColor = UIColor.orange.withAlphaComponent(0.50)
             
             return [delete, modify]
         }

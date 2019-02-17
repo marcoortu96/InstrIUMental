@@ -455,13 +455,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D4B3PY9A2P;
+				DEVELOPMENT_TEAM = KVG48D8PZK;
 				INFOPLIST_FILE = InstrIUMental/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.sora.InstrIUMental;
+				PRODUCT_BUNDLE_IDENTIFIER = it.giacomo.InstrIUMental;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -474,13 +474,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = D4B3PY9A2P;
+				DEVELOPMENT_TEAM = KVG48D8PZK;
 				INFOPLIST_FILE = InstrIUMental/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = it.sora.InstrIUMental;
+				PRODUCT_BUNDLE_IDENTIFIER = it.giacomo.InstrIUMental;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
