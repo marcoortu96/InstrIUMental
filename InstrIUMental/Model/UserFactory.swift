@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class UserFactory {
     private static var instance : UserFactory?
@@ -15,10 +16,13 @@ public class UserFactory {
     // Private constructor
     private init () {
         
-        users.append(User(name : "Marco", surname : "Ortu", username : "sora", email : "sora004@ium.it", password : "0000", URLimage: "sora", ads: AdFactory.getAdByAuthor(username: "sora")))
-        users.append(User(name: "Andrea", surname: "Re", username: "king", email: "blugori@ium.it", password: "shisonson", URLimage: "king", ads: AdFactory.getAdByAuthor(username: "king")))
-        users.append(User(name : "Emanuele", surname: "Spano", username : "ramino", email : "manu@ium.it", password : "aimech", URLimage: "ramino", ads: AdFactory.getAdByAuthor(username: "ramino")))
-        users.append(User(name : "Giacomo", surname : "Meloni", username : "colonnello", email : "giacomo@ium.it", password : "1234", URLimage: "colonnello", ads: AdFactory.getAdByAuthor(username: "colonnello")))
+        users.append(User(name : "Marco", surname : "Ortu", username : "sora", email : "sora004@ium.it", password : "0000", URLimage: "sora", ads: AdFactory.getAdByAuthor(username: "sora"), image: UIImage(named: "sora")!))
+        
+        users.append(User(name: "Andrea", surname: "Re", username: "king", email: "blugori@ium.it", password: "shisonson", URLimage: "king", ads: AdFactory.getAdByAuthor(username: "king"), image: UIImage(named: "king")!))
+        
+        users.append(User(name : "Emanuele", surname: "Spano", username : "ramino", email : "manu@ium.it", password : "aimech", URLimage: "ramino", ads: AdFactory.getAdByAuthor(username: "ramino"), image: UIImage(named: "ramino")!))
+        
+        users.append(User(name : "Giacomo", surname : "Meloni", username : "colonnello", email : "giacomo@ium.it", password : "1234", URLimage: "colonnello", ads: AdFactory.getAdByAuthor(username: "colonnello"), image: UIImage(named: "colonnello")!))
     }
     
     // The constructor, which is private, is called just in here

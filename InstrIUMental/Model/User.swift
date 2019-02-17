@@ -20,6 +20,7 @@ public class User {
     private var logged : Bool!
     private var phoneNumber : String?
     private var favorites : [Ad]?
+    private var image : UIImage? = UIImage()
     
     public var lastAdsFlag = false
     public var myAdsFlag = false
@@ -62,6 +63,21 @@ public class User {
         self.logged = false
         self.URLimage = URLimage
         self.ads = ads
+        
+        self.phoneNumber = ""
+        self.favorites = []
+    }
+    
+    init (name : String, surname : String, username : String, email : String, password : String, URLimage: String, ads : [Ad], image : UIImage) {
+        self.name = name
+        self.surname = surname
+        self.username = username
+        self.email = email
+        self.password = password
+        self.logged = false
+        self.URLimage = URLimage
+        self.ads = ads
+        self.image = image
         
         self.phoneNumber = ""
         self.favorites = []
@@ -159,6 +175,14 @@ public class User {
     
     func setFavorites(fvrts : [Ad]) {
         self.favorites = fvrts
+    }
+    
+    func getImage() -> UIImage {
+        return self.image!
+    }
+    
+    func setImage(image : UIImage) {
+        self.image = image
     }
     
     func addFavorite(ad : Ad) {
