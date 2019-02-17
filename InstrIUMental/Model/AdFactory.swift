@@ -29,7 +29,7 @@ public class AdFactory {
         
         ads.append(Ad(id: 7, title: "SAX CONTRALTO UNIVERSAL PARIS (STENCIL DOLNET)",text: "Vendo sax contralto Universal Paris, argentato, vintage anni ’70. Custodia, tracolla, ance e bocchino Yamaha 5C nuovo.",price: 450.00, category:"Fiati", author: "king", img: ["img19","img20","img21"], date: "2018-12-18", region : "Calabria"))
         
-        ads.append(Ad(id: 8, title: "FENDER TELECASTER ROAD WORN 50",text: "Stupenda Tele dal look e dal suono spettacolare. Completa di custodia morbida certificati. prezzo leggermente trattabile.",price: 990.00, category:"Batterie", author: "ramino", img: ["img22","img23","img24"], date: "2019-01-28", region : "Sardegna"))
+        ads.append(Ad(id: 8, title: "FENDER TELECASTER ROAD WORN 50",text: "Stupenda Tele dal look e dal suono spettacolare. Completa di custodia morbida certificati. prezzo leggermente trattabile.",price: 990.00, category:"Chitarre", author: "ramino", img: ["img22","img23","img24"], date: "2019-01-28", region : "Sardegna"))
     }
     
     public static func getInstance() -> AdFactory {

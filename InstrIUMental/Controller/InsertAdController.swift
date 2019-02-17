@@ -8,7 +8,19 @@
 
 import UIKit
 
-class InsertAdController: UIViewController {
+class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    //Array for region picker
+    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna",
+                   "Friuli-Venezia-Giulia","Lazio","Liguria","Lombardia","Marche",
+                   "Molise","Piemonte","Puglia","Sardegna", "Sicilia","Toscana",
+                   "Trentino-Alto Adige","Umbria","Valle d’Aosta","Veneto"]
+    
+    //Array for category picker
+    let categories = ["Bassi","Batterie","Chitarre","Fiati"]
+    
+    var currentTextField = DesignableTextField()
+    var pickerView = UIPickerView()
     
     var adTitle = String()
     var adText = String()
@@ -27,11 +39,17 @@ class InsertAdController: UIViewController {
     @IBOutlet weak var regionLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    //button for insert the 3 image for ad
+    var flag = 0 //Flag to understand which image was selected
+    @IBOutlet weak var btnImg1: UIButton!
+    @IBOutlet weak var btnImg2: UIButton!
+    @IBOutlet weak var btnImg3: UIButton!
+    
+    
     @IBOutlet weak var titleText: DesignableTextField!
-    @IBOutlet weak var imgText: DesignableTextField! // TO CHANGE
     @IBOutlet weak var priceText: DesignableTextField!
-    @IBOutlet weak var category: UIPickerView!
-    @IBOutlet weak var region: UIPickerView!
+    @IBOutlet weak var categoryTxt: DesignableTextField!
+    @IBOutlet weak var regionTxt: DesignableTextField!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var addBtn: DesignableButton!
     
@@ -54,10 +72,73 @@ class InsertAdController: UIViewController {
         //insert data of ad
         titleText.text = adTitle
         priceText.text = adPrice
+        categoryTxt.text = adCategory
+        regionTxt.text = adRegion
         descriptionText.text = adText
         
     }
-
+    
+    @IBAction func img1Pressed(_ sender: Any) {
+        let image = UIImagePickerController()
+        
+        flag = 1
+        
+        image.delegate = self
+        
+        image.sourceType = .photoLibrary
+        image.allowsEditing = false
+        
+        self.present(image, animated: true) {
+            
+        }
+    }
+    
+    @IBAction func img2Pressed(_ sender: Any) {
+        let image = UIImagePickerController()
+        
+        flag = 2
+        
+        image.delegate = self
+        
+        image.sourceType = .photoLibrary
+        image.allowsEditing = false
+        
+        self.present(image, animated: true) {
+            
+        }
+    }
+    
+    @IBAction func img3Pressed(_ sender: Any) {
+        let image = UIImagePickerController()
+        
+        flag = 3
+        
+        image.delegate = self
+        
+        image.sourceType = .photoLibrary
+        image.allowsEditing = false
+        
+        self.present(image, animated: true) {
+            
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            if flag == 1 {
+                btnImg1.setImage(image, for: .normal)
+            } else if flag == 2 {
+                btnImg2.setImage(image, for: .normal)
+            } else if flag == 3 {
+                btnImg3.setImage(image, for: .normal)
+            }
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func cancelInsert(_ sender: Any) {
         dismiss(animated: true, completion: reloadInputViews)
     }
@@ -147,6 +228,52 @@ class InsertAdController: UIViewController {
         }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if currentTextField == regionTxt {
+            return regions.count
+        } else if currentTextField == categoryTxt {
+            return categories.count
+        } else {
+            return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if currentTextField == regionTxt {
+            return regions[row]
+        } else if currentTextField == categoryTxt {
+            return categories[row]
+        } else {
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if currentTextField == regionTxt {
+            regionTxt.text = regions[row]
+            self.view.endEditing(true)
+        } else if currentTextField == categoryTxt {
+            categoryTxt.text = categories[row]
+            self.view.endEditing(true)
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        currentTextField = textField as! DesignableTextField
+        
+        if currentTextField == regionTxt {
+            currentTextField.inputView = pickerView
+        } else if currentTextField == categoryTxt {
+            currentTextField.inputView = pickerView
+        }
+    }
+    
     // The function shows an alert message with the given message
     func displayAlertMessage(title: String, userMessage : String) {
         let myAlert = UIAlertController(title: title, message : userMessage, preferredStyle : UIAlertController.Style.alert)
@@ -187,3 +314,5 @@ class InsertAdController: UIViewController {
     }
     
 }
+
+
