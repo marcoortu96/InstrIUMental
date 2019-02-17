@@ -340,7 +340,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
-            modify.backgroundColor = UIColor.orange.withAlphaComponent(0.50)
+            modify.backgroundColor = UIColor.init(displayP3Red: 0.9, green: 0.7, blue: 0.3, alpha: 0.9)
             
             return [delete, modify]
         }
