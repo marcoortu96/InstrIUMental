@@ -131,4 +131,26 @@ public class AdFactory {
         return adsToReturn
     }
     
+    public static func modifyAd(ad : Ad) {
+        var updatedAds : [Ad] = []
+        var updatedUserAds : [Ad] = []
+        
+        updatedAds.append(ad)
+        updatedUserAds.append(ad)
+        
+        for currentAd in AdFactory.getInstance().getAds() {
+            if currentAd.getId() != ad.getId() {
+                updatedAds.append(currentAd)
+            }
+        }
+        
+        for currentAd in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds())! {
+            if currentAd.getId() != ad.getId() {
+                updatedUserAds.append(currentAd)
+            }
+        }
+        
+        AdFactory.getInstance().setAds(ads: updatedAds)
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.setAds(ads: updatedUserAds)
+    }
 }

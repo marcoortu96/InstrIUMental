@@ -43,6 +43,14 @@ class InsertAdController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
         
+        
+        if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
+            addBtn.setTitle("Modifica", for: UIControl.State.normal)
+        }
+        else {
+            addBtn.setTitle("Aggiungi", for: UIControl.State.normal)
+        }
+        
         //insert data of ad
         titleText.text = adTitle
         priceText.text = adPrice
@@ -119,11 +127,23 @@ class InsertAdController: UIViewController {
         }
         
         if isValid {
-            let ad : Ad = Ad(id: AdFactory.getInstance().getAds().count, title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
             
-            AdFactory.insertAd(ad: ad)
-            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)
-            showAlert()
+            if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
+                // TOCHANGE
+                let ad : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: adImages, date: date, region : adRegion)
+                
+                AdFactory.modifyAd(ad: ad)
+                showAlert1()
+            }
+            else {
+                
+                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
+                
+                AdFactory.insertAd(ad: ad)
+                UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)
+                
+                showAlert()
+            }
         }
     }
     
@@ -140,6 +160,15 @@ class InsertAdController: UIViewController {
     
     func showAlert() {
         let alert = UIAlertController(title: "Annuncio inserito", message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        alert.view.backgroundColor = UIColor.green
+        alert.view.layer.borderWidth = 0
+        alert.view.layer.cornerRadius = 15
+    }
+    
+    func showAlert1() {
+        let alert = UIAlertController(title: "Annuncio modificato", message: "", preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
         alert.view.backgroundColor = UIColor.green
