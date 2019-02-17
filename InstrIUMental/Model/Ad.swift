@@ -21,20 +21,21 @@ public class Ad {
     private var category : String!
     private var author : String!
     private var img : [String]!
+    private var image : [UIImage] = [UIImage()]
     private var date : String!
     private var region : String!
     private static var currentId = 8
     
     //init function
     
-    init(id : Int, title : String, text : String, price : Float, category : String, author : String, img : [String], date: String, region : String){
+    init(id : Int, title : String, text : String, price : Float, category : String, author : String, image : [UIImage], date: String, region : String){
         self.id = id
         self.title = title
         self.text = text
         self.price = price
         self.category = category
         self.author = author
-        self.img = img
+        self.image = image
         self.date = date
         self.region = region
     }
@@ -65,8 +66,8 @@ public class Ad {
         return self.author
     }
     
-    func getImg() -> [String]{
-        return self.img
+    func getImage() -> [UIImage] {
+        return self.image
     }
     
     func getDate() -> String{
@@ -103,8 +104,8 @@ public class Ad {
         self.author = author
     }
     
-    func setImg(img : [String]) -> Void {
-        self.img = img
+    func setImage(image: [UIImage]) -> Void {
+        self.image = image
     }
     
     func setDate(date : String) -> Void {

@@ -163,9 +163,9 @@ extension AdDetailViewController: UICollectionViewDelegate, UICollectionViewData
         //take ads image
         //let factory = AdFactory.getInstance()
         let id = AdFactory.getAdById(id: adId, adsSet: factory.getAds())
-        let adImages = id?.getImg()
+        let adImages = id?.getImage()
         
-        cell?.slideImageView.image = UIImage(named: (adImages?[indexPath.row])!)
+        cell?.slideImageView.image = adImages?[indexPath.row]
         
         return cell!
     }

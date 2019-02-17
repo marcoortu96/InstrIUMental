@@ -29,7 +29,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var adRegion = String()
     var date = String()
     var adId = Int()
-    var adImages = [String()]
+    var adImages = [UIImage()]
+    var adAuthor = String()
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -45,6 +46,9 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var btnImg2: UIButton!
     @IBOutlet weak var btnImg3: UIButton!
     
+    @IBOutlet weak var cameraBtn: UIButton!
+    @IBOutlet weak var galleryBtn: UIButton!
+    let myColor = UIColor(displayP3Red: 213, green: 174, blue: 72, alpha: 1)
     
     @IBOutlet weak var titleText: DesignableTextField!
     @IBOutlet weak var priceText: DesignableTextField!
@@ -61,6 +65,14 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
         
+        //insert border to buttons
+        btnImg1.layer.borderWidth = 1
+        btnImg2.layer.borderWidth = 1
+        btnImg3.layer.borderWidth = 1
+        
+        cameraBtn.layer.cornerRadius = 15
+        galleryBtn.layer.cornerRadius = 15
+
         
         if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
             addBtn.setTitle("Modifica", for: UIControl.State.normal)
@@ -71,6 +83,13 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
         //insert data of ad
         titleText.text = adTitle
+        
+        if self.title == "Modifica annuncio" {
+            btnImg1.setBackgroundImage(adImages[0], for: .normal)
+            btnImg2.setBackgroundImage(adImages[1], for: .normal)
+            btnImg3.setBackgroundImage(adImages[2], for: .normal)
+        }
+        
         priceText.text = adPrice
         categoryTxt.text = adCategory
         regionTxt.text = adRegion
@@ -78,7 +97,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         
     }
     
-    @IBAction func img1Pressed(_ sender: Any) {
+    @IBAction func img1Pressed(_ sender: UIButton) {
         let image = UIImagePickerController()
         
         flag = 1
@@ -93,7 +112,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
     }
     
-    @IBAction func img2Pressed(_ sender: Any) {
+    @IBAction func img2Pressed(_ sender: UIButton) {
         let image = UIImagePickerController()
         
         flag = 2
@@ -108,7 +127,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
     }
     
-    @IBAction func img3Pressed(_ sender: Any) {
+    @IBAction func img3Pressed(_ sender: UIButton) {
         let image = UIImagePickerController()
         
         flag = 3
@@ -125,22 +144,79 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        let theInfo : NSDictionary = info as NSDictionary
+        let image: UIImage = theInfo.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
             
             if flag == 1 {
-                btnImg1.setImage(image, for: .normal)
+                btnImg1.setBackgroundImage(image, for: .normal)
+                adImages.append(image)
             } else if flag == 2 {
-                btnImg2.setImage(image, for: .normal)
+                btnImg2.setBackgroundImage(image, for: .normal)
+                adImages.append(image)
             } else if flag == 3 {
-                btnImg3.setImage(image, for: .normal)
+                btnImg3.setBackgroundImage(image, for: .normal)
+                adImages.append(image)
             }
-        }
         
+        
+        for img in adImages {
+            print(img)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelInsert(_ sender: Any) {
         dismiss(animated: true, completion: reloadInputViews)
+    }
+    
+    @IBAction func previewInsert(_ sender: Any) {
+        let id = AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())
+        
+        //send ad data to next view
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+        vc?.adTitle = titleText.text!
+        vc?.adText = descriptionText.text!
+        vc?.category = categoryTxt.text!
+        vc?.price = priceText.text!
+        vc?.author = adAuthor
+        vc?.date = "17/02/2019"
+        vc?.adId = adId
+        //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
+        
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func cameraBtnPressed(_ sender: Any) {
+        if cameraBtn.titleLabel?.textColor == UIColor.white {
+            cameraBtn.titleLabel?.textColor = UIColor.black
+            cameraBtn.layer.backgroundColor = UIColor.white.cgColor
+            
+            galleryBtn.titleLabel?.textColor = UIColor.white
+            galleryBtn.layer.backgroundColor = myColor.cgColor
+        } else if cameraBtn.titleLabel?.textColor == UIColor.black {
+            cameraBtn.titleLabel?.textColor = UIColor.white
+            cameraBtn.layer.backgroundColor = myColor.cgColor
+            
+            galleryBtn.titleLabel?.textColor = UIColor.black
+            galleryBtn.layer.backgroundColor = UIColor.white.cgColor
+        }
+    }
+    
+    @IBAction func galleryBtnPressed(_ sender: Any) {
+        if galleryBtn.titleLabel?.textColor == UIColor.white {
+            galleryBtn.titleLabel?.textColor = UIColor.black
+            galleryBtn.layer.backgroundColor = UIColor.white.cgColor
+            
+            cameraBtn.titleLabel?.textColor = UIColor.white
+            cameraBtn.layer.backgroundColor = myColor.cgColor
+        } else if galleryBtn.titleLabel?.textColor == UIColor.black {
+            galleryBtn.titleLabel?.textColor = UIColor.white
+            galleryBtn.layer.backgroundColor = myColor.cgColor
+            
+            cameraBtn.titleLabel?.textColor = UIColor.black
+            cameraBtn.layer.backgroundColor = UIColor.white.cgColor
+        }
     }
     
     @IBAction func insertBtn(_ sender: Any) {
@@ -211,14 +287,14 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
                 // TOCHANGE
-                let ad : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: adImages, date: date, region : adRegion)
+                let ad : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: adImages, date: date, region : adRegion)
                 
                 AdFactory.modifyAd(ad: ad)
                 showAlert1()
             }
             else {
                 
-                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, img: ["","",""], date: "2019-02-14", region : "regione1")
+                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [UIImage(named: "")!,UIImage(named: "")!,UIImage(named: "")!], date: "2019-02-14", region : "regione1")
                 
                 AdFactory.insertAd(ad: ad)
                 UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)

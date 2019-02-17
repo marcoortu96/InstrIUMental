@@ -126,7 +126,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort [indexPath.row]
             
-            cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+            cell.adImageView?.image = ad.getImage()[0]
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
@@ -139,7 +139,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort! [indexPath.row]
             
-            cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+            cell.adImageView?.image = ad.getImage()[0]
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
@@ -152,7 +152,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort! [indexPath.row]
             
-            cell.adImageView?.image = UIImage(named: ad.getImg()[0])
+            cell.adImageView?.image = ad.getImage()[0]
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
@@ -334,7 +334,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
                 vc.adPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
                 vc.adRegion = currentAd.getRegion()
                 vc.adId = currentAd.getId()
-                vc.adImages = currentAd.getImg()
+                vc.adImages = currentAd.getImage()
+                vc.adAuthor = currentAd.getAuthor()
                 
                 //self.present(vc, animated: true, completion: nil)
                 self.navigationController?.pushViewController(vc, animated: true)
