@@ -34,6 +34,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var btnBC: NSLayoutConstraint!
     @IBOutlet weak var btnTC: NSLayoutConstraint!
     
+    var imgBtn : UIImage? = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
@@ -104,6 +106,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         let theInfo : NSDictionary = info as NSDictionary
         let img: UIImage = theInfo.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
         imageProfile.image = img
+        imgBtn = img
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -117,6 +120,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setUsername(username: usernameText.text!)
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
+        newUser.setImage(image: (imgBtn!))
         
         if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) && !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) && newUser.getEmail().contains("@") && newUser.getEmail().contains(".") {
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())

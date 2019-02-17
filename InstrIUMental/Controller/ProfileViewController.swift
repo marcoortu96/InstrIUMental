@@ -47,6 +47,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var deletePBC: NSLayoutConstraint!
     @IBOutlet weak var deletePTC: NSLayoutConstraint!
     
+    var imgBtn : UIImage = UIImage()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -155,6 +157,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let theInfo : NSDictionary = info as NSDictionary
         let img: UIImage = theInfo.object(forKey: UIImagePickerController.InfoKey.originalImage) as! UIImage
         profileImage.image = img
+        imgBtn = img
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.setImage(image: img)
+        
+        prepareMenu()
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -335,6 +341,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         usr.setURLimage(URLimage: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getURLimage())!)
         usr.setAds(ads: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds())!)
         usr.setFavorites(fvrts: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())!)
+        usr.setImage(image: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getImage())!)
         
         var isValid = true
         
@@ -465,7 +472,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     func prepareUser() {
         let usrs = UserFactory.getInstance()
         
-        profileImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
+        profileImage.image = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getImage()
         profileImage.setRounded()
         nameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
         surnameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getSurname()
@@ -479,7 +486,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let usrs = UserFactory.getInstance()
         
         userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
-        userImage.image = UIImage(named: UserFactory.getLoggedUser(usrs: usrs.getUsers()).getURLimage())
+        userImage.image = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getImage()
         userImage.setRounded()
     }
     
