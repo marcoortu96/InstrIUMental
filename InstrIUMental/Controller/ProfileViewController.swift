@@ -341,7 +341,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         usr.setURLimage(URLimage: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getURLimage())!)
         usr.setAds(ads: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds())!)
         usr.setFavorites(fvrts: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())!)
-        usr.setImage(image: imgBtn)
+        usr.setImage(image: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getImage())!)
         
         var isValid = true
         
