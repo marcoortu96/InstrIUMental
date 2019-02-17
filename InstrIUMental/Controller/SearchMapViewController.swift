@@ -7,11 +7,14 @@
 //
 
 import UIKit
-import GoogleMaps
+import MapKit
+import CoreLocation
 
-class SearchMapViewController: UIViewController {
+class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var distanceValue: UILabel!
+    var locationManager = CLLocationManager()
     
     @IBAction func distanceSlider(_ sender: UISlider) {
         distanceValue.text = String(Int(sender.value))
@@ -21,27 +24,44 @@ class SearchMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GMSServices.provideAPIKey("AIzaSyDlpx0HWAPyEzY03osumMUVZOGKm5Cc3GM")
-        // Create a GMSCameraPosition that tells the map to display the
-        // coordinates of the Palace of Sciences in Cagliari
-        let camera = GMSCameraPosition.camera(withLatitude: 39.222508, longitude: 9.114050, zoom: 10)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 12.5, y: 100, width: 350, height: 480), camera: camera)
+        mapView.showsUserLocation = true
         
-        view.addSubview(mapView)
+        if CLLocationManager.locationServicesEnabled() == true {
+            if  CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||
+                CLLocationManager.authorizationStatus() == .notDetermined {
+            
+                locationManager.requestWhenInUseAuthorization()
+            }
+                locationManager.desiredAccuracy = 1.0
+                locationManager.delegate = self
+                locationManager.startUpdatingLocation()
+            
+        }else{
+            print("Impostare su ON i servizi di localizzazione GPS")
+        }
+       
+   /*
+        let ads : AdFactory = AdFactory.getInstance()
         
         
-        
-        
-        
-        
-        // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 39.245296, longitude: 9.164942)
-        marker.title = "Le Vele Quartucciu"
-        marker.snippet = "Cagliari-Italia"
-        marker.map = mapView
+        let annotation = MKPointAnnotation()
+        let centerCoordinate = CLLocationCoordinate2D(latitude: 41, longitude:29)
+        annotation.coordinate = centerCoordinate
+        annotation.title = "Title"
+        mapView.addAnnotation(annotation)
+    
+    */
+    
+    
+    
     }
-    
-    
+   
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        self.mapView.setRegion(region, animated: true)
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Impossibile accedere alla posizione corrente")
+    }
     
 }
