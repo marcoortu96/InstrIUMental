@@ -32,7 +32,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var adImages = [UIImage()]
     var adAuthor = String()
     
-    var ad : Ad? = nil
+    var ad : [Ad] = []
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgLabel: UILabel!
@@ -62,11 +62,26 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var price : String = ""
     var alert:UIAlertController!
     
-    var newImages : [UIImage] = []
+    //var newImages : [UIImage] = []
+    
+    struct newImage {
+        var image: UIImage
+        var index: Int
+    }
+    
+    var newImages: [newImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
+        
+        if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())?.getImage() != nil {
+            var i = 0
+            for img in (AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())?.getImage())! {
+                newImages.append(newImage(image: img, index: i+1))
+                i = i+1
+            }
+        }
         
         //insert border to buttons
         btnImg1.layer.borderWidth = 1
@@ -152,16 +167,55 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             if flag == 1 {
                 btnImg1.setBackgroundImage(image, for: .normal)
+                
+             
+                if newImages.count == 3 {
+                    var i = 0
+                    for img in newImages {
+                        if img.index == 1 {
+                            newImages[i].image = image
+                        }
+                        i += 1
+                    }
+                } else {
+                    newImages.append(newImage(image: image, index: 1))
+                }
+                
+                
                 adImages.append(image)
-                newImages.append(image)
+        
             } else if flag == 2 {
                 btnImg2.setBackgroundImage(image, for: .normal)
+                
+                if newImages.count == 3 {
+                    var i = 0
+                    for img in newImages {
+                        if img.index == 2 {
+                            newImages[i].image = image
+                        }
+                        i += 1
+                    }
+                } else {
+                    newImages.append(newImage(image: image, index: 2))
+                }
+                
                 adImages.append(image)
-                newImages.append(image)
+
             } else if flag == 3 {
                 btnImg3.setBackgroundImage(image, for: .normal)
+                
+                if newImages.count == 3 {
+                    var i = 0
+                    for img in newImages {
+                        if img.index == 3 {
+                            newImages[i].image = image
+                        }
+                        i += 1
+                    }
+                } else {
+                    newImages.append(newImage(image: image, index: 3))
+                }
                 adImages.append(image)
-                newImages.append(image)
             }
         
         
@@ -172,151 +226,26 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func cancelInsert(_ sender: Any) {
-        dismiss(animated: true, completion: reloadInputViews)
+        if self.title == "Modifica annuncio" {
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+            
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = true
+            
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+            
+            _ = navigationController?.popToRootViewController(animated: true)
+            
+        } else {
+            dismiss(animated: true, completion: reloadInputViews)
+        }
         
-        if ad != nil {
-            AdFactory.removeFromLastAd(ad: ad!)
+        for item in ad {
+            AdFactory.removeFromLastAd(ad: item)
         }
     }
     
     @IBAction func previewInsert(_ sender: Any) {
         _ = AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())
-        
-        price = priceText.text!
-        isValid = true
-        
-        if titleText.text!.count < 6 {
-            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere almeno 6 caratteri")
-            titleText.layer.borderWidth = 1
-            titleText.layer.borderColor = UIColor.red.cgColor
-            titleLabel.textColor = UIColor.red
-            isValid = false
-        }
-        else {
-            titleText.layer.borderWidth = 0
-            titleLabel.textColor = UIColor.black
-        }
-        
-        if newImages.count != 3 {
-            displayAlertMessage(title: "Errore di inserimento", userMessage: "Bisogna inserire 3 immagini")
-            btnImg1.layer.borderWidth = 1
-            btnImg1.layer.borderColor = UIColor.red.cgColor
-            btnImg2.layer.borderWidth = 1
-            btnImg2.layer.borderColor = UIColor.red.cgColor
-            btnImg3.layer.borderWidth = 1
-            btnImg3.layer.borderColor = UIColor.red.cgColor
-            imgLabel.textColor = UIColor.red
-            isValid = false
-        }
-        else {
-            btnImg1.layer.borderWidth = 0
-            btnImg2.layer.borderWidth = 0
-            btnImg3.layer.borderWidth = 0
-            imgLabel.textColor = UIColor.black
-        }
-        
-        if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 || !priceText.text!.contains(".") || !priceText.text!.contains(","){
-            
-            price = priceText.text!
-            
-            if priceText.text!.components(separatedBy: ",").count == 2 {
-                let tmp = priceText.text!.components(separatedBy: ",")[1]
-                price = priceText.text!.components(separatedBy: ",")[0]
-                price = price + "." + tmp
-            }
-            
-            priceText.layer.borderWidth = 0
-            priceLabel.textColor = UIColor.black
-        }
-        else {
-            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
-            priceText.layer.borderWidth = 1
-            priceText.layer.borderColor = UIColor.red.cgColor
-            priceLabel.textColor = UIColor.red
-            isValid = false
-        }
-        
-        let temp = Float(price)
-        
-        if temp == nil {
-            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
-            priceText.layer.borderWidth = 1
-            priceText.layer.borderColor = UIColor.red.cgColor
-            priceLabel.textColor = UIColor.red
-            isValid = false
-        }
-        else {
-            priceText.layer.borderWidth = 0
-            priceLabel.textColor = UIColor.black
-        }
-        
-        if descriptionText.text!.count < 20 {
-            displayAlertMessage(title: "Errore di inserimento", userMessage: "La descrizione deve avere almeno 20 caratteri")
-            descriptionText.layer.borderWidth = 1
-            descriptionText.layer.borderColor = UIColor.red.cgColor
-            descriptionLabel.textColor = UIColor.red
-            isValid = false
-        }
-        else {
-            descriptionText.layer.borderWidth = 0
-            descriptionLabel.textColor = UIColor.black
-        }
-        if isValid {
-            //send ad data to next view
-            
-            ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0], newImages[1], newImages[2]], date: "2019-02-14", region : "regione1")
-            
-            AdFactory.insertAd(ad: ad!)
-            
-            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
-            vc?.adTitle = ad!.getTitle()
-            vc?.adText = ad!.getText()
-            vc?.category = ad!.getCategory()
-            vc?.price = String(ad!.getPrice())
-            vc?.author = ad!.getAuthor()
-            vc?.date = ad!.getDate()
-            vc?.adId = ad!.getId()
-            
-            //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
-            
-            self.navigationController?.pushViewController(vc!, animated: true)
-            // TODO: Eliminare l'ad
-        }
-    }
-    
-    @IBAction func cameraBtnPressed(_ sender: Any) {
-        if cameraBtn.titleLabel?.textColor == UIColor.white {
-            cameraBtn.titleLabel?.textColor = UIColor.black
-            cameraBtn.layer.backgroundColor = UIColor.white.cgColor
-            
-            galleryBtn.titleLabel?.textColor = UIColor.white
-            galleryBtn.layer.backgroundColor = myColor.cgColor
-        } else if cameraBtn.titleLabel?.textColor == UIColor.black {
-            cameraBtn.titleLabel?.textColor = UIColor.white
-            cameraBtn.layer.backgroundColor = myColor.cgColor
-            
-            galleryBtn.titleLabel?.textColor = UIColor.black
-            galleryBtn.layer.backgroundColor = UIColor.white.cgColor
-        }
-    }
-    
-    @IBAction func galleryBtnPressed(_ sender: Any) {
-        if galleryBtn.titleLabel?.textColor == UIColor.white {
-            galleryBtn.titleLabel?.textColor = UIColor.black
-            galleryBtn.layer.backgroundColor = UIColor.white.cgColor
-            
-            cameraBtn.titleLabel?.textColor = UIColor.white
-            cameraBtn.layer.backgroundColor = myColor.cgColor
-        } else if galleryBtn.titleLabel?.textColor == UIColor.black {
-            galleryBtn.titleLabel?.textColor = UIColor.white
-            galleryBtn.layer.backgroundColor = myColor.cgColor
-            
-            cameraBtn.titleLabel?.textColor = UIColor.black
-            cameraBtn.layer.backgroundColor = UIColor.white.cgColor
-        }
-    }
-    
-    @IBAction func insertBtn(_ sender: Any) {
         
         //get current date
         let date = Date()
@@ -404,27 +333,180 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             descriptionText.layer.borderWidth = 0
             descriptionLabel.textColor = UIColor.black
         }
+        if isValid {
+            //send ad data to next view
+            
+            ad.append(Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!))
+            
+            AdFactory.insertAd(ad: ad[ad.count-1])
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            vc?.adTitle = ad[ad.count-1].getTitle()
+            vc?.adText = ad[ad.count-1].getText()
+            vc?.category = ad[ad.count-1].getCategory()
+            vc?.price = String(ad[ad.count-1].getPrice())
+            vc?.author = ad[ad.count-1].getAuthor()
+            vc?.date = ad[ad.count-1].getDate()
+            vc?.adId = ad[ad.count-1].getId()
+            
+            //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+            // TODO: Eliminare l'ad
+        }
+    }
+    
+    @IBAction func cameraBtnPressed(_ sender: Any) {
+        if cameraBtn.titleLabel?.textColor == UIColor.white {
+            cameraBtn.titleLabel?.textColor = UIColor.black
+            cameraBtn.layer.backgroundColor = UIColor.white.cgColor
+            
+            galleryBtn.titleLabel?.textColor = UIColor.white
+            galleryBtn.layer.backgroundColor = myColor.cgColor
+        } else if cameraBtn.titleLabel?.textColor == UIColor.black {
+            cameraBtn.titleLabel?.textColor = UIColor.white
+            cameraBtn.layer.backgroundColor = myColor.cgColor
+            
+            galleryBtn.titleLabel?.textColor = UIColor.black
+            galleryBtn.layer.backgroundColor = UIColor.white.cgColor
+        }
+    }
+    
+    @IBAction func galleryBtnPressed(_ sender: Any) {
+        if galleryBtn.titleLabel?.textColor == UIColor.white {
+            galleryBtn.titleLabel?.textColor = UIColor.black
+            galleryBtn.layer.backgroundColor = UIColor.white.cgColor
+            
+            cameraBtn.titleLabel?.textColor = UIColor.white
+            cameraBtn.layer.backgroundColor = myColor.cgColor
+        } else if galleryBtn.titleLabel?.textColor == UIColor.black {
+            galleryBtn.titleLabel?.textColor = UIColor.white
+            galleryBtn.layer.backgroundColor = myColor.cgColor
+            
+            cameraBtn.titleLabel?.textColor = UIColor.black
+            cameraBtn.layer.backgroundColor = UIColor.white.cgColor
+        }
+    }
+    
+    @IBAction func insertBtn(_ sender: Any) {
+        
+        //get current date
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        
+        price = priceText.text!
+        isValid = true
+        
+        if titleText.text!.count < 6 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere almeno 6 caratteri")
+            titleText.layer.borderWidth = 1
+            titleText.layer.borderColor = UIColor.red.cgColor
+            titleLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            titleText.layer.borderWidth = 0
+            titleLabel.textColor = UIColor.black
+        }
+        
+            if newImages.count != 3 {
+                 displayAlertMessage(title: "Errore di inserimento", userMessage: "Bisogna inserire 3 immagini")
+                 btnImg1.layer.borderWidth = 1
+                 btnImg1.layer.borderColor = UIColor.red.cgColor
+                 btnImg2.layer.borderWidth = 1
+                 btnImg2.layer.borderColor = UIColor.red.cgColor
+                 btnImg3.layer.borderWidth = 1
+                 btnImg3.layer.borderColor = UIColor.red.cgColor
+                 imgLabel.textColor = UIColor.red
+                 isValid = false
+            
+             }
+             else {
+                 btnImg1.layer.borderWidth = 0
+                 btnImg2.layer.borderWidth = 0
+                 btnImg3.layer.borderWidth = 0
+                 imgLabel.textColor = UIColor.black
+             }
+      
+        
+        if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 || !priceText.text!.contains(".") || !priceText.text!.contains(","){
+            
+            price = priceText.text!
+            
+            if priceText.text!.components(separatedBy: ",").count == 2 {
+                let tmp = priceText.text!.components(separatedBy: ",")[1]
+                price = priceText.text!.components(separatedBy: ",")[0]
+                price = price + "." + tmp
+            }
+            
+            priceText.layer.borderWidth = 0
+            priceLabel.textColor = UIColor.black
+        }
+        else {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
+            priceText.layer.borderWidth = 1
+            priceText.layer.borderColor = UIColor.red.cgColor
+            priceLabel.textColor = UIColor.red
+            isValid = false
+        }
+        
+        let temp = Float(price)
+        
+        if temp == nil {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
+            priceText.layer.borderWidth = 1
+            priceText.layer.borderColor = UIColor.red.cgColor
+            priceLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            priceText.layer.borderWidth = 0
+            priceLabel.textColor = UIColor.black
+        }
+        
+        if descriptionText.text!.count < 20 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "La descrizione deve avere almeno 20 caratteri")
+            descriptionText.layer.borderWidth = 1
+            descriptionText.layer.borderColor = UIColor.red.cgColor
+            descriptionLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            descriptionText.layer.borderWidth = 0
+            descriptionLabel.textColor = UIColor.black
+        }
         
         if isValid {
             
             if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
-                // TOCHANGE
-                let ad : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: adImages, date: result, region : adRegion)
                 
-                AdFactory.modifyAd(ad: ad)
+                let newAd : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : adRegion)
+                
+                AdFactory.modifyAd(ad: newAd)
+                
+                for item in ad {
+                    AdFactory.removeFromLastAd(ad: item)
+                }
+                
                 showAlert1()
                 
                 Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
-                    //self.dismiss(animated: true, completion: self.reloadInputViews)
                     _ = self.navigationController?.popToRootViewController(animated: true)
                 }
             }
             else {
                 
-                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0], newImages[1], newImages[2]], date: result, region : regionTxt.text!)
+                let newAd : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!)
                 
-                AdFactory.insertAd(ad: ad)
-                UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)
+                AdFactory.insertAd(ad: newAd)
+                UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: newAd)
+                
+                for item in ad {
+                    AdFactory.removeFromLastAd(ad: item)
+                }
                 
                 showAlert()
                 
