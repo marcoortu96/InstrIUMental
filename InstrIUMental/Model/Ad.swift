@@ -25,6 +25,8 @@ public class Ad {
     private var date : String!
     private var region : String!
     private static var currentId = 8
+    private var latitude : Double?
+    private var longitude : Double?
     
     //init function
     
@@ -38,6 +40,21 @@ public class Ad {
         self.image = image
         self.date = date
         self.region = region
+    }
+    
+    init(id : Int, title : String, text : String, price : Float, category : String, author : String, image : [UIImage], date: String, region : String, latitude : Double?, longitude : Double?){
+        self.id = id
+        self.title = title
+        self.text = text
+        self.price = price
+        self.category = category
+        self.author = author
+        self.image = image
+        self.date = date
+        self.region = region
+        self.latitude = latitude
+        self.longitude = longitude
+        
     }
     
     // get functions
@@ -77,6 +94,15 @@ public class Ad {
     func getRegion() -> String {
         return self.region
     }
+    
+    func getLatitude() -> Double {
+        return self.latitude!
+    }
+    
+    func getLongitude() -> Double {
+        return self.longitude!
+    }
+    
     
     // set functions
     
@@ -120,5 +146,14 @@ public class Ad {
         Ad.currentId = Ad.currentId + 1
         return Ad.currentId
     }
+    
+    func setLatitude(latitude: Double) -> Void {
+         self.latitude = latitude
+    }
+    
+    func setLongitude(longitude: Double) -> Void {
+        self.longitude = longitude
+    }
+    
 }
 

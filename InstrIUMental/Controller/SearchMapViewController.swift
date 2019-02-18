@@ -13,14 +13,13 @@ import CoreLocation
 class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var distanceValue: UILabel!
     var locationManager = CLLocationManager()
+    let ads : [Ad] = AdFactory.getInstance().getAds()
+    var annotations = [MKAnnotation]()
+    
     
     @IBAction func userPosition(_ sender: UIBarButtonItem) {
         locationManager.startUpdatingLocation()
-    }
-    @IBAction func distanceSlider(_ sender: UISlider) {
-        distanceValue.text = String(Int(sender.value))
     }
     
     
@@ -44,18 +43,7 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
             print("Impostare su ON i servizi di localizzazione GPS")
         }
         
-        /*
-         let ads : AdFactory = AdFactory.getInstance()
-         
-         
-         let annotation = MKPointAnnotation()
-         let centerCoordinate = CLLocationCoordinate2D(latitude: 41, longitude:29)
-         annotation.coordinate = centerCoordinate
-         annotation.title = "Title"
-         mapView.addAnnotation(annotation)
-         
-         */
-        
+        addAdsToMap()
         
         
     }
@@ -70,8 +58,20 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    
-    
+    func addAdsToMap() {
+        
+        for l in ads  {
+            let ad = l
+            let annotation = MKPointAnnotation()
+            let centerCoordinate = CLLocationCoordinate2D(latitude : ad.getLatitude(), longitude : ad.getLongitude())
+            annotation.coordinate = centerCoordinate
+            annotation.title = ad.getTitle()
+            annotation.subtitle = ad.getCategory()
+            annotations.append(annotation)
+        }
+        mapView.addAnnotations(annotations)
+    }
+
     
 }
 

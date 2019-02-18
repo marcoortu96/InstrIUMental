@@ -10,11 +10,26 @@ import UIKit
 
 class MapFilterViewController: UIViewController {
 
+
+    @IBOutlet weak var distanceValue: UILabel!
+    @IBOutlet weak var priceValue: UILabel!
+    @IBAction func distanceSlider(_ sender: UISlider) {
+         distanceValue.text = String(Int(sender.value))
+    }
+    
+    @IBAction func priceSlider(_ sender: UISlider) {
+         priceValue.text = String(Int(sender.value))
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
     
 
     /*
