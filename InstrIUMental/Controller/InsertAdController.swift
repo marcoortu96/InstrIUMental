@@ -48,7 +48,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     @IBOutlet weak var cameraBtn: UIButton!
     @IBOutlet weak var galleryBtn: UIButton!
-    let myColor = UIColor(displayP3Red: 213, green: 174, blue: 72, alpha: 1)
+    let myColor = UIColor(red: 213, green: 174, blue: 72, alpha: 1)
     
     @IBOutlet weak var titleText: DesignableTextField!
     @IBOutlet weak var priceText: DesignableTextField!
@@ -72,8 +72,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         btnImg2.layer.borderWidth = 1
         btnImg3.layer.borderWidth = 1
         
-        cameraBtn.layer.cornerRadius = 15
-        galleryBtn.layer.cornerRadius = 15
+        cameraBtn.layer.cornerRadius = 10
+        galleryBtn.layer.cornerRadius = 10
 
         
         if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
@@ -171,10 +171,29 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func cancelInsert(_ sender: Any) {
-        dismiss(animated: true, completion: reloadInputViews)
+        if self.title == "Modifica annuncio" {
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+            
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = true
+            
+            UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+            
+            _ = navigationController?.popToRootViewController(animated: true)
+            
+        } else {
+            dismiss(animated: true, completion: reloadInputViews)
+        }
     }
     
     @IBAction func previewInsert(_ sender: Any) {
+        
+        //get current date
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
+        
         let id = AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())
         
         //send ad data to next view
@@ -184,9 +203,9 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         vc?.category = categoryTxt.text!
         vc?.price = priceText.text!
         vc?.author = adAuthor
-        vc?.date = "17/02/2019"
+        vc?.date = result
         vc?.adId = adId
-        //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
+        id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
         
         
         self.navigationController?.pushViewController(vc!, animated: true)
@@ -225,6 +244,13 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     @IBAction func insertBtn(_ sender: Any) {
+        
+        //get current date
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy-MM-dd"
+        let result = formatter.string(from: date)
         
         price = priceText.text!
         isValid = true
@@ -292,19 +318,27 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
                 // TOCHANGE
-                let ad : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: adImages, date: date, region : adRegion)
+                let ad : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: adImages, date: result, region : adRegion)
                 
                 AdFactory.modifyAd(ad: ad)
                 showAlert1()
+                
+                Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+                    self.dismiss(animated: true, completion: self.reloadInputViews)
+                }
             }
             else {
                 
-                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0], newImages[1], newImages[2]], date: "2019-02-14", region : "regione1")
+                let ad : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0], newImages[1], newImages[2]], date: result, region : regionTxt.text!)
                 
                 AdFactory.insertAd(ad: ad)
                 UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: ad)
                 
                 showAlert()
+                
+                Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+                    self.dismiss(animated: true, completion: self.reloadInputViews)
+                }
             }
         }
     }
