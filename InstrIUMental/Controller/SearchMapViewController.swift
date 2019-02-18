@@ -16,6 +16,9 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var distanceValue: UILabel!
     var locationManager = CLLocationManager()
     
+    @IBAction func userPosition(_ sender: UIBarButtonItem) {
+        locationManager.startUpdatingLocation()
+    }
     @IBAction func distanceSlider(_ sender: UISlider) {
         distanceValue.text = String(Int(sender.value))
     }
@@ -29,39 +32,46 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() == true {
             if  CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||
                 CLLocationManager.authorizationStatus() == .notDetermined {
-            
+                
                 locationManager.requestWhenInUseAuthorization()
             }
-                locationManager.desiredAccuracy = 1.0
-                locationManager.delegate = self
-                locationManager.startUpdatingLocation()
+            locationManager.desiredAccuracy = 1.0
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+            
             
         }else{
             print("Impostare su ON i servizi di localizzazione GPS")
         }
-       
-   /*
-        let ads : AdFactory = AdFactory.getInstance()
+        
+        /*
+         let ads : AdFactory = AdFactory.getInstance()
+         
+         
+         let annotation = MKPointAnnotation()
+         let centerCoordinate = CLLocationCoordinate2D(latitude: 41, longitude:29)
+         annotation.coordinate = centerCoordinate
+         annotation.title = "Title"
+         mapView.addAnnotation(annotation)
+         
+         */
         
         
-        let annotation = MKPointAnnotation()
-        let centerCoordinate = CLLocationCoordinate2D(latitude: 41, longitude:29)
-        annotation.coordinate = centerCoordinate
-        annotation.title = "Title"
-        mapView.addAnnotation(annotation)
-    
-    */
-    
-    
-    
+        
     }
-   
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         self.mapView.setRegion(region, animated: true)
+        locationManager.stopUpdatingLocation()
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Impossibile accedere alla posizione corrente")
     }
     
+    
+    
+    
+    
 }
+
