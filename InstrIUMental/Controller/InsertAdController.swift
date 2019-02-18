@@ -324,7 +324,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                 showAlert1()
                 
                 Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
-                    self.dismiss(animated: true, completion: self.reloadInputViews)
+                    //self.dismiss(animated: true, completion: self.reloadInputViews)
+                    _ = self.navigationController?.popToRootViewController(animated: true)
                 }
             }
             else {
