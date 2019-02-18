@@ -215,7 +215,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                 } else {
                     newImages.append(newImage(image: image, index: 3))
                 }
-                adImages.append(image)
+                adImages.append(image) 
             }
         
         
