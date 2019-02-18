@@ -49,7 +49,9 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     @IBOutlet weak var cameraBtn: UIButton!
     @IBOutlet weak var galleryBtn: UIButton!
-    let myColor = UIColor(red: 213, green: 174, blue: 72, alpha: 1)
+    var myColor = UIColor(displayP3Red: 0.835, green: 0.682, blue: 0.284, alpha: 1.0)
+    var flagColor = true
+    var flagButton = true
     
     @IBOutlet weak var titleText: DesignableTextField!
     @IBOutlet weak var priceText: DesignableTextField!
@@ -61,8 +63,6 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var isValid = true
     var price : String = ""
     var alert:UIAlertController!
-    
-    //var newImages : [UIImage] = []
     
     struct newImage {
         var image: UIImage
@@ -119,45 +119,99 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         flag = 1
         
         let image = UIImagePickerController()
-        
         image.delegate = self
         
-        image.sourceType = .photoLibrary
-        image.allowsEditing = false
+        let actionSheet = UIAlertController(title: "Scegli un opzione", message: "", preferredStyle: .actionSheet)
         
-        self.present(image, animated: true) {
+        actionSheet.addAction(UIAlertAction(title: "Fotocamera", style: .default, handler: { (action: UIAlertAction) in
             
-        }
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                image.sourceType = .camera
+                image.allowsEditing = false
+                
+                self.present(image, animated: true)
+            } else {
+                print("Non hai accesso alla fotocamera")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Galleria", style: .default, handler: { (action: UIAlertAction) in
+            image.sourceType = .photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func img2Pressed(_ sender: UIButton) {
         flag = 2
         
         let image = UIImagePickerController()
-        
         image.delegate = self
         
-        image.sourceType = .photoLibrary
-        image.allowsEditing = false
+        let actionSheet = UIAlertController(title: "Scegli un opzione", message: "", preferredStyle: .actionSheet)
         
-        self.present(image, animated: true) {
+        actionSheet.addAction(UIAlertAction(title: "Fotocamera", style: .default, handler: { (action: UIAlertAction) in
             
-        }
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                image.sourceType = .camera
+                image.allowsEditing = false
+                
+                self.present(image, animated: true)
+            } else {
+                print("Non hai accesso alla fotocamera")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Galleria", style: .default, handler: { (action: UIAlertAction) in
+            image.sourceType = .photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func img3Pressed(_ sender: UIButton) {
         flag = 3
         
         let image = UIImagePickerController()
-        
         image.delegate = self
         
-        image.sourceType = .photoLibrary
-        image.allowsEditing = false
+        let actionSheet = UIAlertController(title: "Scegli un opzione", message: "", preferredStyle: .actionSheet)
         
-        self.present(image, animated: true) {
+        actionSheet.addAction(UIAlertAction(title: "Fotocamera", style: .default, handler: { (action: UIAlertAction) in
             
-        }
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                image.sourceType = .camera
+                image.allowsEditing = false
+                
+                self.present(image, animated: true)
+            } else {
+                print("Non hai accesso alla fotocamera")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Galleria", style: .default, handler: { (action: UIAlertAction) in
+            image.sourceType = .photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -215,7 +269,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                 } else {
                     newImages.append(newImage(image: image, index: 3))
                 }
-                adImages.append(image)  
+                adImages.append(image)
             }
         
         
@@ -335,7 +389,6 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         if isValid {
             //send ad data to next view
-            
             ad.append(Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!))
             
             AdFactory.insertAd(ad: ad[ad.count-1])
@@ -349,42 +402,53 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             vc?.date = ad[ad.count-1].getDate()
             vc?.adId = ad[ad.count-1].getId()
             
-            //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
-            
             self.navigationController?.pushViewController(vc!, animated: true)
-            // TODO: Eliminare l'ad
         }
     }
     
     @IBAction func cameraBtnPressed(_ sender: Any) {
-        if cameraBtn.titleLabel?.textColor == UIColor.white {
-            cameraBtn.titleLabel?.textColor = UIColor.black
+        flagButton = true
+        
+        if flagColor == true {
+            cameraBtn.titleLabel!.textColor = UIColor.black
             cameraBtn.layer.backgroundColor = UIColor.white.cgColor
             
-            galleryBtn.titleLabel?.textColor = UIColor.white
+            galleryBtn.titleLabel!.textColor = UIColor.black
             galleryBtn.layer.backgroundColor = myColor.cgColor
-        } else if cameraBtn.titleLabel?.textColor == UIColor.black {
-            cameraBtn.titleLabel?.textColor = UIColor.white
+            
+            flagColor = false
+
+        } else {
+            cameraBtn.titleLabel!.textColor = UIColor.black
             cameraBtn.layer.backgroundColor = myColor.cgColor
             
-            galleryBtn.titleLabel?.textColor = UIColor.black
+            galleryBtn.titleLabel!.textColor = UIColor.black
             galleryBtn.layer.backgroundColor = UIColor.white.cgColor
+            
+            flagColor = true
         }
     }
     
     @IBAction func galleryBtnPressed(_ sender: Any) {
-        if galleryBtn.titleLabel?.textColor == UIColor.white {
-            galleryBtn.titleLabel?.textColor = UIColor.black
+        flagButton = false
+        
+        if flagColor == false {
+            galleryBtn.titleLabel!.textColor = UIColor.black
             galleryBtn.layer.backgroundColor = UIColor.white.cgColor
             
-            cameraBtn.titleLabel?.textColor = UIColor.white
+            cameraBtn.titleLabel!.textColor = UIColor.black
             cameraBtn.layer.backgroundColor = myColor.cgColor
-        } else if galleryBtn.titleLabel?.textColor == UIColor.black {
-            galleryBtn.titleLabel?.textColor = UIColor.white
+            
+            flagColor = true
+
+        } else {
+            galleryBtn.titleLabel!.textColor = UIColor.white
             galleryBtn.layer.backgroundColor = myColor.cgColor
             
-            cameraBtn.titleLabel?.textColor = UIColor.black
+            cameraBtn.titleLabel!.textColor = UIColor.black
             cameraBtn.layer.backgroundColor = UIColor.white.cgColor
+            
+            flagColor = false
         }
     }
     
@@ -483,7 +547,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
                 
-                let newAd : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: adCategory, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : adRegion)
+                let newAd : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!)
                 
                 AdFactory.modifyAd(ad: newAd)
                 
