@@ -473,6 +473,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let usrs = UserFactory.getInstance()
         
         profileImage.image = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getImage()
+        profileImage.contentMode = .scaleAspectFill
+        profileImage.contentScaleFactor = 2.5
         profileImage.setRounded()
         nameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
         surnameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getSurname()
@@ -487,6 +489,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         userLogged.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getName()
         userImage.image = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getImage()
+        userImage.contentMode = .scaleAspectFill
+        userImage.contentScaleFactor = 2.5
         userImage.setRounded()
     }
     
