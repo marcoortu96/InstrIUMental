@@ -8,14 +8,19 @@
 
 import UIKit
 
-class SearchAdViewController: UIViewController {
-
-    @IBOutlet weak var priceValue: UILabel!
+class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
-    @IBAction func priceSlider(_ sender: UISlider) {
-        priceValue.text = String(Int(sender.value))
-    }
- 
+    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna",
+                   "Friuli-Venezia-Giulia","Lazio","Liguria","Lombardia","Marche",
+                   "Molise","Piemonte","Puglia","Sardegna", "Sicilia","Toscana",
+                   "Trentino-Alto Adige","Umbria","Valle d’Aosta","Veneto"]
+    
+    //Array for category picker
+    let categories = ["Bassi","Batterie","Chitarre","Fiati"]
+    
+    var currentTextField = DesignableTextField()
+    var pickerView = UIPickerView()
+    
     var showMenu = false
     
     @IBOutlet weak var containerView: UIView!
@@ -26,6 +31,10 @@ class SearchAdViewController: UIViewController {
     //username of the logged user
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userLogged: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
+    
+    @IBOutlet weak var categoryTxt: DesignableTextField!
+    @IBOutlet weak var regionTxt: DesignableTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +45,11 @@ class SearchAdViewController: UIViewController {
         
         closeMenu.addGestureRecognizer(tap)
         closeMenu.isHidden = true
+        
+        confirmButton.layer.cornerRadius = 15
     }
+    
+    
     
     //tap to close the side menu
     @objc func handleTap (sender: UITapGestureRecognizer) {
@@ -108,6 +121,58 @@ class SearchAdViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var priceValue: UILabel!
+    
+    @IBAction func priceSlider(_ sender: UISlider) {
+        priceValue.text = String(Int(sender.value))
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if currentTextField == regionTxt {
+            return regions.count
+        } else if currentTextField == categoryTxt {
+            return categories.count
+        } else {
+            return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if currentTextField == regionTxt {
+            return regions[row]
+        } else if currentTextField == categoryTxt {
+            return categories[row]
+        } else {
+            return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if currentTextField == regionTxt {
+            regionTxt.text = regions[row]
+            self.view.endEditing(true)
+        } else if currentTextField == categoryTxt {
+            categoryTxt.text = categories[row]
+            self.view.endEditing(true)
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        currentTextField = textField as! DesignableTextField
+        
+        if currentTextField == regionTxt {
+            currentTextField.inputView = pickerView
+        } else if currentTextField == categoryTxt {
+            currentTextField.inputView = pickerView
+        }
+    }
+    
     @IBAction func logoutBtn(_ sender: Any) {
         UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
     }
@@ -135,15 +200,15 @@ class SearchAdViewController: UIViewController {
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = true
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

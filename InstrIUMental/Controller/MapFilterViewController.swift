@@ -8,38 +8,58 @@
 
 import UIKit
 
-class MapFilterViewController: UIViewController {
-
-
+class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     @IBOutlet weak var distanceValue: UILabel!
     @IBOutlet weak var priceValue: UILabel!
-    @IBAction func distanceSlider(_ sender: UISlider) {
-         distanceValue.text = String(Int(sender.value))
-    }
     
-    @IBAction func priceSlider(_ sender: UISlider) {
-         priceValue.text = String(Int(sender.value))
-    }
+    @IBOutlet weak var confirmButton: UIButton!
     
+    @IBOutlet weak var categoryTextfield: UITextField!
+    let picker = UIPickerView()
     
+    let myPickerData = [String](arrayLiteral: "Bassi", "Batterie", "Chitarre", "Fiati")
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.hideKeyboardWhenTappedAround()
+        
+        confirmButton.layer.cornerRadius = 15
+        categoryTextfield.inputView = picker
+        
+        picker.delegate = self
+        
+    }
+    
+    @IBAction func distanceSlider(_ sender: UISlider) {
+        distanceValue.text = String(Int(sender.value))
+    }
+    
+    @IBAction func priceSlider(_ sender: UISlider) {
+        priceValue.text = String(Int(sender.value))
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return myPickerData.count
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return myPickerData[row]
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        categoryTextfield.text = myPickerData[row]
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
 }

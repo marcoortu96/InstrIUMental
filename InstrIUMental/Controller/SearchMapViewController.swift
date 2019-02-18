@@ -17,16 +17,18 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate {
     let ads : [Ad] = AdFactory.getInstance().getAds()
     var annotations = [MKAnnotation]()
     
-    
-    @IBAction func userPosition(_ sender: UIBarButtonItem) {
+    @IBOutlet weak var myPositionButton: UIButton!
+    @IBAction func positionMe(_ sender: Any) {
         locationManager.startUpdatingLocation()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        myPositionButton.layer.cornerRadius = 20
+        
         mapView.showsUserLocation = true
+        mapView.showsCompass = true
         
         if CLLocationManager.locationServicesEnabled() == true {
             if  CLLocationManager.authorizationStatus() == .restricted || CLLocationManager.authorizationStatus() == .denied ||
