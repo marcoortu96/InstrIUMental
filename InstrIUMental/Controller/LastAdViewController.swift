@@ -132,6 +132,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
             cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adRegionLabel.text = ad.getRegion()
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().sorted() {$0.getDate() > $1.getDate()}
@@ -145,6 +146,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
             cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adRegionLabel.text = ad.getRegion()
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
@@ -158,6 +160,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = ad.getDate()
             cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adRegionLabel.text = ad.getRegion()
             
         }
         
@@ -180,6 +183,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
+            vc?.region = currentAd.getRegion()
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -196,6 +200,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
+            vc?.region = currentAd.getRegion()
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -213,6 +218,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
+            vc?.region = currentAd.getRegion()
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -229,6 +235,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             vc?.author = currentAd.getAuthor()
             vc?.date = currentAd.getDate()
             vc?.adId = currentAd.getId()
+            vc?.region = currentAd.getRegion()
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }

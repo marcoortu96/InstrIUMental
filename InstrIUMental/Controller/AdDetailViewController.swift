@@ -18,6 +18,7 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     var author = String()
     var date = String()
     var adId = Int()
+    var region = String()
     
     let factory = AdFactory.getInstance()
     let factoryUser = UserFactory.getInstance()
@@ -35,11 +36,13 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var regionLabel: UILabel!
     
     //outlet for next and previous image button
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prevBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var sendEmailBtn: DesignableButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +53,11 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
         userNameLabel.text = author
         dateLabel.text = date
         priceLabel.text = price
+        regionLabel.text = region
         
         if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername() == userNameLabel.text {
             favoriteBtn.isHidden = true
+            sendEmailBtn.isHidden = true
         }
         
         if (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.isFavoriteAdPresent(adId: adId))! {

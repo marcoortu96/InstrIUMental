@@ -15,6 +15,7 @@ class AdsTableViewCell: UITableViewCell {
     @IBOutlet weak var nameUserLabel: UILabel!
     @IBOutlet weak var adDateLabel: UILabel!
     @IBOutlet weak var adPriceLabel: UILabel!
+    @IBOutlet weak var adRegionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
