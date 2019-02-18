@@ -32,6 +32,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var adImages = [UIImage()]
     var adAuthor = String()
     
+    var ad : Ad? = nil
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgLabel: UILabel!
@@ -172,24 +173,115 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     @IBAction func cancelInsert(_ sender: Any) {
         dismiss(animated: true, completion: reloadInputViews)
+        
+        if ad != nil {
+            AdFactory.removeFromLastAd(ad: ad!)
+        }
     }
     
     @IBAction func previewInsert(_ sender: Any) {
-        let id = AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())
+        _ = AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds())
         
-        //send ad data to next view
-        let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
-        vc?.adTitle = titleText.text!
-        vc?.adText = descriptionText.text!
-        vc?.category = categoryTxt.text!
-        vc?.price = priceText.text!
-        vc?.author = adAuthor
-        vc?.date = "17/02/2019"
-        vc?.adId = adId
-        //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
+        price = priceText.text!
+        isValid = true
         
+        if titleText.text!.count < 6 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il titolo deve avere almeno 6 caratteri")
+            titleText.layer.borderWidth = 1
+            titleText.layer.borderColor = UIColor.red.cgColor
+            titleLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            titleText.layer.borderWidth = 0
+            titleLabel.textColor = UIColor.black
+        }
         
-        self.navigationController?.pushViewController(vc!, animated: true)
+        if newImages.count != 3 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Bisogna inserire 3 immagini")
+            btnImg1.layer.borderWidth = 1
+            btnImg1.layer.borderColor = UIColor.red.cgColor
+            btnImg2.layer.borderWidth = 1
+            btnImg2.layer.borderColor = UIColor.red.cgColor
+            btnImg3.layer.borderWidth = 1
+            btnImg3.layer.borderColor = UIColor.red.cgColor
+            imgLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            btnImg1.layer.borderWidth = 0
+            btnImg2.layer.borderWidth = 0
+            btnImg3.layer.borderWidth = 0
+            imgLabel.textColor = UIColor.black
+        }
+        
+        if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 || !priceText.text!.contains(".") || !priceText.text!.contains(","){
+            
+            price = priceText.text!
+            
+            if priceText.text!.components(separatedBy: ",").count == 2 {
+                let tmp = priceText.text!.components(separatedBy: ",")[1]
+                price = priceText.text!.components(separatedBy: ",")[0]
+                price = price + "." + tmp
+            }
+            
+            priceText.layer.borderWidth = 0
+            priceLabel.textColor = UIColor.black
+        }
+        else {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
+            priceText.layer.borderWidth = 1
+            priceText.layer.borderColor = UIColor.red.cgColor
+            priceLabel.textColor = UIColor.red
+            isValid = false
+        }
+        
+        let temp = Float(price)
+        
+        if temp == nil {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Il prezzo inserito non è valido")
+            priceText.layer.borderWidth = 1
+            priceText.layer.borderColor = UIColor.red.cgColor
+            priceLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            priceText.layer.borderWidth = 0
+            priceLabel.textColor = UIColor.black
+        }
+        
+        if descriptionText.text!.count < 20 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "La descrizione deve avere almeno 20 caratteri")
+            descriptionText.layer.borderWidth = 1
+            descriptionText.layer.borderColor = UIColor.red.cgColor
+            descriptionLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            descriptionText.layer.borderWidth = 0
+            descriptionLabel.textColor = UIColor.black
+        }
+        if isValid {
+            //send ad data to next view
+            
+            ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: "categoria1", author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0], newImages[1], newImages[2]], date: "2019-02-14", region : "regione1")
+            
+            AdFactory.insertAd(ad: ad!)
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            vc?.adTitle = ad!.getTitle()
+            vc?.adText = ad!.getText()
+            vc?.category = ad!.getCategory()
+            vc?.price = String(ad!.getPrice())
+            vc?.author = ad!.getAuthor()
+            vc?.date = ad!.getDate()
+            vc?.adId = ad!.getId()
+            
+            //id?.setImage(image: [adImages[0], adImages[1], adImages[2]])
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+            // TODO: Eliminare l'ad
+        }
     }
     
     @IBAction func cameraBtnPressed(_ sender: Any) {
@@ -239,6 +331,24 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         else {
             titleText.layer.borderWidth = 0
             titleLabel.textColor = UIColor.black
+        }
+        
+        if newImages.count != 3 {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Bisogna inserire 3 immagini")
+            btnImg1.layer.borderWidth = 1
+            btnImg1.layer.borderColor = UIColor.red.cgColor
+            btnImg2.layer.borderWidth = 1
+            btnImg2.layer.borderColor = UIColor.red.cgColor
+            btnImg3.layer.borderWidth = 1
+            btnImg3.layer.borderColor = UIColor.red.cgColor
+            imgLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            btnImg1.layer.borderWidth = 0
+            btnImg2.layer.borderWidth = 0
+            btnImg3.layer.borderWidth = 0
+            imgLabel.textColor = UIColor.black
         }
         
         if priceText.text!.components(separatedBy: ".").count == 2 || priceText.text!.components(separatedBy: ",").count == 2 || !priceText.text!.contains(".") || !priceText.text!.contains(","){
