@@ -154,7 +154,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if stringRegion != "" {
-                //TODO
+                adSort = AdFactory.getAdsByRegion(region: stringRegion, adSet: adSort)
             }
             
             let min = Float(minPrice)
@@ -220,7 +220,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if stringRegion != "" {
-                //TODO
+                adSort = AdFactory.getAdsByRegion(region: stringRegion, adSet: adSort)
             }
             
             let min = Float(minPrice)
@@ -332,7 +332,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if stringRegion != "" {
-                //TODO
+                adSort = AdFactory.getAdsByRegion(region: stringRegion, adSet: adSort)
             }
             
             let min = Float(minPrice)
@@ -528,7 +528,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if stringRegion != "" {
-                //TODO
+                adSort = AdFactory.getAdsByRegion(region: stringRegion, adSet: adSort)
             }
             
             let min = Float(minPrice)
