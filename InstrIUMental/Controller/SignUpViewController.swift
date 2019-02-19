@@ -40,6 +40,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround() //func for hide keyboard
         imageProfile.setRounded() //rounded image
+        imageProfile.contentMode = .scaleAspectFill
+        imageProfile.clipsToBounds = true
         
         //fix textfield position when open keyboard
         //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)

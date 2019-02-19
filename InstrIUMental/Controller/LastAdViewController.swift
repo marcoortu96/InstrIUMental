@@ -143,6 +143,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let ad: Ad = adSort [indexPath.row]
             
             cell.adImageView?.image = ad.getImage()[0]
+            cell.adImageView.contentMode = .scaleAspectFill
+            cell.adImageView.clipsToBounds = true
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
@@ -157,6 +159,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let ad: Ad = adSort! [indexPath.row]
             
             cell.adImageView?.image = ad.getImage()[0]
+            cell.adImageView.contentMode = .scaleAspectFill
+            cell.adImageView.clipsToBounds = true
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
@@ -172,6 +176,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let ad: Ad = adSort [indexPath.row]
             
             cell.adImageView?.image = ad.getImage()[0]
+            cell.adImageView.contentMode = .scaleAspectFill
+            cell.adImageView.clipsToBounds = true
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
@@ -187,6 +193,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let ad: Ad = adSort! [indexPath.row]
             
             cell.adImageView?.image = ad.getImage()[0]
+            cell.adImageView.contentMode = .scaleAspectFill
+            cell.adImageView.clipsToBounds = true
             cell.adTitleLabel?.text = ad.getTitle()
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
