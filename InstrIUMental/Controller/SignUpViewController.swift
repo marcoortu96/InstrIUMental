@@ -144,8 +144,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setImage(image: (imgBtn!))
         
         if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) && !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) && newUser.getEmail().contains("@") && newUser.getEmail().contains(".") {
+            showAlert()
+            
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
-            self.performSegue(withIdentifier: "seageFromAtoB", sender: self)
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
+                self.performSegue(withIdentifier: "seageFromAtoB", sender: self)
+            }
         }
         else {
             if newUser.getName().count < 2 {
@@ -241,6 +245,15 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         myAlert.addAction(okAction)
         
         self.present(myAlert, animated : true, completion : nil)
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Registrazione avvenuta con successo", message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        alert.view.backgroundColor = UIColor.green
+        alert.view.layer.borderWidth = 0
+        alert.view.layer.cornerRadius = 15
     }
     
     /*

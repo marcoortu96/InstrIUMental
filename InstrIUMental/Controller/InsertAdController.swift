@@ -289,7 +289,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
             
-            _ = navigationController?.popToRootViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
             
         } else {
             dismiss(animated: true, completion: reloadInputViews)
@@ -376,6 +376,30 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         else {
             priceText.layer.borderWidth = 0
             priceLabel.textColor = UIColor.black
+        }
+        
+        if categoryTxt.text == "" {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Selezionare una categoria")
+            categoryTxt.layer.borderWidth = 1
+            categoryTxt.layer.borderColor = UIColor.red.cgColor
+            categoryLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            categoryTxt.layer.borderWidth = 0
+            categoryLabel.textColor = UIColor.black
+        }
+        
+        if regionTxt.text == "" {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Selezionare una regione")
+            regionTxt.layer.borderWidth = 1
+            regionTxt.layer.borderColor = UIColor.red.cgColor
+            regionLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            regionTxt.layer.borderWidth = 0
+            regionLabel.textColor = UIColor.black
         }
         
         if descriptionText.text!.count < 20 {
@@ -486,6 +510,30 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         else {
             priceText.layer.borderWidth = 0
             priceLabel.textColor = UIColor.black
+        }
+        
+        if categoryTxt.text == "" {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Selezionare una categoria")
+            categoryTxt.layer.borderWidth = 1
+            categoryTxt.layer.borderColor = UIColor.red.cgColor
+            categoryLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            categoryTxt.layer.borderWidth = 0
+            categoryLabel.textColor = UIColor.black
+        }
+        
+        if regionTxt.text == "" {
+            displayAlertMessage(title: "Errore di inserimento", userMessage: "Selezionare una regione")
+            regionTxt.layer.borderWidth = 1
+            regionTxt.layer.borderColor = UIColor.red.cgColor
+            regionLabel.textColor = UIColor.red
+            isValid = false
+        }
+        else {
+            regionTxt.layer.borderWidth = 0
+            regionLabel.textColor = UIColor.black
         }
         
         if descriptionText.text!.count < 20 {
