@@ -403,6 +403,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             vc?.author = ad[ad.count-1].getAuthor()
             vc?.date = ad[ad.count-1].getDate()
             vc?.adId = ad[ad.count-1].getId()
+            vc?.region = ad[ad.count-1].getRegion()
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -619,7 +620,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     }
     
     //func for fix textfield position when open keyboard
-    @objc func keyBoardWillShow(notification: Notification) {
+    /*@objc func keyBoardWillShow(notification: Notification) {
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyboardRect = frame?.cgRectValue
@@ -648,7 +649,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             self.view.layoutIfNeeded()
         }
         
-    }
+    }*/
     
     /*
     // Only override draw() if you perform custom drawing.

@@ -71,10 +71,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         
         //fix textfield position when open keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         //fix textfield position when hide keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //textifield return to original position
         newPassTxt.delegate = self
@@ -144,12 +144,35 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     //modify profile photo
     @IBAction func pressPhotoBtn(_ sender: Any) {
+        
         let image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary;
-        image.allowsEditing = false
         
-        self.present(image, animated: true, completion: nil)
+        let actionSheet = UIAlertController(title: "Scegli un opzione", message: "", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Fotocamera", style: .default, handler: { (action: UIAlertAction) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                image.sourceType = .camera
+                image.allowsEditing = false
+                
+                self.present(image, animated: true)
+            } else {
+                print("Non hai accesso alla fotocamera")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Galleria", style: .default, handler: { (action: UIAlertAction) in
+            image.sourceType = .photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     //take photo from photo gallery
@@ -223,8 +246,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifyPassword(_ sender: Any) {
-        btnBC.constant = 57
-        btnTC.constant = 30
+        //btnBC.constant = 57
+        //btnTC.constant = 30
 
         modifyPassBtn.isHidden = true
         changePassTxt.isEnabled = true
@@ -255,7 +278,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     //func for fix textfield position when open keyboard
-    @objc func keyBoardWillShow(notification: Notification) {
+    /*@objc func keyBoardWillShow(notification: Notification) {
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyboardRect = frame?.cgRectValue
@@ -289,12 +312,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             self.view.layoutIfNeeded()
         }
         
-    }
+    }*/
     
     //save changes
     @IBAction func saveProfileChanges(_ sender: Any) {
-        btnBC.constant = 130
-        btnTC.constant = -40
+        //btnBC.constant = 130
+        //btnTC.constant = -40
         
         nameLabel.isEnabled = false
         nameLabel.textColor = UIColor.black

@@ -42,10 +42,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         imageProfile.setRounded() //rounded image
         
         //fix textfield position when open keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         //fix textfield position when hide keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //textifield return to original position
         confirmPassTxt.delegate = self
@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     //func for fix textfield position when open keyboard
-    @objc func keyBoardWillShow(notification: Notification) {
+    /*@objc func keyBoardWillShow(notification: Notification) {
         if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
             let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
             let keyboardRect = frame?.cgRectValue
@@ -68,8 +68,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             if let keyboardHeight = keyboardRect?.height {
                 self.txtBC.constant = keyboardHeight
                 self.btnTC.constant = (keyboardHeight - 56)
-                //self.btnBC.constant = (keyboardHeight - 56)
-                
                 
                 UIView.animate(withDuration: 0.5) {
                     self.view.layoutIfNeeded()
@@ -88,16 +86,39 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             self.view.layoutIfNeeded()
         }
         
-    }
+    }*/
     
     // press camera button
     @IBAction func photoBtnClicked(_ sender: Any) {
+
         let image = UIImagePickerController()
         image.delegate = self
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary;
-        image.allowsEditing = false
         
-        self.present(image, animated: true, completion: nil)
+        let actionSheet = UIAlertController(title: "Scegli un opzione", message: "", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Fotocamera", style: .default, handler: { (action: UIAlertAction) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                image.sourceType = .camera
+                image.allowsEditing = false
+                
+                self.present(image, animated: true)
+            } else {
+                print("Non hai accesso alla fotocamera")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Galleria", style: .default, handler: { (action: UIAlertAction) in
+            image.sourceType = .photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
         
     }
     
