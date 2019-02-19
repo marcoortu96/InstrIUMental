@@ -518,7 +518,22 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
-        UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+        let myAlert = UIAlertController(title: "Stai effettuando il Logout", message : "Sei sicuro di voler procedere?", preferredStyle : UIAlertController.Style.alert)
+        
+        let backAction = UIAlertAction(title : "Indietro", style : UIAlertAction.Style.cancel, handler : nil)
+        myAlert.addAction(backAction)
+        
+        let confirmAction = UIAlertAction(title: "Conferma", style: UIAlertAction.Style.destructive) { (confirmAction) in
+            
+            UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+            
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+        
+        myAlert.addAction(confirmAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
     }
     /*
      // MARK: - Navigation
