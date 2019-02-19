@@ -102,14 +102,20 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         
         if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag == true {
             self.title = "Ultimi Annunci"
+            self.navigationItem.rightBarButtonItem = nil
+            
             return ads.getAds().count
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
             self.title = "I Miei Annunci"
+            
+            
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().count)!
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
             self.title = "Preferiti"
+            self.navigationItem.rightBarButtonItem = nil
+            
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().count)!
         }
         else {
