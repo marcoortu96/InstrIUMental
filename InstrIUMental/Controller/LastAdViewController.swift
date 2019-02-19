@@ -38,6 +38,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         
         preparemenu()
+        menu.isHidden = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
         
@@ -75,10 +76,14 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             for subview in (tableView?.subviews)! {
                 subview.removeFromSuperview()
             }
-            
             tableView?.reloadData()
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.menu.isHidden = true
+            }
+            
         } else {
+            menu.isHidden = false
             leadingConstraint.constant = 0
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
