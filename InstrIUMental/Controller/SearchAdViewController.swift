@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UISearchBarDelegate{
     
     let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna",
                    "Friuli-Venezia-Giulia","Lazio","Liguria","Lombardia","Marche",
@@ -38,6 +38,8 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryTxt: DesignableTextField!
     @IBOutlet weak var regionTxt: DesignableTextField!
+    @IBOutlet weak var minPriceTxt: UITextField!
+    @IBOutlet weak var maxPriceTxt: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,12 +127,6 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
     }
     
-    @IBOutlet weak var priceValue: UILabel!
-    
-    @IBAction func priceSlider(_ sender: UISlider) {
-        priceValue.text = String(Int(sender.value))
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -178,6 +174,21 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     }
     
     
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() //keyboard disappear
+        modifySearchFlag()
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LastAdViewController") as? LastAdViewController
+        vc?.stringFound = searchBar.text!
+        vc?.stringRegion = regionTxt.text!
+        vc?.stringCategory = categoryTxt.text!
+        vc?.minPrice = minPriceTxt.text!
+        vc?.maxPrice = maxPriceTxt.text!
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
     @IBAction func searchButton(_ sender: Any) {
         print("sono nella action di conferma")
         
@@ -185,13 +196,32 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "LastAdViewController") as? LastAdViewController
         vc?.stringFound = searchBar.text!
+        vc?.stringRegion = regionTxt.text!
+        vc?.stringCategory = categoryTxt.text!
+        vc?.minPrice = minPriceTxt.text!
+        vc?.maxPrice = maxPriceTxt.text!
         
         self.navigationController?.pushViewController(vc!, animated: true)
         
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
-        UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+        let myAlert = UIAlertController(title: "Stai effettuando il Logout", message : "Sei sicuro di voler procedere?", preferredStyle : UIAlertController.Style.alert)
+        
+        let backAction = UIAlertAction(title : "Indietro", style : UIAlertAction.Style.cancel, handler : nil)
+        myAlert.addAction(backAction)
+        
+        let confirmAction = UIAlertAction(title: "Conferma", style: UIAlertAction.Style.destructive) { (confirmAction) in
+            
+            UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+            
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+        
+        myAlert.addAction(confirmAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
     }
     
     @IBAction func lastAdsBtn(_ sender: Any) {

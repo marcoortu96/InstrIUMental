@@ -18,7 +18,13 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     //variables for the side menu
     var showMenu = false
     
+    //var for searching ads in SearchAdViewController
     var stringFound = String()
+    var minPrice = String()
+    var maxPrice = String()
+    var stringCategory = String()
+    var stringRegion = String()
+    
     
     @IBOutlet weak var closeMenu: UIView! //hidden view that manage the menu closing function
     @IBOutlet weak var menu: UIView!
@@ -121,11 +127,39 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().count)!
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
-            self.title = "Risultati per ''" + stringFound + "''"
+            if stringFound == "" {
+                self.title = "Risultati"
+            }
+            else {
+                self.title = "Risultati per ''" + stringFound + "''"
+            }
+            
             self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = nil
             
-            return (AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).count)
+            var adSort: [Ad] = AdFactory.getInstance().getAds()
+
+            if stringFound != "" {
+                adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: adSort).sorted() {$0.getDate() > $1.getDate()}
+            }
+            
+            if stringCategory != "" {
+                adSort = AdFactory.getAdsByCategory(category: stringCategory, adsSet: adSort)
+
+            }
+            
+            if stringRegion != "" {
+                //TODO
+            }
+            
+            let min = Float(minPrice)
+            let max = Float(maxPrice)
+            
+            if min != nil && max != nil {
+                adSort = AdFactory.getAdsByPrice(lowestPrice: min!, highestPrice: max!, adsSet: adSort)
+            }
+            
+            return adSort.count
         }
             
         else {
@@ -170,7 +204,26 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
-            let adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).sorted() {$0.getDate() > $1.getDate()}
+            var adSort: [Ad] = AdFactory.getInstance().getAds().sorted() {$0.getDate() > $1.getDate()}
+          
+            if stringFound != "" {
+                adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: adSort).sorted() {$0.getDate() > $1.getDate()}
+            }
+            
+            if stringCategory != "" {
+                adSort = AdFactory.getAdsByCategory(category: stringCategory, adsSet: adSort)
+            }
+            
+            if stringRegion != "" {
+                //TODO
+            }
+            
+            let min = Float(minPrice)
+            let max = Float(maxPrice)
+            
+            if min != nil && max != nil {
+                adSort = AdFactory.getAdsByPrice(lowestPrice: min!, highestPrice: max!, adsSet: adSort)
+            }
             
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort [indexPath.row]
@@ -263,7 +316,27 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             self.navigationController?.pushViewController(vc!, animated: true)
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
-            let adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).sorted() {$0.getDate() > $1.getDate()}
+            var adSort: [Ad] = AdFactory.getInstance().getAds().sorted() {$0.getDate() > $1.getDate()}
+
+            if stringFound != "" {
+                adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: adSort).sorted() {$0.getDate() > $1.getDate()}
+            }
+            
+            if stringCategory != "" {
+                adSort = AdFactory.getAdsByCategory(category: stringCategory, adsSet: adSort)
+            }
+            
+            if stringRegion != "" {
+                //TODO
+            }
+            
+            let min = Float(minPrice)
+            let max = Float(maxPrice)
+            
+            if min != nil && max != nil {
+                adSort = AdFactory.getAdsByPrice(lowestPrice: min!, highestPrice: max!, adsSet: adSort)
+            }
+            
             let currentAd = adSort [indexPath.row]
             
             //send ad data to next view
@@ -439,7 +512,27 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             return [favorite]
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true{
-            let adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).sorted() {$0.getDate() > $1.getDate()}
+            var adSort: [Ad] = AdFactory.getInstance().getAds().sorted() {$0.getDate() > $1.getDate()}
+ 
+            if stringFound != "" {
+               adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: adSort).sorted() {$0.getDate() > $1.getDate()}
+            }
+            
+            if stringCategory != "" {
+                adSort = AdFactory.getAdsByCategory(category: stringCategory, adsSet: adSort)
+            }
+            
+            if stringRegion != "" {
+                //TODO
+            }
+            
+            let min = Float(minPrice)
+            let max = Float(maxPrice)
+            
+            if min != nil && max != nil {
+                adSort = AdFactory.getAdsByPrice(lowestPrice: min!, highestPrice: max!, adsSet: adSort)
+            }
+            
             let currentAd = adSort [indexPath.row]
             
             let favorite = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
@@ -502,9 +595,23 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-    
     @IBAction func logoutBtn(_ sender: Any) {
-        UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+        let myAlert = UIAlertController(title: "Stai effettuando il Logout", message : "Sei sicuro di voler procedere?", preferredStyle : UIAlertController.Style.alert)
+        
+        let backAction = UIAlertAction(title : "Indietro", style : UIAlertAction.Style.cancel, handler : nil)
+        myAlert.addAction(backAction)
+        
+        let confirmAction = UIAlertAction(title: "Conferma", style: UIAlertAction.Style.destructive) { (confirmAction) in
+            
+            UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+            
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationController")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+        
+        myAlert.addAction(confirmAction)
+        
+        self.present(myAlert, animated : true, completion : nil)
     }
     
     @IBAction func searchBtn(_ sender: Any) {
