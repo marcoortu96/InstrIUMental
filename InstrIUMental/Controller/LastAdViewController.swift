@@ -122,6 +122,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
             self.title = "Risultati per ''" + stringFound + "''"
+            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = nil
             
             return (AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).count)
@@ -496,6 +497,11 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func logoutBtn(_ sender: Any) {
         UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
+    }
+    
+    @IBAction func searchBtn(_ sender: Any) {
+       
+    
     }
     
     @IBAction func lastAdsBtn(_ sender: Any) {

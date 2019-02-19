@@ -41,6 +41,7 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         preparemenu()
         
