@@ -25,6 +25,7 @@ public class User {
     public var lastAdsFlag = false
     public var myAdsFlag = false
     public var favoritesAdFlag = false
+    public var searchFlag = true
     
     init (name : String, surname : String, username : String, email : String, password : String) {
         self.name = name

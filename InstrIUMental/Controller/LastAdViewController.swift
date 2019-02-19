@@ -18,6 +18,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
     //variables for the side menu
     var showMenu = false
     
+    var stringFound = String()
+    
     @IBOutlet weak var closeMenu: UIView! //hidden view that manage the menu closing function
     @IBOutlet weak var menu: UIView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
@@ -118,6 +120,13 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().count)!
         }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
+            self.title = "Risultati per ''" + stringFound + "''"
+            self.navigationItem.rightBarButtonItem = nil
+            
+            return (AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).count)
+        }
+            
         else {
             return 0
         }
@@ -154,6 +163,22 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
             cell.adRegionLabel.text = ad.getRegion()
         }
+        
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
+            let adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).sorted() {$0.getDate() > $1.getDate()}
+            
+            //let ad: Ad = ads.getAds() [indexPath.row]
+            let ad: Ad = adSort [indexPath.row]
+            
+            cell.adImageView?.image = ad.getImage()[0]
+            cell.adTitleLabel?.text = ad.getTitle()
+            cell.adDescrLabel?.text = ad.getText()
+            cell.nameUserLabel?.text = "di " + ad.getAuthor()
+            cell.adDateLabel?.text = ad.getDate()
+            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adRegionLabel.text = ad.getRegion()
+        }
+            
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
             
@@ -213,6 +238,24 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag == true {
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().sorted() {$0.getDate() > $1.getDate()}
             let currentAd = adSort! [indexPath.row]
+            
+            //send ad data to next view
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+            
+            vc?.adTitle = currentAd.getTitle()
+            vc?.adText = currentAd.getText()
+            vc?.category = currentAd.getCategory()
+            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
+            vc?.author = currentAd.getAuthor()
+            vc?.date = currentAd.getDate()
+            vc?.adId = currentAd.getId()
+            vc?.region = currentAd.getRegion()
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
+            let adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort [indexPath.row]
             
             //send ad data to next view
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
@@ -386,6 +429,35 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             
             return [favorite]
         }
+        else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true{
+            let adSort = AdFactory.getAdsByTitle(title: stringFound, adsSet: ads.getAds()).sorted() {$0.getDate() > $1.getDate()}
+            let currentAd = adSort [indexPath.row]
+            
+            let favorite = UITableViewRowAction(style: .normal, title: "♡") { (action, indexPath) in
+                // share item at indexPath
+                self.isEditing = false
+                print("fav at index \(indexPath.row)")
+                for fav in (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites())! {
+                    if fav.getId() == currentAd.getId() {
+                        
+                    }
+                }
+                
+                if ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.isFavoriteAdPresent(adId: currentAd.getId()))! {
+                    UserFactory.removeFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Rimosso dai preferiti", color: UIColor.white)
+                    tableView.reloadData()
+                } else {
+                    UserFactory.addFavorite(ad: AdFactory.getAdById(id: currentAd.getId(), adsSet: AdFactory.getInstance().getAds()), username: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!)
+                    self.showAlert(title: "Aggiunto ai preferiti", color: UIColor.white)
+                }
+            }
+            
+            favorite.backgroundColor = UIColor.init(displayP3Red: 1, green: 0, blue: 0, alpha: 0.4)
+            
+            return [favorite]
+        }
+            
         else {
             let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
             let currentAd = adSort [indexPath.row]
@@ -432,6 +504,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = false
     }
     
     @IBAction func myAdsBtn(_ sender: Any) {
@@ -440,6 +514,10 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = true
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = false
+        
+        
     }
     
     @IBAction func favoritesAdBtn(_ sender: Any) {
@@ -448,6 +526,18 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = true
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = false
+    }
+    
+    func searchBtn () {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

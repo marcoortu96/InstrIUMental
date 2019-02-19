@@ -18,6 +18,8 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     //Array for category picker
     let categories = ["Bassi","Batterie","Chitarre","Fiati"]
     
+    let ads = AdFactory.getInstance()
+    
     var currentTextField = DesignableTextField()
     var pickerView = UIPickerView()
     
@@ -33,6 +35,7 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     @IBOutlet weak var userLogged: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryTxt: DesignableTextField!
     @IBOutlet weak var regionTxt: DesignableTextField!
     
@@ -173,6 +176,19 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         }
     }
     
+    
+    @IBAction func searchButton(_ sender: Any) {
+        print("sono nella action di conferma")
+        
+        modifySearchFlag()
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LastAdViewController") as? LastAdViewController
+        vc?.stringFound = searchBar.text!
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
+        
+    }
+    
     @IBAction func logoutBtn(_ sender: Any) {
         UserFactory.logout(username: ((UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()))?.getUsername())!)
     }
@@ -183,6 +199,8 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = false
     }
     
     @IBAction func myAdsBtn(_ sender: Any) {
@@ -191,6 +209,8 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = true
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = false
     }
     
     @IBAction func FavoritesAdBtn(_ sender: Any) {
@@ -199,16 +219,19 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
         
         UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = true
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = false
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    public func modifySearchFlag () {
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.lastAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.favoritesAdFlag = false
+        
+        UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag = true
+    }
+    
     
 }
