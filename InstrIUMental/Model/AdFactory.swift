@@ -102,6 +102,18 @@ public class AdFactory {
         return adsToReturn
     }
     
+    public static func getAdsByRegion(region : String, adSet : [Ad]) -> [Ad] {
+        var adsToReturn : [Ad]! = []
+        
+        for ad in adSet {
+            if ad.getRegion().elementsEqual(region) {
+                adsToReturn.append(ad)
+            }
+        }
+        
+        return adsToReturn
+    }
+    
     // This function adds the specified ad
     public static func insertAd(ad : Ad) {
         var ads = AdFactory.getInstance().getAds()
