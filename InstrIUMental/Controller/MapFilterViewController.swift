@@ -11,11 +11,12 @@ import UIKit
 class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var distanceValue: UILabel!
-    @IBOutlet weak var priceValue: UILabel!
+    @IBOutlet weak var minPriceTxt: UITextField!
+    @IBOutlet weak var maxPrice: UITextField!
+    @IBOutlet weak var categoryTextfield: UITextField!
     
     @IBOutlet weak var confirmButton: UIButton!
     
-    @IBOutlet weak var categoryTextfield: UITextField!
     let picker = UIPickerView()
     
     let myPickerData = [String](arrayLiteral: "Bassi", "Batterie", "Chitarre", "Fiati")
@@ -38,9 +39,7 @@ class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPicker
         distanceValue.text = String(Int(sender.value))
     }
     
-    @IBAction func priceSlider(_ sender: UISlider) {
-        priceValue.text = String(Int(sender.value))
-    }
+  
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
