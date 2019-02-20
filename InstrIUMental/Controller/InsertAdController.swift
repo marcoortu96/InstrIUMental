@@ -77,6 +77,10 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             }
         }
         
+        descriptionText.layer.borderWidth = 1
+        descriptionText.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+        descriptionText.layer.cornerRadius = 5
+        
         //insert border to buttons
         btnImg1.layer.borderWidth = 1
         btnImg2.layer.borderWidth = 1
@@ -408,16 +412,22 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             AdFactory.insertAd(ad: ad[ad.count-1])
             
+            var currentPrice = String(ad[ad.count-1].getPrice())
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0 €"
+            }
+            
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
             vc?.adTitle = ad[ad.count-1].getTitle()
             vc?.adText = ad[ad.count-1].getText()
             vc?.category = ad[ad.count-1].getCategory()
-            vc?.price = String(ad[ad.count-1].getPrice())
+            vc?.price = currentPrice
             vc?.author = ad[ad.count-1].getAuthor()
-            vc?.date = ad[ad.count-1].getDate()
+            vc?.date = (ad[ad.count-1].getDate().components(separatedBy: "-")[2]) + "-" + (ad[ad.count-1].getDate().components(separatedBy: "-")[1]) + "-" + (ad[ad.count-1].getDate().components(separatedBy: "-")[0])
             vc?.adId = ad[ad.count-1].getId()
             vc?.region = ad[ad.count-1].getRegion()
             
+            vc?.title = "Anteprima annuncio"
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
@@ -533,7 +543,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             isValid = false
         }
         else {
-            descriptionText.layer.borderWidth = 0
+            descriptionText.layer.borderWidth = 1
+            descriptionText.layer.borderColor = UIColor.black.cgColor
             descriptionLabel.textColor = UIColor.black
         }
         
