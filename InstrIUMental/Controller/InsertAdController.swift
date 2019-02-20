@@ -403,8 +403,10 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             isValid = false
         }
         else {
-            descriptionText.layer.borderWidth = 0
-            descriptionLabel.textColor = UIColor.black
+            let myColor =  UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
+            descriptionText.layer.borderColor = myColor.cgColor
+            descriptionText.layer.cornerRadius = 5
+            descriptionText.layer.borderWidth = 1
         }
         if isValid {
             //send ad data to next view
