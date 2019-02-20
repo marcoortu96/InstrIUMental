@@ -51,7 +51,7 @@ class AdDetailViewController: UIViewController, MFMailComposeViewControllerDeleg
         descriptionLabel.text = adText
         categoryLabel.text = category
         userNameLabel.text = author
-        dateLabel.text = date
+        dateLabel.text = (date.components(separatedBy: "-")[0])+"-"+(date.components(separatedBy: "-")[1])+"-"+(date.components(separatedBy: "-")[2])
         priceLabel.text = price
         regionLabel.text = region
         
