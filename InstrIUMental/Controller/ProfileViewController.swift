@@ -112,7 +112,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         changePassTxt.layer.borderWidth = 0
         changePassTxt.setLeftPaddingPoints(0)
         modifyPassBtn.isHidden = false
-        changePassLabel.text = "Modifica password"
+        changePassLabel.text = "Password:"
         newPassLabel.isHidden = true
         newPassTxt.isHidden = true
         
@@ -315,7 +315,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         changePassTxt.setLeftPaddingPoints(10)
         changePassTxt.layer.borderWidth = 1
         changePassTxt.layer.borderColor = UIColor.lightGray.cgColor
-        changePassLabel.text = "Vecchia password"
+        changePassLabel.text = "Vecchia password:"
         
         newPassLabel.isHidden = false
         newPassTxt.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -331,6 +331,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
 
     //save changes
     @IBAction func saveProfileChanges(_ sender: Any) {
+        
+        //discard chenges button is disabled
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
+        discardChangesBtn.isEnabled = false
         
         nameLabel.isEnabled = false
         nameLabel.textColor = UIColor.black
@@ -361,7 +365,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         changePassTxt.layer.borderWidth = 0
         changePassTxt.setLeftPaddingPoints(0)
         modifyPassBtn.isHidden = false
-        changePassLabel.text = "Modifica password"
+        changePassLabel.text = "Password:"
         newPassLabel.isHidden = true
         newPassTxt.isHidden = true
         
