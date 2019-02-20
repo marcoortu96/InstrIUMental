@@ -10,10 +10,10 @@ import UIKit
 
 class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UISearchBarDelegate{
     
-    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna",
-                   "Friuli-Venezia-Giulia","Lazio","Liguria","Lombardia","Marche",
+    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia Romagna",
+                   "Friuli Venezia Giulia","Lazio","Liguria","Lombardia","Marche",
                    "Molise","Piemonte","Puglia","Sardegna", "Sicilia","Toscana",
-                   "Trentino-Alto Adige","Umbria","Valle d’Aosta","Veneto"]
+                   "Trentino Alto Adige","Umbria","Valle d’Aosta","Veneto"]
     
     //Array for category picker
     let categories = ["Bassi","Batterie","Chitarre","Fiati"]

@@ -80,6 +80,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         closeMenu.addGestureRecognizer(tap)
         closeMenu.isHidden = true
     }
+    
     @IBAction func pressDiscardChanges(_ sender: Any) {
         prepareUser()
         

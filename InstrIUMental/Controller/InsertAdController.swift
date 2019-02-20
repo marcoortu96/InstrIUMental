@@ -11,10 +11,10 @@ import UIKit
 class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
     
     //Array for region picker
-    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia-Romagna",
-                   "Friuli-Venezia-Giulia","Lazio","Liguria","Lombardia","Marche",
+    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia Romagna",
+                   "Friuli Venezia Giulia","Lazio","Liguria","Lombardia","Marche",
                    "Molise","Piemonte","Puglia","Sardegna", "Sicilia","Toscana",
-                   "Trentino-Alto Adige","Umbria","Valle d’Aosta","Veneto"]
+                   "Trentino Alto Adige","Umbria","Valle d’Aosta","Veneto"]
     
     //Array for category picker
     let categories = ["Bassi","Batterie","Chitarre","Fiati"]
@@ -94,7 +94,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         
         //insert data of ad
-        titleText.text = adTitle
+        titleText.text = adTitle.uppercased()
         
         if self.title == "Modifica annuncio" {
             btnImg1.setBackgroundImage(adImages[0], for: .normal)
@@ -410,7 +410,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         if isValid {
             //send ad data to next view
-            ad.append(Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!))
+            ad.append(Ad(id: Ad.nextId(), title: titleText.text!.uppercased(), text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!))
             
             AdFactory.insertAd(ad: ad[ad.count-1])
             
@@ -554,7 +554,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             
             if AdFactory.getAdById(id: adId, adsSet: AdFactory.getInstance().getAds()) != nil {
                 
-                let newAd : Ad = Ad(id: adId, title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!)
+                let newAd : Ad = Ad(id: adId, title: titleText.text!.uppercased(), text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!)
                 
                 AdFactory.modifyAd(ad: newAd)
                 
@@ -570,7 +570,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             }
             else {
                 
-                let newAd : Ad = Ad(id: Ad.nextId(), title: titleText.text!, text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!)
+                let newAd : Ad = Ad(id: Ad.nextId(), title: titleText.text!.uppercased(), text: descriptionText.text!, price: temp!, category: categoryTxt.text!, author: (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername())!, image: [newImages[0].image, newImages[1].image, newImages[2].image], date: result, region : regionTxt.text!)
                 
                 AdFactory.insertAd(ad: newAd)
                 UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers()).addAd(ad: newAd)

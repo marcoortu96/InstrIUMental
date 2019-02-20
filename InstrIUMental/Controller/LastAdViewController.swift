@@ -132,11 +132,17 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             return (UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getFavorites().count)!
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.searchFlag == true {
-            if stringFound == "" {
-                self.title = "Risultati"
-            }
-            else {
+            if stringFound != "" {
                 self.title = "Risultati per ''" + stringFound + "''"
+            }
+            else if stringCategory != "" {
+                self.title = "Risultati per ''" + stringCategory + "''"
+            }
+            else if stringRegion != "" {
+                self.title = "Risultati per ''" + stringRegion + "''"
+            }
+            else if minPrice != "" && maxPrice != "" {
+                self.title = "Risultati da " + minPrice + "€ a " + maxPrice + "€"
             }
             
             self.navigationItem.leftBarButtonItem = nil
