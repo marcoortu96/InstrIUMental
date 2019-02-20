@@ -77,6 +77,10 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             }
         }
         
+        descriptionText.layer.borderWidth = 1
+        descriptionText.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+        descriptionText.layer.cornerRadius = 5
+        
         //insert border to buttons
         btnImg1.layer.borderWidth = 1
         btnImg2.layer.borderWidth = 1
@@ -539,7 +543,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             isValid = false
         }
         else {
-            descriptionText.layer.borderWidth = 0
+            descriptionText.layer.borderWidth = 1
+            descriptionText.layer.borderColor = UIColor.black.cgColor
             descriptionLabel.textColor = UIColor.black
         }
         
