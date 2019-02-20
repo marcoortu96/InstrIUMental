@@ -10,12 +10,21 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class SearchMapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+    
+    @IBOutlet weak var adDetailView: UIView!
+    
+    @IBOutlet weak var mapBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var adImageView: UIImageView!
+    @IBOutlet weak var adTitle: UILabel!
+    @IBOutlet weak var adPrice: UILabel!
+    @IBOutlet weak var adAuthor: UILabel!
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
     let ads : [Ad] = AdFactory.getInstance().getAds()
     var annotations = [MKAnnotation]()
+    var adToWatch : Ad? = nil
     
     @IBOutlet weak var myPositionButton: UIButton!
     @IBAction func positionMe(_ sender: Any) {
@@ -26,6 +35,12 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate, UISe
         super.viewDidLoad()
         
         myPositionButton.layer.cornerRadius = 20
+        
+        adDetailView.isHidden = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+        
+        mapView.addGestureRecognizer(tap)
         
         mapView.showsUserLocation = true
         mapView.showsCompass = true
@@ -49,6 +64,13 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate, UISe
         
         
     }
+    
+    @objc func handleTap (sender: UITapGestureRecognizer) {
+        mapView.reloadInputViews()
+        adDetailView.isHidden = true
+        mapBottomConstraint.constant = 0
+    }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder() //keyboard disappear
@@ -77,7 +99,51 @@ class SearchMapViewController: UIViewController, CLLocationManagerDelegate, UISe
         }
         mapView.addAnnotations(annotations)
     }
-
+    
+    @IBAction func showAdDetail(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
+        vc?.adTitle = adToWatch!.getTitle()
+        vc?.adText = adToWatch!.getText()
+        vc?.category = adToWatch!.getCategory()
+        vc?.price = String(adToWatch!.getPrice())
+        vc?.author = adToWatch!.getAuthor()
+        vc?.date = adToWatch!.getDate()
+        vc?.adId = adToWatch!.getId()
+        vc?.region = adToWatch!.getRegion()
+        
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        adDetailView.isHidden = false
+        mapBottomConstraint.constant = 93
+        
+        
+        
+        for ad in ads {
+            
+            if ad.getTitle() == view.annotation?.title {
+                
+                var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
+                if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                    currentPrice = currentPrice + "0"
+                }
+                adImageView.image = ad.getImage()[0]
+                adImageView.contentMode = .scaleAspectFill
+                adImageView.clipsToBounds = true
+                adTitle.text = ad.getTitle()
+                adPrice.text = currentPrice + " €"
+                
+                adAuthor.text = "di " +  ad.getAuthor()
+                adToWatch = ad
+            }
+            
+        }
+        
+        
+    }
+    
     
 }
 
