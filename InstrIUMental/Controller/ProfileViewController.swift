@@ -47,10 +47,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var deletePBC: NSLayoutConstraint!
     @IBOutlet weak var deletePTC: NSLayoutConstraint!
     
+    @IBOutlet weak var discardChangesBtn: UIBarButtonItem!
     var imgBtn : UIImage = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //discard chenges button is disabled
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
+        discardChangesBtn.isEnabled = false
+        
         
         //func for hide keyboard
         self.hideKeyboardWhenTappedAround()
@@ -86,6 +92,49 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         closeMenu.addGestureRecognizer(tap)
         closeMenu.isHidden = true
+    }
+    @IBAction func pressDiscardChanges(_ sender: Any) {
+        prepareUser()
+        
+        nameLabel.isEnabled = false
+        nameLabel.textColor = UIColor.black
+        nameLabel.layer.borderWidth = 0
+        nameLabel.setLeftPaddingPoints(0)
+        modifyNameBtn.isHidden = false
+        
+        surnameLabel.isEnabled = false
+        surnameLabel.textColor = UIColor.black
+        surnameLabel.layer.borderWidth = 0
+        surnameLabel.setLeftPaddingPoints(0)
+        modifySurnameBtn.isHidden = false
+        
+        usernameLabel.isEnabled = false
+        usernameLabel.textColor = UIColor.black
+        usernameLabel.layer.borderWidth = 0
+        usernameLabel.setLeftPaddingPoints(0)
+        modifyUsernameBtn.isHidden = false
+        
+        emailLabel.isEnabled = false
+        emailLabel.textColor = UIColor.black
+        emailLabel.layer.borderWidth = 0
+        emailLabel.setLeftPaddingPoints(0)
+        modifyEmailBtn.isHidden = false
+        
+        changePassTxt.isEnabled = false
+        changePassTxt.textColor = UIColor.black
+        changePassTxt.layer.borderWidth = 0
+        changePassTxt.setLeftPaddingPoints(0)
+        modifyPassBtn.isHidden = false
+        changePassLabel.text = "Modifica password"
+        newPassLabel.isHidden = true
+        newPassTxt.isHidden = true
+        
+        saveChangeProfile.isHidden = true
+        deleteProfileBtn.isHidden = false
+        
+        
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
+        discardChangesBtn.isEnabled = false
     }
     
     //tap to close the side menu
@@ -190,6 +239,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     //action for modify textfield of profile
     @IBAction func modifyName(_ sender: Any) {
+        
+        //active discard changes button
+        discardChangesBtn.isEnabled = true
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
+        
         modifyNameBtn.isHidden = true
         nameLabel.isEnabled = true
         nameLabel.becomeFirstResponder()
@@ -204,6 +258,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifySurname(_ sender: Any) {
+        
+        //active discard changes button
+        discardChangesBtn.isEnabled = true
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
+        
         modifySurnameBtn.isHidden = true
         surnameLabel.isEnabled = true
         surnameLabel.becomeFirstResponder()
@@ -218,6 +277,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifyUsername(_ sender: Any) {
+        
+        //active discard changes button
+        discardChangesBtn.isEnabled = true
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
+        
         modifyUsernameBtn.isHidden = true
         usernameLabel.isEnabled = true
         usernameLabel.becomeFirstResponder()
@@ -232,6 +296,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifyEmail(_ sender: Any) {
+        
+        //active discard changes button
+        discardChangesBtn.isEnabled = true
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
+        
         emailLabel.isEnabled = true
         emailLabel.becomeFirstResponder()
         modifyEmailBtn.isHidden = true
@@ -246,8 +315,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifyPassword(_ sender: Any) {
-        //btnBC.constant = 57
-        //btnTC.constant = 30
+        
+        //active discard changes button
+        discardChangesBtn.isEnabled = true
+        discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
 
         modifyPassBtn.isHidden = true
         changePassTxt.isEnabled = true
@@ -503,7 +574,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         surnameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getSurname()
         usernameLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getUsername()
         emailLabel.text =  UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getEmail()
-        /*telephoneLabel.text =  /*MARK: - DA MODIFICARE*/"Telefono mancante"*/
+        changePassTxt.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getPassword()
+        newPassTxt.text = UserFactory.getLoggedUser(usrs: usrs.getUsers())?.getPassword()
         
     }
     
