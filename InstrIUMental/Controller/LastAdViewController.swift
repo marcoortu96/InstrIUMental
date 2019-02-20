@@ -181,6 +181,11 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort [indexPath.row]
             
+            var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             cell.adImageView?.image = ad.getImage()[0]
             cell.adImageView.contentMode = .scaleAspectFill
             cell.adImageView.clipsToBounds = true
@@ -188,7 +193,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = (ad.getDate().components(separatedBy: "-")[2])+"-"+(ad.getDate().components(separatedBy: "-")[1])+"-"+(ad.getDate().components(separatedBy: "-")[0])
-            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adPriceLabel?.text = currentPrice + " €"
             cell.adRegionLabel.text = ad.getRegion()
         }
         else if UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.myAdsFlag == true {
@@ -197,6 +202,11 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort! [indexPath.row]
             
+            var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             cell.adImageView?.image = ad.getImage()[0]
             cell.adImageView.contentMode = .scaleAspectFill
             cell.adImageView.clipsToBounds = true
@@ -204,7 +214,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = (ad.getDate().components(separatedBy: "-")[2])+"-"+(ad.getDate().components(separatedBy: "-")[1])+"-"+(ad.getDate().components(separatedBy: "-")[0])
-            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adPriceLabel?.text = currentPrice + " €"
             cell.adRegionLabel.text = ad.getRegion()
         }
             
@@ -233,6 +243,11 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort [indexPath.row]
             
+            var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             cell.adImageView?.image = ad.getImage()[0]
             cell.adImageView.contentMode = .scaleAspectFill
             cell.adImageView.clipsToBounds = true
@@ -240,7 +255,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = (ad.getDate().components(separatedBy: "-")[2])+"-"+(ad.getDate().components(separatedBy: "-")[1])+"-"+(ad.getDate().components(separatedBy: "-")[0])
-            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adPriceLabel?.text = currentPrice + " €"
             cell.adRegionLabel.text = ad.getRegion()
         }
             
@@ -250,6 +265,11 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //let ad: Ad = ads.getAds() [indexPath.row]
             let ad: Ad = adSort! [indexPath.row]
             
+            var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             cell.adImageView?.image = ad.getImage()[0]
             cell.adImageView.contentMode = .scaleAspectFill
             cell.adImageView.clipsToBounds = true
@@ -257,7 +277,7 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             cell.adDescrLabel?.text = ad.getText()
             cell.nameUserLabel?.text = "di " + ad.getAuthor()
             cell.adDateLabel?.text = (ad.getDate().components(separatedBy: "-")[2])+"-"+(ad.getDate().components(separatedBy: "-")[1])+"-"+(ad.getDate().components(separatedBy: "-")[0])
-            cell.adPriceLabel?.text = String(Float(round(ad.getPrice() * 100) / 100)) + " €"
+            cell.adPriceLabel?.text = currentPrice + " €"
             cell.adRegionLabel.text = ad.getRegion()
             
         }
@@ -272,12 +292,17 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let adSort = ads.getAds().sorted() {$0.getDate() > $1.getDate()}
             let currentAd = adSort [indexPath.row]
             
+            var currentPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             //send ad data to next view
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
+            vc?.price = currentPrice + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = (currentAd.getDate().components(separatedBy: "-")[2])+"-"+(currentAd.getDate().components(separatedBy: "-")[1])+"-"+(currentAd.getDate().components(separatedBy: "-")[0])
             vc?.adId = currentAd.getId()
@@ -289,12 +314,17 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let adSort = UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getAds().sorted() {$0.getDate() > $1.getDate()}
             let currentAd = adSort! [indexPath.row]
             
+            var currentPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             //send ad data to next view
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
+            vc?.price = currentPrice + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = (currentAd.getDate().components(separatedBy: "-")[2])+"-"+(currentAd.getDate().components(separatedBy: "-")[1])+"-"+(currentAd.getDate().components(separatedBy: "-")[0])
             vc?.adId = currentAd.getId()
@@ -309,10 +339,15 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //send ad data to next view
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
             
+            var currentPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
+            vc?.price = currentPrice + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = (currentAd.getDate().components(separatedBy: "-")[2])+"-"+(currentAd.getDate().components(separatedBy: "-")[1])+"-"+(currentAd.getDate().components(separatedBy: "-")[0])
             vc?.adId = currentAd.getId()
@@ -347,10 +382,15 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             //send ad data to next view
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
             
+            var currentPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
+            vc?.price = currentPrice + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = (currentAd.getDate().components(separatedBy: "-")[2])+"-"+(currentAd.getDate().components(separatedBy: "-")[1])+"-"+(currentAd.getDate().components(separatedBy: "-")[0])
             vc?.adId = currentAd.getId()
@@ -363,11 +403,16 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             let currentAd = adSort [indexPath.row]
             
             //send ad data to next view
+            var currentPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+            if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                currentPrice = currentPrice + "0"
+            }
+            
             let vc = storyboard?.instantiateViewController(withIdentifier: "AdDetailViewController") as? AdDetailViewController
             vc?.adTitle = currentAd.getTitle()
             vc?.adText = currentAd.getText()
             vc?.category = currentAd.getCategory()
-            vc?.price = String(Float(round(currentAd.getPrice() * 100) / 100)) + " €"
+            vc?.price = currentPrice + " €"
             vc?.author = currentAd.getAuthor()
             vc?.date = (currentAd.getDate().components(separatedBy: "-")[2])+"-"+(currentAd.getDate().components(separatedBy: "-")[1])+"-"+(currentAd.getDate().components(separatedBy: "-")[0])
             vc?.adId = currentAd.getId()
@@ -474,10 +519,15 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 vc.title = "Modifica annuncio"
                 
+                var currentPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+                if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                    currentPrice = currentPrice + "0"
+                }
+                
                 vc.adTitle = currentAd.getTitle()
                 vc.adText = currentAd.getText()
                 vc.adCategory = currentAd.getCategory()
-                vc.adPrice = String(Float(round(currentAd.getPrice() * 100) / 100))
+                vc.adPrice = currentPrice
                 vc.adRegion = currentAd.getRegion()
                 vc.adId = currentAd.getId()
                 vc.adImages = currentAd.getImage()
