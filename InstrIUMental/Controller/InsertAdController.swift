@@ -34,6 +34,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     var ad : [Ad] = []
     
+    //outlet label of view
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imgLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -47,6 +48,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var btnImg2: UIButton!
     @IBOutlet weak var btnImg3: UIButton!
     
+    //textfields outlet of view
     @IBOutlet weak var titleText: DesignableTextField!
     @IBOutlet weak var priceText: DesignableTextField!
     @IBOutlet weak var categoryTxt: DesignableTextField!
@@ -58,11 +60,13 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var price : String = ""
     var alert:UIAlertController!
     
+    //struct for pick the 3 images for ad
     struct newImage {
         var image: UIImage
         var index: Int
     }
     
+    //array for the images
     var newImages: [newImage] = []
     
     override func viewDidLoad() {
@@ -209,6 +213,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    //func for pick the image from camera or photo library
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         let theInfo : NSDictionary = info as NSDictionary

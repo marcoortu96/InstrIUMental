@@ -10,18 +10,19 @@ import UIKit
 
 class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    //outlet of textfields
     @IBOutlet weak var distanceValue: UILabel!
     @IBOutlet weak var minPriceTxt: UITextField!
     @IBOutlet weak var maxPrice: UITextField!
     @IBOutlet weak var categoryTextfield: UITextField!
     
+    //outlet for confirm button
     @IBOutlet weak var confirmButton: UIButton!
     
     let picker = UIPickerView()
     
+    //array of categories
     let myPickerData = [String](arrayLiteral: "Bassi", "Batterie", "Chitarre", "Fiati")
-    
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +36,14 @@ class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPicker
         
     }
     
+    //distance slider for filter map TODO
     @IBAction func distanceSlider(_ sender: UISlider) {
         distanceValue.text = String(Int(sender.value))
     }
     
   
     
+    //func for set picker view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
