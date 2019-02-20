@@ -44,6 +44,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var deletePBC: NSLayoutConstraint!
     @IBOutlet weak var deletePTC: NSLayoutConstraint!
     
+    @IBOutlet weak var saveTC: NSLayoutConstraint!
+    @IBOutlet weak var saveBc: NSLayoutConstraint!
     //right navigation item outlet
     @IBOutlet weak var discardChangesBtn: UIBarButtonItem!
     
@@ -228,6 +230,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     //action for modify textfield of profile
     @IBAction func modifyName(_ sender: Any) {
         
+        //fix constraints save button
+        saveTC.constant = -57
+        saveBc.constant = 144
+        
         //active discard changes button
         discardChangesBtn.isEnabled = true
         discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
@@ -246,6 +252,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifySurname(_ sender: Any) {
+        
+        //fix constraints save button
+        saveTC.constant = -57
+        saveBc.constant = 144
         
         //active discard changes button
         discardChangesBtn.isEnabled = true
@@ -266,6 +276,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func modifyUsername(_ sender: Any) {
         
+        //fix constraints save button
+        saveTC.constant = -57
+        saveBc.constant = 144
+        
         //active discard changes button
         discardChangesBtn.isEnabled = true
         discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
@@ -285,6 +299,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBAction func modifyEmail(_ sender: Any) {
         
+        //fix constraints save button
+        saveTC.constant = -57
+        saveBc.constant = 144
+        
         //active discard changes button
         discardChangesBtn.isEnabled = true
         discardChangesBtn.tintColor = UIColor(displayP3Red: 1, green: 0, blue: 0, alpha: 1)
@@ -303,6 +321,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func modifyPassword(_ sender: Any) {
+        saveTC.constant = 30
+        saveBc.constant = 57
         
         //active discard changes button
         discardChangesBtn.isEnabled = true
