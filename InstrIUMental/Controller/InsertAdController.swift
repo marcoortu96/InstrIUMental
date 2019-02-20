@@ -54,9 +54,6 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var addBtn: DesignableButton!
     
-    @IBOutlet weak var txtBC: NSLayoutConstraint!
-    @IBOutlet weak var txtTC: NSLayoutConstraint!
-    
     var isValid = true
     var price : String = ""
     var alert:UIAlertController!
@@ -106,14 +103,6 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         regionTxt.text = adRegion
         descriptionText.text = adText
         
-        //fix textarea position when open keyboard
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        //fix textarea position when hide keyboard
-       // NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        //textifield return to original position
-        //descriptionText.delegate = self
         
     }
     
@@ -660,45 +649,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         alert.view.layer.borderWidth = 0
         alert.view.layer.cornerRadius = 15
     }
-    
-    //func for return textfield at the original position
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    //func for fix textfield position when open keyboard
-    /*@objc func keyBoardWillShow(notification: Notification) {
-        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
-            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
-            let keyboardRect = frame?.cgRectValue
-            
-            if let keyboardHeight = keyboardRect?.height {
-                self.txtBC.constant = (keyboardHeight + 111.0)
-                self.txtTC.constant = (keyboardHeight + 111.0 + 50.0)
-                //self.btnBC.constant = (keyboardHeight - 56)
-                addBtn.isHidden = true
-                
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
-            }
-        }
-    }
-    
-    //func for fix textfield position when hide keyboard
-    @objc func keyBoardWillHide(notification: Notification) {
-        self.txtBC.constant = 82.0
-        self.txtTC.constant = 50.0
-        //self.btnBC.constant = 36.0
-        addBtn.isHidden = false
-        
-        UIView.animate(withDuration: 0.6) {
-            self.view.layoutIfNeeded()
-        }
-        
-    }*/
-    
+
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

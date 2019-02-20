@@ -41,13 +41,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var deleteProfileBtn: UIButton!
     
     //constraints for fix textfield
-    @IBOutlet weak var txtBC: NSLayoutConstraint!
-    @IBOutlet weak var btnTC: NSLayoutConstraint!
-    @IBOutlet weak var btnBC: NSLayoutConstraint!
     @IBOutlet weak var deletePBC: NSLayoutConstraint!
     @IBOutlet weak var deletePTC: NSLayoutConstraint!
     
+    //right navigation item outlet
     @IBOutlet weak var discardChangesBtn: UIBarButtonItem!
+    
     var imgBtn : UIImage = UIImage()
     
     override func viewDidLoad() {
@@ -56,7 +55,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         //discard chenges button is disabled
         discardChangesBtn.tintColor = UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0)
         discardChangesBtn.isEnabled = false
-        
         
         //func for hide keyboard
         self.hideKeyboardWhenTappedAround()
@@ -73,17 +71,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         //set constraint for delete user button
         deletePTC.constant = -40
         deletePBC.constant = 160
-
-        
-        
-        //fix textfield position when open keyboard
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        //fix textfield position when hide keyboard
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        //textifield return to original position
-        newPassTxt.delegate = self
         
         prepareMenu()
         prepareUser()
@@ -341,54 +328,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         deleteProfileBtn.isHidden = true
         saveChangeProfile.isHidden = false
     }
-    
-    //func for return textfield at the original position
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    //func for fix textfield position when open keyboard
-    /*@objc func keyBoardWillShow(notification: Notification) {
-        if let userInfo = notification.userInfo as? Dictionary<String, AnyObject> {
-            let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
-            let keyboardRect = frame?.cgRectValue
-            
-            if let keyboardHeight = keyboardRect?.height {
-                self.txtBC.constant = keyboardHeight
-                self.btnTC.constant = (keyboardHeight - 56)
-                
-                
-                UIView.animate(withDuration: 0.5) {
-                    self.view.layoutIfNeeded()
-                }
-            }
-        }
-    }
-    
-    //func for fix textfield position when hide keyboard
-    @objc func keyBoardWillHide(notification: Notification) {
-        
-        if modifyPassBtn.isHidden == false {
-            self.txtBC.constant = 142
-            self.btnTC.constant = -40
-            self.btnBC.constant = 125
-        }else {
-            self.txtBC.constant = 142
-            self.btnTC.constant = 58
-            self.btnTC.constant = 36
-        }
-        
-        UIView.animate(withDuration: 0.6) {
-            self.view.layoutIfNeeded()
-        }
-        
-    }*/
-    
+
     //save changes
     @IBAction func saveProfileChanges(_ sender: Any) {
-        //btnBC.constant = 130
-        //btnTC.constant = -40
         
         nameLabel.isEnabled = false
         nameLabel.textColor = UIColor.black
