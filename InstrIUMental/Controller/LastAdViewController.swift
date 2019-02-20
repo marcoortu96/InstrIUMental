@@ -143,6 +143,8 @@ class LastAdViewController: UIViewController, UITableViewDataSource, UITableView
             }
             else if minPrice != "" && maxPrice != "" {
                 self.title = "Risultati da " + minPrice + "€ a " + maxPrice + "€"
+            } else {
+                self.title = "Risultati"
             }
             
             self.navigationItem.leftBarButtonItem = nil
