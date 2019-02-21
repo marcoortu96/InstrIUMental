@@ -88,14 +88,16 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     func addAdsToMap() {
         
-        for l in ads  {
-            let ad = l
-            let annotation = MKPointAnnotation()
-            let centerCoordinate = CLLocationCoordinate2D(latitude : ad.getLatitude(), longitude : ad.getLongitude())
-            annotation.coordinate = centerCoordinate
-            annotation.title = ad.getTitle()
-            annotation.subtitle = ad.getCategory()
-            annotations.append(annotation)
+        for ad in ads  {
+            if ad.getAuthor() != UserFactory.getLoggedUser(usrs: UserFactory.getInstance().getUsers())?.getUsername() {
+                
+                let annotation = MKPointAnnotation()
+                let centerCoordinate = CLLocationCoordinate2D(latitude : ad.getLatitude(), longitude : ad.getLongitude())
+                annotation.coordinate = centerCoordinate
+                annotation.title = ad.getTitle()
+                annotation.subtitle = ad.getCategory()
+                annotations.append(annotation)
+            }
         }
         mapView.addAnnotations(annotations)
     }
@@ -116,32 +118,33 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        adDetailView.isHidden = false
-        mapBottomConstraint.constant = 93
-        
-        
-        
-        for ad in ads {
+        if ((view.annotation?.coordinate.latitude != locationManager.location?.coordinate.latitude) && (view.annotation?.coordinate.longitude != locationManager.location?.coordinate.longitude)) {
+            adDetailView.isHidden = false
+            mapBottomConstraint.constant = 93
             
-            if ad.getTitle() == view.annotation?.title {
+            
+            for ad in ads {
                 
-                var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
-                if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
-                    currentPrice = currentPrice + "0"
+                if ad.getTitle() == view.annotation?.title {
+                    
+                    var currentPrice = String(Float(round(ad.getPrice() * 100) / 100))
+                    if (currentPrice.components(separatedBy: ".")[1]).count == 1 {
+                        currentPrice = currentPrice + "0"
+                    }
+                    adImageView.image = ad.getImage()[0]
+                    adImageView.contentMode = .scaleAspectFill
+                    adImageView.clipsToBounds = true
+                    adTitle.text = ad.getTitle()
+                    adPrice.text = currentPrice + " €"
+                    
+                    adAuthor.text = "di " +  ad.getAuthor()
+                    adToWatch = ad
                 }
-                adImageView.image = ad.getImage()[0]
-                adImageView.contentMode = .scaleAspectFill
-                adImageView.clipsToBounds = true
-                adTitle.text = ad.getTitle()
-                adPrice.text = currentPrice + " €"
                 
-                adAuthor.text = "di " +  ad.getAuthor()
-                adToWatch = ad
             }
             
+            
         }
-        
-        
     }
     
     
