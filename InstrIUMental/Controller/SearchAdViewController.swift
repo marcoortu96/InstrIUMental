@@ -10,13 +10,13 @@ import UIKit
 
 class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UISearchBarDelegate{
     
-    let regions = ["Abruzzo","Basilicata","Calabria","Campania","Emilia Romagna",
+    let regions = ["Nessuna","Abruzzo","Basilicata","Calabria","Campania","Emilia Romagna",
                    "Friuli Venezia Giulia","Lazio","Liguria","Lombardia","Marche",
                    "Molise","Piemonte","Puglia","Sardegna", "Sicilia","Toscana",
                    "Trentino Alto Adige","Umbria","Valle d’Aosta","Veneto"]
     
     //Array for category picker
-    let categories = ["Bassi","Batterie","Chitarre","Fiati", "Tastiere"]
+    let categories = ["Nessuna","Bassi","Batterie","Chitarre","Fiati", "Tastiere"]
     
     let ads = AdFactory.getInstance()
     
@@ -179,7 +179,15 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "LastAdViewController") as? LastAdViewController
         vc?.stringFound = searchBar.text!
+        
+        if regionTxt.text == "Nessuna" {
+            regionTxt.text = ""
+        }
         vc?.stringRegion = regionTxt.text!
+        
+        if categoryTxt.text == "Nessuna" {
+            categoryTxt.text = ""
+        }
         vc?.stringCategory = categoryTxt.text!
         vc?.minPrice = minPriceTxt.text!
         vc?.maxPrice = maxPriceTxt.text!
@@ -194,7 +202,15 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
         
         let vc = storyboard?.instantiateViewController(withIdentifier: "LastAdViewController") as? LastAdViewController
         vc?.stringFound = searchBar.text!
+        
+        if regionTxt.text == "Nessuna" {
+            regionTxt.text = ""
+        }
         vc?.stringRegion = regionTxt.text!
+        
+        if categoryTxt.text == "Nessuna" {
+            categoryTxt.text = ""
+        }
         vc?.stringCategory = categoryTxt.text!
         vc?.minPrice = minPriceTxt.text!
         vc?.maxPrice = maxPriceTxt.text!

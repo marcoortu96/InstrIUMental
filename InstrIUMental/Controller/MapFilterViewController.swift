@@ -22,7 +22,7 @@ class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPicker
     let picker = UIPickerView()
     
     //array of categories
-    let myPickerData = [String](arrayLiteral: "Bassi", "Batterie", "Chitarre", "Fiati", "Tastiere")
+    let myPickerData = [String](arrayLiteral: "Nessuna", "Bassi", "Batterie", "Chitarre", "Fiati", "Tastiere")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,9 @@ class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if categoryTextfield.text == "Nessuna" {
+            categoryTextfield.text = ""
+        }
         categoryTextfield.text = myPickerData[row]
     }
     
