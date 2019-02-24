@@ -17,7 +17,7 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                    "Trentino Alto Adige","Umbria","Valle d’Aosta","Veneto"]
     
     //Array for category picker
-    let categories = ["Bassi","Batterie","Chitarre","Fiati"]
+    let categories = ["Bassi","Batterie","Chitarre","Fiati", "Tastiere"]
     
     var currentTextField = DesignableTextField()
     var pickerView = UIPickerView()
@@ -620,10 +620,8 @@ class InsertAdController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if currentTextField == regionTxt {
             regionTxt.text = regions[row]
-            self.view.endEditing(true)
         } else if currentTextField == categoryTxt {
             categoryTxt.text = categories[row]
-            self.view.endEditing(true)
         }
     }
     

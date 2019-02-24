@@ -22,7 +22,7 @@ class MapFilterViewController:  UIViewController, UIPickerViewDelegate, UIPicker
     let picker = UIPickerView()
     
     //array of categories
-    let myPickerData = [String](arrayLiteral: "Bassi", "Batterie", "Chitarre", "Fiati")
+    let myPickerData = [String](arrayLiteral: "Bassi", "Batterie", "Chitarre", "Fiati", "Tastiere")
     
     override func viewDidLoad() {
         super.viewDidLoad()

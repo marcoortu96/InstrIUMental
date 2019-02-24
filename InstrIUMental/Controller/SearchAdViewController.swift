@@ -16,7 +16,7 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
                    "Trentino Alto Adige","Umbria","Valle d’Aosta","Veneto"]
     
     //Array for category picker
-    let categories = ["Bassi","Batterie","Chitarre","Fiati"]
+    let categories = ["Bassi","Batterie","Chitarre","Fiati", "Tastiere"]
     
     let ads = AdFactory.getInstance()
     
@@ -154,10 +154,8 @@ class SearchAdViewController: UIViewController, UITextFieldDelegate, UIPickerVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if currentTextField == regionTxt {
             regionTxt.text = regions[row]
-            self.view.endEditing(true)
         } else if currentTextField == categoryTxt {
             categoryTxt.text = categories[row]
-            self.view.endEditing(true)
         }
     }
     
