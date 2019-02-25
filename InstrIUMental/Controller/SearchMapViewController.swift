@@ -27,9 +27,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
     var adToWatch : Ad? = nil
     
     @IBOutlet weak var myPositionButton: UIButton!
-    @IBAction func positionMe(_ sender: Any) {
-        locationManager.startUpdatingLocation()
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +59,10 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
         }
         
         addAdsToMap()
-        
-        
+    }
+    
+    @IBAction func positionMe(_ sender: Any) {
+        locationManager.startUpdatingLocation()
     }
     
     @objc func handleTap (sender: UITapGestureRecognizer) {
@@ -142,11 +142,7 @@ class SearchMapViewController: UIViewController, MKMapViewDelegate, CLLocationMa
                 }
                 
             }
-            
-            
         }
     }
-    
-    
 }
 

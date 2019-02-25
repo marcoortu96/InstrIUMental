@@ -30,6 +30,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var confirmPassLabel : UILabel!
     
     var imgBtn : UIImage? = UIImage()
+    var flagImage = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     // press camera button
     @IBAction func photoBtnClicked(_ sender: Any) {
-
+        flagImage = true
+        
         let image = UIImagePickerController()
         image.delegate = self
         
@@ -93,7 +95,13 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         newUser.setUsername(username: usernameText.text!)
         newUser.setEmail(email: emailText.text!)
         newUser.setPassword(password: passwordText.text!)
-        newUser.setImage(image: (imgBtn!))
+        
+        if flagImage == true {
+            newUser.setImage(image: (imgBtn!))
+            flagImage = false
+        } else {
+            newUser.setImage(image: UIImage(named: "imgDefaultProfile")!)
+        }
         
         if UserFactory.isUserValid(usr: newUser) && newUser.getPassword().elementsEqual(confirmPassTxt.text!) && !UserFactory.isUsernamePresent(username: newUser.getUsername(), usrs: usrs.getUsers()) && newUser.getEmail().contains("@") && newUser.getEmail().contains(".") {
             showAlert()
