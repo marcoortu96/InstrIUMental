@@ -100,7 +100,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             
             UserFactory.addUser(newUser: newUser, usrs: usrs.getUsers())
             Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
-                self.performSegue(withIdentifier: "seageFromAtoB", sender: self)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
         else {
